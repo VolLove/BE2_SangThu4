@@ -139,6 +139,11 @@
                             id="repassword" placeholder="Repeat password" required="required"></div>
                 </div>
                 <div class="row mb-3">
+                    <div class="col-2"> <label>Your name</label></div>
+                    <div class="col-10"> <input style="width: 400px" type="text" name="name" id="name"
+                            placeholder="Your name" required="required"></div>
+                </div>
+                <div class="row mb-3">
                     <div class="col-2"> <label>Your phone</label></div>
                     <div class="col-10"> <input style="width: 400px" type="text" name="numberphone"
                             id="numberphone" placeholder="Your phone" required="required"></div>
