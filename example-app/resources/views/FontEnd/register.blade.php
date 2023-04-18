@@ -64,8 +64,12 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                                <li><i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a></li>
+                                <li><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    <a href="{{ url('login', []) }}">Login</a>
+                                </li>
+                                <li><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    <a href="{{ url('logout', []) }}">Logout</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- End Top Right -->

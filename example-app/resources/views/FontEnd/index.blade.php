@@ -64,8 +64,15 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                                <li><i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a></li>
+                                <li><i class="fa fa-user" aria-hidden="true"></i>
+                                    <a href="{{ url('account') }}">My account</a>
+                                </li>
+                                <li><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    <a href="{{ url('login') }}">Login</a>
+                                </li>
+                                <li><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    <a href="{{ url('logout') }}">Logout</a>
+                                </li>
                                 <li><a href="{{ url('register') }}"><i class="fa fa-registered" aria-hidden="true"></i>
                                         Register</a></li>
                             </ul>
@@ -108,7 +115,7 @@
                         <div class="right-bar">
                             <!-- Search Form -->
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-heart-o"
+                                <a href="{{ url('favourite', []) }}" class="single-icon"><i class="fa fa-heart-o"
                                         aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
@@ -118,23 +125,16 @@
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>2 Items</span>
-                                        <a href="#">View Cart</a>
+                                        <a href="{{ url('cart', []) }}">View Cart</a>
                                     </div>
                                     <ul class="shopping-list">
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src="" alt="#"></a>
-                                            <h4><a href="#">Woman Ring</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="remove" title="Remove this item"><i
-                                                    class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src=""
+                                            <a class="cart-img" href="{{ url('product', []) }}"><img src=""
                                                     alt="#"></a>
-                                            <h4><a href="#">Woman Necklace</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$35.00</span></p>
+                                            <h4><a href="{{ url('product', []) }}">Woman Ring</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                         </li>
                                     </ul>
                                     <div class="bottom">
@@ -142,7 +142,7 @@
                                             <span>Total</span>
                                             <span class="total-amount">$134.00</span>
                                         </div>
-                                        <a href="checkout.html" class="btn animate">Checkout</a>
+                                        <a href="{{ url('checkout', []) }}" class="btn animate">Checkout</a>
                                     </div>
                                 </div>
                                 <!--/ End Shopping Item -->
@@ -167,9 +167,9 @@
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                                 <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
                                                 <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="man">Man</a></li>
-                                                <li><a href="women">Woman</a></li>
-                                                <li><a href="kids">Kids</a></li>
+                                                <li><a href="{{ url('man') }}">Man</a></li>
+                                                <li><a href="{{ url('women', []) }}">Woman</a></li>
+                                                <li><a href="{{ url('kids', []) }}">Kids</a></li>
                                                 </li>
                                             </ul>
                                         </div>
