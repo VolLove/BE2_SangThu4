@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Tag  -->
-    <title>Eshop</title>
+    <title>Eshop - eCommerce HTML5 Template.</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- Web Font -->
@@ -66,8 +66,6 @@
                             <ul class="list-main">
                                 <li><i class="ti-user"></i> <a href="#">My account</a></li>
                                 <li><i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a></li>
-                                <li><a href="{{ url('register') }}"><i class="fa fa-registered" aria-hidden="true"></i>
-                                        Register</a></li>
                             </ul>
                         </div>
                         <!-- End Top Right -->
@@ -83,9 +81,22 @@
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ url('/', []) }}"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
+                        <!-- Search Form -->
+                        <div class="search-top">
+                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                            <!-- Search Form -->
+                            <div class="search-top">
+                                <form class="search-form">
+                                    <input type="text" placeholder="Search here..." name="search">
+                                    <button value="search" type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                            <!--/ End Search Form -->
+                        </div>
+                        <!--/ End Search Form -->
                         <div class="mobile-nav"></div>
                     </div>
                     <div class="col-lg-8 col-md-7 col-12">
@@ -112,7 +123,7 @@
                                         aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
-                                <a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
+                                <a href="#" class="single-icon"><i class="ti-bag"></i> <span
                                         class="total-count">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
@@ -124,15 +135,16 @@
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src="" alt="#"></a>
+                                            <a class="cart-img" href="#"><img
+                                                    src="https://via.placeholder.com/70x70" alt="#"></a>
                                             <h4><a href="#">Woman Ring</a></h4>
                                             <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                         </li>
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src=""
-                                                    alt="#"></a>
+                                            <a class="cart-img" href="#"><img
+                                                    src="https://via.placeholder.com/70x70" alt="#"></a>
                                             <h4><a href="#">Woman Necklace</a></h4>
                                             <p class="quantity">1x - <span class="amount">$35.00</span></p>
                                         </li>
@@ -167,10 +179,6 @@
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                                 <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
                                                 <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="man">Man</a></li>
-                                                <li><a href="women">Woman</a></li>
-                                                <li><a href="kids">Kids</a></li>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -186,78 +194,257 @@
     </header>
     <!--/ End Header -->
 
-    <!-- Slider Area -->
-    <section class="hero-slider">
-        <!-- Single Slider -->
-        <div class="single-slider">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-9 offset-lg-3 col-12">
-                        <div class="text-inner">
-                            <div class="row">
-                                <div class="col-lg-7 col-12">
-                                    <div class="hero-text">
-                                        <h1><span>UP TO 50% OFF </span>Name</h1>
-                                        <p>decription</p>
-                                        <div class="button">
-                                            <a href="{{ url('shopgrid', []) }}" class="btn">Shop Now!</a>
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="blog-single.html">Cart</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Shopping Cart -->
+    <div class="shopping-cart section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Shopping Summery -->
+                    <table class="table shopping-summery">
+                        <thead>
+                            <tr class="main-hading">
+                                <th>PRODUCT</th>
+                                <th>NAME</th>
+                                <th class="text-center">UNIT PRICE</th>
+                                <th class="text-center">QUANTITY</th>
+                                <th class="text-center">TOTAL</th>
+                                <th class="text-center"><i class="ti-trash remove-icon"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100"
+                                        alt="#"></td>
+                                <td class="product-des" data-title="Description">
+                                    <p class="product-name"><a href="#">Women Dress</a></p>
+                                    <p class="product-des">Maboriosam in a tonto nesciung eget distingy magndapibus.
+                                    </p>
+                                </td>
+                                <td class="price" data-title="Price"><span>$110.00 </span></td>
+                                <td class="qty" data-title="Qty">
+                                    <!-- Input Order -->
+                                    <div class="input-group">
+                                        <div class="button minus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                <i class="ti-minus"></i>
+                                            </button>
                                         </div>
+                                        <input type="text" name="quant[1]" class="input-number" data-min="1"
+                                            data-max="100" value="1">
+                                        <div class="button plus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                data-type="plus" data-field="quant[1]">
+                                                <i class="ti-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/ End Input Order -->
+                                </td>
+                                <td class="total-amount" data-title="Total"><span>$220.88</span></td>
+                                <td class="action" data-title="Remove"><a href="#"><i
+                                            class="ti-trash remove-icon"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100"
+                                        alt="#"></td>
+                                <td class="product-des" data-title="Description">
+                                    <p class="product-name"><a href="#">Women Dress</a></p>
+                                    <p class="product-des">Maboriosam in a tonto nesciung eget distingy magndapibus.
+                                    </p>
+                                </td>
+                                <td class="price" data-title="Price"><span>$110.00 </span></td>
+                                <td class="qty" data-title="Qty">
+                                    <!-- Input Order -->
+                                    <div class="input-group">
+                                        <div class="button minus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                disabled="disabled" data-type="minus" data-field="quant[2]">
+                                                <i class="ti-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" name="quant[2]" class="input-number" data-min="1"
+                                            data-max="100" value="2">
+                                        <div class="button plus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                data-type="plus" data-field="quant[2]">
+                                                <i class="ti-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/ End Input Order -->
+                                </td>
+                                <td class="total-amount" data-title="Total"><span>$220.88</span></td>
+                                <td class="action" data-title="Remove"><a href="#"><i
+                                            class="ti-trash remove-icon"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100"
+                                        alt="#"></td>
+                                <td class="product-des" data-title="Description">
+                                    <p class="product-name"><a href="#">Women Dress</a></p>
+                                    <p class="product-des">Maboriosam in a tonto nesciung eget distingy magndapibus.
+                                    </p>
+                                </td>
+                                <td class="price" data-title="Price"><span>$110.00 </span></td>
+                                <td class="qty" data-title="Qty">
+                                    <!-- Input Order -->
+                                    <div class="input-group">
+                                        <div class="button minus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                disabled="disabled" data-type="minus" data-field="quant[3]">
+                                                <i class="ti-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" name="quant[3]" class="input-number" data-min="1"
+                                            data-max="100" value="3">
+                                        <div class="button plus">
+                                            <button type="button" class="btn btn-primary btn-number"
+                                                data-type="plus" data-field="quant[3]">
+                                                <i class="ti-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/ End Input Order -->
+                                </td>
+                                <td class="total-amount" data-title="Total"><span>$220.88</span></td>
+                                <td class="action" data-title="Remove"><a href="#"><i
+                                            class="ti-trash remove-icon"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--/ End Shopping Summery -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Total Amount -->
+                    <div class="total-amount">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-5 col-12">
+                                <div class="left">
+                                    <div class="coupon">
+                                        <form action="#" target="_blank">
+                                            <input name="Coupon" placeholder="Enter Your Coupon">
+                                            <button class="btn">Apply</button>
+                                        </form>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news"
+                                                id="2" type="checkbox"> Shipping (+10$)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-7 col-12">
+                                <div class="right">
+                                    <ul>
+                                        <li>Cart Subtotal<span>$330.00</span></li>
+                                        <li>Shipping<span>Free</span></li>
+                                        <li>You Save<span>$20.00</span></li>
+                                        <li class="last">You Pay<span>$310.00</span></li>
+                                    </ul>
+                                    <div class="button5">
+                                        <a href="#" class="btn">Checkout</a>
+                                        <a href="#" class="btn">Continue shopping</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--/ End Total Amount -->
                 </div>
             </div>
         </div>
-        <!--/ End Single Slider -->
-    </section>
-    <!--/ End Slider Area -->
+    </div>
+    <!--/ End Shopping Cart -->
 
-    <!-- Start Small Banner  -->
-    <section class="small-banner section" style="padding: 100px 0">
-        <div class="container-fluid">
+    <!-- Start Shop Services Area  -->
+    <section class="shop-services section">
+        <div class="container">
             <div class="row">
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="single-banner">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Man's Collectons</p>
-                            <h3>Summer travel <br> collection</h3>
-                            <a href="#">Discover Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-rocket"></i>
+                        <h4>Free shiping</h4>
+                        <p>Orders over $100</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="single-banner">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Bag Collectons</p>
-                            <h3>Awesome Bag <br> 2020</h3>
-                            <a href="#">Shop Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-reload"></i>
+                        <h4>Free Return</h4>
+                        <p>Within 30 days returns</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-12">
-                    <div class="single-banner tab-height">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Flash Sale</p>
-                            <h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-                            <a href="#">Discover Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-lock"></i>
+                        <h4>Sucure Payment</h4>
+                        <p>100% secure payment</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-tag"></i>
+                        <h4>Best Peice</h4>
+                        <p>Guaranteed price</p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
             </div>
         </div>
     </section>
-    <!-- End Small Banner -->
+    <!-- End Shop Newsletter -->
+
+    <!-- Start Shop Newsletter  -->
+    <section class="shop-newsletter section">
+        <div class="container">
+            <div class="inner-top">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 col-12">
+                        <!-- Start Newsletter Inner -->
+                        <div class="inner">
+                            <h4>Newsletter</h4>
+                            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="EMAIL" placeholder="Your email address" required=""
+                                    type="email">
+                                <button class="btn">Subscribe</button>
+                            </form>
+                        </div>
+                        <!-- End Newsletter Inner -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Shop Newsletter -->
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
@@ -274,16 +461,16 @@
                             <div class="product-gallery">
                                 <div class="quickview-slider-active">
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal1.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal2.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal3.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal4.jpg" alt="#">
                                     </div>
                                 </div>
                             </div>
@@ -365,8 +552,7 @@
                                     <ul>
                                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                                         </li>
-                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
+                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a>
                                         </li>
                                         <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a>
@@ -381,7 +567,6 @@
         </div>
     </div>
     <!-- Modal end -->
-
     <!-- Start Footer Area -->
     <footer class="footer">
         <!-- Footer Top -->
@@ -454,12 +639,16 @@
     <script src="js/owl-carousel.js"></script>
     <!-- Magnific Popup JS -->
     <script src="js/magnific-popup.js"></script>
+    <!-- Fancybox JS -->
+    <script src="js/facnybox.min.js"></script>
     <!-- Waypoints JS -->
     <script src="js/waypoints.min.js"></script>
     <!-- Countdown JS -->
     <script src="js/finalcountdown.min.js"></script>
     <!-- Nice Select JS -->
     <script src="js/nicesellect.js"></script>
+    <!-- Ytplayer JS -->
+    <script src="js/ytplayer.min.js"></script>
     <!-- Flex Slider JS -->
     <script src="js/flex-slider.js"></script>
     <!-- ScrollUp JS -->

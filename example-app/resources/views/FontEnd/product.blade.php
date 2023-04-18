@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Tag  -->
-    <title>Eshop</title>
+    <title>Eshop - eCommerce HTML5 Template.</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- Web Font -->
@@ -66,8 +66,6 @@
                             <ul class="list-main">
                                 <li><i class="ti-user"></i> <a href="#">My account</a></li>
                                 <li><i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a></li>
-                                <li><a href="{{ url('register') }}"><i class="fa fa-registered" aria-hidden="true"></i>
-                                        Register</a></li>
                             </ul>
                         </div>
                         <!-- End Top Right -->
@@ -83,9 +81,22 @@
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ url('/', []) }}"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
+                        <!-- Search Form -->
+                        <div class="search-top">
+                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                            <!-- Search Form -->
+                            <div class="search-top">
+                                <form class="search-form">
+                                    <input type="text" placeholder="Search here..." name="search">
+                                    <button value="search" type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                            <!--/ End Search Form -->
+                        </div>
+                        <!--/ End Search Form -->
                         <div class="mobile-nav"></div>
                     </div>
                     <div class="col-lg-8 col-md-7 col-12">
@@ -112,7 +123,7 @@
                                         aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
-                                <a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
+                                <a href="#" class="single-icon"><i class="ti-bag"></i> <span
                                         class="total-count">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
@@ -124,15 +135,16 @@
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src="" alt="#"></a>
+                                            <a class="cart-img" href="#"><img
+                                                    src="https://via.placeholder.com/70x70" alt="#"></a>
                                             <h4><a href="#">Woman Ring</a></h4>
                                             <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                         </li>
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src=""
-                                                    alt="#"></a>
+                                            <a class="cart-img" href="#"><img
+                                                    src="https://via.placeholder.com/70x70" alt="#"></a>
                                             <h4><a href="#">Woman Necklace</a></h4>
                                             <p class="quantity">1x - <span class="amount">$35.00</span></p>
                                         </li>
@@ -167,10 +179,6 @@
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                                 <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
                                                 <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="man">Man</a></li>
-                                                <li><a href="women">Woman</a></li>
-                                                <li><a href="kids">Kids</a></li>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -186,78 +194,243 @@
     </header>
     <!--/ End Header -->
 
-    <!-- Slider Area -->
-    <section class="hero-slider">
-        <!-- Single Slider -->
-        <div class="single-slider">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-9 offset-lg-3 col-12">
-                        <div class="text-inner">
-                            <div class="row">
-                                <div class="col-lg-7 col-12">
-                                    <div class="hero-text">
-                                        <h1><span>UP TO 50% OFF </span>Name</h1>
-                                        <p>decription</p>
-                                        <div class="button">
-                                            <a href="{{ url('shopgrid', []) }}" class="btn">Shop Now!</a>
-                                        </div>
-                                    </div>
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="blog-single.html">Product</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                        src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">SKU: BST-498</div>
+                    <h1 class="display-5 fw-bolder">Shop item template</h1>
+                    <div class="fs-5 mb-5">
+                        <span class="text-decoration-line-through">$45.00</span>
+                        <span>$40.00</span>
+                    </div>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
+                        quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis
+                        delectus ipsam minima ea iste laborum vero?</p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num"
+                            value="1" style="max-width: 3rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related items section-->
+    <section class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4">Related products</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Fancy Product</h5>
+                                <!-- Product price-->
+                                $40.00 - $80.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
+                                    options</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Special Item</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
                                 </div>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$20.00</span>
+                                $18.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
+                                    cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Sale Item</h5>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$50.00</span>
+                                $25.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
+                                    cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Popular Item</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                $40.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
+                                    cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--/ End Single Slider -->
     </section>
-    <!--/ End Slider Area -->
-
-    <!-- Start Small Banner  -->
-    <section class="small-banner section" style="padding: 100px 0">
-        <div class="container-fluid">
+    <!-- Start Shop Services Area  -->
+    <section class="shop-services section">
+        <div class="container">
             <div class="row">
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="single-banner">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Man's Collectons</p>
-                            <h3>Summer travel <br> collection</h3>
-                            <a href="#">Discover Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-rocket"></i>
+                        <h4>Free shiping</h4>
+                        <p>Orders over $100</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="single-banner">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Bag Collectons</p>
-                            <h3>Awesome Bag <br> 2020</h3>
-                            <a href="#">Shop Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-reload"></i>
+                        <h4>Free Return</h4>
+                        <p>Within 30 days returns</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
-                <!-- Single Banner  -->
-                <div class="col-lg-4 col-12">
-                    <div class="single-banner tab-height">
-                        <img src="https://via.placeholder.com/600x370" alt="#">
-                        <div class="content">
-                            <p>Flash Sale</p>
-                            <h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-                            <a href="#">Discover Now</a>
-                        </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-lock"></i>
+                        <h4>Sucure Payment</h4>
+                        <p>100% secure payment</p>
                     </div>
+                    <!-- End Single Service -->
                 </div>
-                <!-- /End Single Banner  -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-tag"></i>
+                        <h4>Best Peice</h4>
+                        <p>Guaranteed price</p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
             </div>
         </div>
     </section>
-    <!-- End Small Banner -->
+    <!-- End Shop Newsletter -->
+
+    <!-- Start Shop Newsletter  -->
+    <section class="shop-newsletter section">
+        <div class="container">
+            <div class="inner-top">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 col-12">
+                        <!-- Start Newsletter Inner -->
+                        <div class="inner">
+                            <h4>Newsletter</h4>
+                            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="EMAIL" placeholder="Your email address" required=""
+                                    type="email">
+                                <button class="btn">Subscribe</button>
+                            </form>
+                        </div>
+                        <!-- End Newsletter Inner -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Shop Newsletter -->
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
@@ -274,16 +447,16 @@
                             <div class="product-gallery">
                                 <div class="quickview-slider-active">
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal1.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal2.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal3.jpg" alt="#">
                                     </div>
                                     <div class="single-slider">
-                                        <img src="" alt="#">
+                                        <img src="images/modal4.jpg" alt="#">
                                     </div>
                                 </div>
                             </div>
@@ -365,8 +538,7 @@
                                     <ul>
                                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                                         </li>
-                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
+                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a>
                                         </li>
                                         <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a>
@@ -454,12 +626,16 @@
     <script src="js/owl-carousel.js"></script>
     <!-- Magnific Popup JS -->
     <script src="js/magnific-popup.js"></script>
+    <!-- Fancybox JS -->
+    <script src="js/facnybox.min.js"></script>
     <!-- Waypoints JS -->
     <script src="js/waypoints.min.js"></script>
     <!-- Countdown JS -->
     <script src="js/finalcountdown.min.js"></script>
     <!-- Nice Select JS -->
     <script src="js/nicesellect.js"></script>
+    <!-- Ytplayer JS -->
+    <script src="js/ytplayer.min.js"></script>
     <!-- Flex Slider JS -->
     <script src="js/flex-slider.js"></script>
     <!-- ScrollUp JS -->
