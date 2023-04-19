@@ -13,34 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->group(function () {
-    Route::get('/', function () {
-        return view('FontEnd/index');
-    });
-    Route::get('/login', function () {
-        return view('FontEnd/login');
-    });
-    Route::get('/register', function () {
-        return view('FontEnd/register');
-    });
-
-    Route::get('/product', function () {
-        return view('FontEnd/product');
-    });
-
-    Route::get('/shopgrid', function () {
-        return view('FontEnd/shopgrid');
-    });
-
-    Route::get('/checkout', function () {
-        return view('FontEnd/checkout');
-    });
-
-    Route::get('/cart', function () {
-        return view('FontEnd/cart');
-    });
-});
-
-Route::prefix('Admind', function () {
-    return view('BackEnd/index');
-});
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
