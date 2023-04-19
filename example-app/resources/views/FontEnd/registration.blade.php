@@ -14,32 +14,32 @@
             <div class="row mb-3">
                 <div class="col-2"> <label>Email</label></div>
                 <div class="col-10"> <input style="width: 400px" type="text" name="email" id="email"
-                        placeholder="Email@" required="required"></div>
+                        placeholder="Email@"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Password</label></div>
                 <div class="col-10"> <input style="width: 400px" type="password" name="password" id="password"
-                        placeholder="Passowrd" required="required"></div>
+                        placeholder="Passowrd"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Comfirmation</label></div>
                 <div class="col-10"> <input style="width: 400px" type="password" name="password_comfirmation"
-                        id="password_comfirmation" placeholder="Comfirmation" required="required"></div>
+                        id="password_comfirmation" placeholder="Comfirmation"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Your name</label></div>
                 <div class="col-10"> <input style="width: 400px" type="text" name="name" id="name"
-                        value="{{ old('name') }}" placeholder="Your name" required="required"></div>
+                        placeholder="Your name"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Your phone</label></div>
                 <div class="col-10"> <input style="width: 400px" type="text" name="phone" id="phone"
-                        value="{{ old('phone') }}" placeholder="Your phone" required="required"></div>
+                        placeholder="Your phone"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Avata image</label></div>
                 <div class="col-10"> <input style="width: 400px" accept="image/*" type="file" name="avatar"
-                        id="avatar" required="required"></div>
+                        id="avatar"></div>
             </div>
             <div class="">
                 <button type="submit" class="btn btn-primary mb-3">Registration</button>
