@@ -68,8 +68,8 @@
                                 <li><i class="fa fa-sign-in" aria-hidden="true"></i>
                                     <a href="{{ url('login', []) }}">Login</a>
                                 </li>
-                                <li><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    <a href="{{ url('logout', []) }}">Logout</a>
+                                <li><i class="fa fa-registered" aria-hidden="true"></i></i>
+                                    <a href="{{ url('registration', []) }}">Register</a>
                                 </li>
                             </ul>
                         </div>
