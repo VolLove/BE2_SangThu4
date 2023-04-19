@@ -122,26 +122,31 @@
             <div class="mb-5">
                 <h1>Register</h1>
             </div>
-            <form class="form" method="post " action="#">
+            <form class="form" method="POST" action="#">
                 <div class="row mb-3">
-                    <div class="col-2"> <label>User name</label></div>
-                    <div class="col-10"> <input style="width: 400px" type="text" name="username" id="username"
-                            placeholder="User name" required="required"></div>
+                    <div class="col-2"> <label>Email</label></div>
+                    <div class="col-10"> <input style="width: 400px" type="text" name="email" id="email"
+                            value="{{ old('email') }}" placeholder="Email@" required="required"></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-2"> <label>Password</label></div>
                     <div class="col-10"> <input style="width: 400px" type="password" name="password" id="password"
-                            placeholder="passowrd" required="required"></div>
+                            placeholder="Passowrd" required="required"></div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-2"> <label>Repear Password</label></div>
-                    <div class="col-10"> <input style="width: 400px" type="password" name="repassword"
-                            id="repassword" placeholder="Repeat password" required="required"></div>
+                    <div class="col-2"> <label>Comfirmation</label></div>
+                    <div class="col-10"> <input style="width: 400px" type="password" name="password_comfirmation"
+                            id="password_comfirmation" placeholder="Comfirmation" required="required"></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Your name</label></div>
+                    <div class="col-10"> <input style="width: 400px" type="text" name="name" id="name"
+                            value="{{ old('name') }}" placeholder="Your name" required="required"></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-2"> <label>Your phone</label></div>
-                    <div class="col-10"> <input style="width: 400px" type="text" name="numberphone"
-                            id="numberphone" placeholder="Your phone" required="required"></div>
+                    <div class="col-10"> <input style="width: 400px" type="text" name="phone" id="phone"
+                            value="{{ old('phone') }}" placeholder="Your phone" required="required"></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-2"> <label>Avata image</label></div>
@@ -152,8 +157,6 @@
                     <button type="submit" class="btn btn-primary mb-3">Login</button>
                 </div>
             </form>
-        </div>
-        </form>
         </div>
 
         <!-- Start Footer Area -->

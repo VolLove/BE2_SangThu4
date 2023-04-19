@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Tag  -->
-    <title> Eshop - @yield('title')</title>
+    <title>Eshop - @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- Web Font -->
@@ -47,9 +47,12 @@
 
 
 
+
 </head>
 
 <body class="js">
+
+
     <!-- Header -->
     <header class="header shop">
         <!-- Topbar -->
@@ -62,18 +65,12 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="fa fa-user" aria-hidden="true"></i>
-                                    <a href="{{ url('account') }}">My account</a>
-                                </li>
                                 <li><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    <a href="{{ url('login') }}">Login</a>
+                                    <a href="{{ url('login', []) }}">Login</a>
                                 </li>
                                 <li><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    <a href="{{ url('logout') }}">Logout</a>
+                                    <a href="{{ url('logout', []) }}">Logout</a>
                                 </li>
-                                <li><a href="{{ url('registration') }}"><i class="fa fa-registered"
-                                            aria-hidden="true"></i>
-                                        Register</a></li>
                             </ul>
                         </div>
                         <!-- End Top Right -->
@@ -83,78 +80,24 @@
         </div>
         <!-- End Topbar -->
 
+
         <div class="middle-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ url('/', []) }}"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
-                        <div class="mobile-nav"></div>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-12">
-                        <div class="search-bar-top">
-                            <div class="search-bar">
-                                <select>
-                                    <option selected="selected">All Category</option>
-                                    <option>watch</option>
-                                    <option>mobile</option>
-                                    <option>kid’s item</option>
-                                </select>
-                                <form>
-                                    <input name="search" placeholder="Search Products Here....." type="search">
-                                    <button class="btnn"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-12">
-                        <div class="right-bar">
-                            <!-- Search Form -->
-                            <div class="sinlge-bar">
-                                <a href="{{ url('favourite', []) }}" class="single-icon"><i class="fa fa-heart-o"
-                                        aria-hidden="true"></i></a>
-                            </div>
-                            <div class="sinlge-bar shopping">
-                                <a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
-                                        class="total-count">2</span></a>
-                                <!-- Shopping Item -->
-                                <div class="shopping-item">
-                                    <div class="dropdown-cart-header">
-                                        <span>2 Items</span>
-                                        <a href="{{ url('cart', []) }}">View Cart</a>
-                                    </div>
-                                    <ul class="shopping-list">
-                                        <li>
-                                            <a href="#" class="remove" title="Remove this item"><i
-                                                    class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="{{ url('product', []) }}"><img src=""
-                                                    alt="#"></a>
-                                            <h4><a href="{{ url('product', []) }}">Woman Ring</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                        </li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="total">
-                                            <span>Total</span>
-                                            <span class="total-amount">$134.00</span>
-                                        </div>
-                                        <a href="{{ url('checkout', []) }}" class="btn animate">Checkout</a>
-                                    </div>
-                                </div>
-                                <!--/ End Shopping Item -->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Header Inner -->
+
         <div class="header-inner">
             <div class="container">
-                <div class="cat-nav-head">
+                <div class="cat-nav-head ">
                     <div class="row">
                         <div class="col-12">
                             <div class="menu-area">
@@ -164,12 +107,6 @@
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                                <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
-                                                <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="{{ url('man') }}">Man</a></li>
-                                                <li><a href="{{ url('women', []) }}">Woman</a></li>
-                                                <li><a href="{{ url('kids', []) }}">Kids</a></li>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -181,11 +118,9 @@
                 </div>
             </div>
         </div>
-        <!--/ End Header Inner -->
     </header>
-    <!--/ End Header -->
 
-    @yield('content')
+    @yield('containt')
 
     <!-- Start Footer Area -->
     <footer class="footer">
@@ -227,7 +162,8 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com">Wpthemesgrid</a> - All Rights
+                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com">Wpthemesgrid</a> - All
+                                    Rights
                                     Reserved.</p>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 @extends('FontEnd.master')
-@section('title', 'Cart')
+@section('title', 'Check out')
 @section('content')
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">

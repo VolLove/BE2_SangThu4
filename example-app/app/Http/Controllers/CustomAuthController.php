@@ -14,7 +14,11 @@ class CustomAuthController extends Controller
     }
 
 
-    public function index()
+    public function registration()
+    {
+        return view('FontEnd.registration');
+    }
+    public function login()
     {
         return view('FontEnd.login');
     }
@@ -32,5 +36,14 @@ class CustomAuthController extends Controller
         }
 
         return redirect("login")->withSuccess('Login details are not valid');
+    }
+    public function customRegistration(Request $request)
+    {
+    }
+    public function logout(Request $request)
+    {
+    }
+    public function account(Request $request)
+    {
     }
 }
