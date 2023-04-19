@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,9 @@ use App\Http\Controllers\CustomAuthController;
 */
 
 Route::get('/', [CustomAuthController::class, 'dashboard']);
-Route::get('login', [CustomAuthController::class, 'login'])->name('login');
-Route::get('registration', [CustomAuthController::class, 'registration'])->name('registration');
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
 Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 Route::get('account', [CustomAuthController::class, 'account'])->name('account');
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::post('custom-login', [LoginController::class, 'customLogin'])->name('login.custom');
+Route::post('custom-registration', [RegisterController::class, 'customRegistration'])->name('register.custom');
