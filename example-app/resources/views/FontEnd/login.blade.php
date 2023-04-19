@@ -121,17 +121,22 @@
     <div class="container my-5">
         <div class="mb-5">
             <h1>Login</h1>
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
-        <form class="form" method="post " action="#">
+        <form class="form" method="POST" action="{{ route('login.custom') }}">
             <div class="row mb-3">
-                <div class="col-2"> <label>User name</label></div>
-                <div class="col-10"> <input style="width: 400px" type="text" name="username" id="username"
-                        placeholder="User name" required="required"></div>
+                <div class="col-2"> <label>Email</label></div>
+                <div class="col-10"> <input style="width: 400px" type="text" name="email" id="email"
+                        placeholder="Email" required="required"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Password</label></div>
                 <div class="col-10"> <input style="width: 400px" type="password" name="password" id="Password"
-                        placeholder="passowrd" required="required"></div>
+                        placeholder="Passowrd" required="required"></div>
             </div>
             <div class="">
                 <button type="submit" class="btn btn-primary mb-3">Login</button>
