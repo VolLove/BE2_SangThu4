@@ -25,7 +25,6 @@ class CustomAuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')
@@ -33,9 +32,5 @@ class CustomAuthController extends Controller
         }
 
         return redirect("login")->withSuccess('Login details are not valid');
-    }
-    public function header()
-    {
-        return view('FontEnd.master');
     }
 }
