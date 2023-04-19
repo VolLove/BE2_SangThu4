@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email', 200)->unique();
             $table->string('password');
-            $table->string('phone', 200)->nullable();
-            $table->string('avata', 200)->nullable();
+            $table->string('phone');
+            $table->string('avata');
         });
     }
 

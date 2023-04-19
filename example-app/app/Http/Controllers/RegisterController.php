@@ -16,26 +16,26 @@ class RegisterController extends Controller
 
     public function customRegistration(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password',
-            'phone' => 'required|between:10,11',
-            'avata' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'phone' => 'required|numeric|between:10,11',
+            'avatar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
-        $avatarName = time() . '.' . $request->avata->getClientOriginalExtension();
-        $request->avata->move('uploads/avatars', $avatarName);
+        $avatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
+        $request->avatar->move('uploads/avatars', $avatarName);
 
         $user = new User([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'phone' => $validatedData['phone'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'phone' => $request['phone'],
             'avatar' => $avatarName,
         ]);
         $user->save();
 
-        return redirect("registration")->withSuccess('You have signed up successfully.');
+        return redirect("registration")->withSuccess('Register success. Please login!');
     }
 }

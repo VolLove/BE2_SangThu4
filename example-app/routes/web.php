@@ -16,10 +16,12 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', [CustomAuthController::class, 'dashboard']);
-Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
+Route::get('/', [CustomAuthController::class, 'dashboard'])->name('dashboard');
 Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 Route::get('account', [CustomAuthController::class, 'account'])->name('account');
-Route::post('custom-login', [LoginController::class, 'customLogin'])->name('login.custom');
-Route::post('custom-registration', [RegisterController::class, 'customRegistration'])->name('register.custom');
+
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'customLogin'])->name('login.custom');
+
+Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
+Route::post('registration', [RegisterController::class, 'customRegistration'])->name('register.custom');
