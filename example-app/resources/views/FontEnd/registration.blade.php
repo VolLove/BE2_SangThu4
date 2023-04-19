@@ -4,12 +4,17 @@
     <div class="container my-5">
         <div class="mb-5">
             <h1>Register</h1>
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
-        <form class="form" method="POST" action="#">
+        <form class="form" method="POST" action="{{ route('register.custom') }}">
             <div class="row mb-3">
                 <div class="col-2"> <label>Email</label></div>
                 <div class="col-10"> <input style="width: 400px" type="text" name="email" id="email"
-                        value="{{ old('email') }}" placeholder="Email@" required="required"></div>
+                        placeholder="Email@" required="required"></div>
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Password</label></div>
@@ -33,11 +38,11 @@
             </div>
             <div class="row mb-3">
                 <div class="col-2"> <label>Avata image</label></div>
-                <div class="col-10"> <input style="width: 400px" accept="image/*" type="file" name="imageface"
-                        id="imageface" required="required"></div>
+                <div class="col-10"> <input style="width: 400px" accept="image/*" type="file" name="avatar"
+                        id="avatar" required="required"></div>
             </div>
             <div class="">
-                <button type="submit" class="btn btn-primary mb-3">Login</button>
+                <button type="submit" class="btn btn-primary mb-3">Registration</button>
             </div>
         </form>
     </div>

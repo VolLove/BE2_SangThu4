@@ -12,6 +12,7 @@ class RegisterController extends Controller
     {
         return view('FontEnd.registration');
     }
+
     public function customRegistration(Request $request)
     {
         $request->validate([
