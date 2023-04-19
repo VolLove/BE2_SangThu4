@@ -34,4 +34,8 @@ class CustomAuthController extends Controller
 
         return redirect("login")->withSuccess('Login details are not valid');
     }
+    public function header()
+    {
+        return view('FontEnd.master');
+    }
 }
