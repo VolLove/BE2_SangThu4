@@ -17,23 +17,26 @@ class RegisterController extends Controller
     public function customRegistration(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'password_confirmation' => 'required|same:password',
-            'phone' => 'required|numeric|between:10,11',
-            'avatar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|confirmed|min:8|',
+            'password_confirmation' => 'required|string',
+            'phone' => 'nullable|string|size:10',
+            'avatar' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
-        $avatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
-        $request->avatar->move('uploads/avatars', $avatarName);
+
+        $image = $request->file('avatar');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('avatars'), $imageName);
 
         $user = new User([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'phone' => $request['phone'],
-            'avatar' => $avatarName,
+            'avatar' => $imageName,
         ]);
+        dd($user);
         $user->save();
 
         return redirect("registration")->withSuccess('Register success. Please login!');

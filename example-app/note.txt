@@ -1,4 +1,6 @@
 php -S localhost:82 -t public/
+composer install
+composer update
 http://127.0.0.1:8000/
 
 php artisan make:model ModelName --migration: Tạo một model mới cùng với migration để tạo bảng trong database.

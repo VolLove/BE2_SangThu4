@@ -18,42 +18,54 @@
                     </ul>
                 </div>
             @endif
-        </div>
-        <form class="form" method="POST" action="{{ route('register.custom') }}">
-            <div class="row mb-3">
-                <div class="col-2"> <label>Email</label></div>
-                <div class="col-10"> <input style="width: 400px" type="text" name="email" id="email"
-                        placeholder="Email@"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-2"> <label>Password</label></div>
-                <div class="col-10"> <input style="width: 400px" type="password" name="password" id="password"
-                        placeholder="Passowrd"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-2"> <label>Comfirmation</label></div>
-                <div class="col-10"> <input style="width: 400px" type="password" name="password_comfirmation"
-                        id="password_comfirmation" placeholder="Comfirmation"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-2"> <label>Your name</label></div>
-                <div class="col-10"> <input style="width: 400px" type="text" name="name" id="name"
-                        placeholder="Your name"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-2"> <label>Your phone</label></div>
-                <div class="col-10"> <input style="width: 400px" type="text" name="phone" id="phone"
-                        placeholder="Your phone"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-2"> <label>Avata image</label></div>
-                <div class="col-10"> <input style="width: 400px" accept="image/*" type="file" name="avatar"
-                        id="avatar"></div>
-            </div>
-            <div class="">
-                <button type="submit" class="btn btn-primary mb-3">Registration</button>
-            </div>
-        </form>
-    </div>
 
+            <form class="form" method="POST" action="{{ route('register.custom') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Email</label></div>
+                    <div class="col-10"> <input required value="{{ old('email') }}" style="width: 400px" type="text"
+                            name="email" id="email" placeholder="Email@"></div>
+                    @error('name')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Password</label></div>
+                    <div class="col-10"> <input required style="width: 400px" type="password" name="password"
+                            id="password">
+                    </div>
+                    @error('email')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Comfirmation</label></div>
+                    <div class="col-10"> <input required style="width: 400px" type="password" name="password_confirmation"
+                            id="password_confirmation"></div>
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Your name</label></div>
+                    <div class="col-10"> <input style="width: 400px" value="{{ old('name') }}" type="text"
+                            name="name" id="name" placeholder="Your name"></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Your phone</label></div>
+                    <div class="col-10"> <input style="width: 400px" value="{{ old('phone') }}" type="text"
+                            name="phone" id="phone" placeholder="Your phone"></div>
+                    @error('phone')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2"> <label>Avata image</label></div>
+                    <div class="col-10"> <input style="width: 400px" accept="image/*" value="{{ old('image') }}"
+                            type="file" name="avatar" id="avatar"></div>
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-primary mb-3">Registration</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
