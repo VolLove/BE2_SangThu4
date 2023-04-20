@@ -36,7 +36,6 @@ class RegisterController extends Controller
             'phone' => $request['phone'],
             'avatar' => $imageName,
         ]);
-        dd($user);
         $user->save();
 
         return redirect("registration")->withSuccess('Register success. Please login!');
