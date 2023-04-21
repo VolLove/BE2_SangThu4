@@ -13,12 +13,5 @@ php artisan route:list: Liệt kê các route hiện có trong ứng dụng.
 
 php artisan make:middleware MiddlewareName: Tạo một middleware mới để xử lý các request trước khi đi đến controller.
 
-php artisan make:request RequestName: Tạo một request mới để kiểm tra dữ liệu nhập vào từ form.
-
-php artisan make:factory FactoryName --model=ModelName: Tạo một factory mới để tạo dummy data cho model.
-
-php artisan make:seeder SeederName: Tạo một seeder mới để điền dữ liệu vào bảng trong database.
-
-php artisan db:seed: Thực hiện seeding để điền dữ liệu vào bảng trong database.
-
 php artisan make:auth: Tạo các chức năng đăng nhập, đăng ký và quản lý người dùng.
+

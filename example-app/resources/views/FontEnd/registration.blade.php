@@ -9,23 +9,13 @@
                     {{ session('success') }}
                 </div>
             @endif
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <form class="form" method="POST" action="{{ route('register.custom') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-2"> <label>Email</label></div>
                     <div class="col-10"> <input required value="{{ old('email') }}" style="width: 400px" type="text"
                             name="email" id="email" placeholder="Email@"></div>
-                    @error('name')
+                    @error('email')
                         <span>{{ $message }}</span>
                     @enderror
                 </div>
@@ -34,7 +24,7 @@
                     <div class="col-10"> <input required style="width: 400px" type="password" name="password"
                             id="password">
                     </div>
-                    @error('email')
+                    @error('password')
                         <span>{{ $message }}</span>
                     @enderror
                 </div>
@@ -42,7 +32,9 @@
                     <div class="col-2"> <label>Comfirmation</label></div>
                     <div class="col-10"> <input required style="width: 400px" type="password" name="password_confirmation"
                             id="password_confirmation"></div>
-
+                    @error('password_confirmation')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="row mb-3">
                     <div class="col-2"> <label>Your name</label></div>

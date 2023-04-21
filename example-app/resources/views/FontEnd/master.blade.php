@@ -62,18 +62,21 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="fa fa-user" aria-hidden="true"></i>
-                                    <a href="{{ url('account') }}">My account</a>
-                                </li>
-                                <li><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    <a href="{{ url('login') }}">Login</a>
-                                </li>
-                                <li><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    <a href="{{ url('logout') }}">Logout</a>
-                                </li>
-                                <li><a href="{{ url('registration') }}"><i class="fa fa-registered"
-                                            aria-hidden="true"></i>
-                                        Register</a></li>
+                                @if (Auth::check())
+                                    <li><i class="fa fa-user" aria-hidden="true"></i>
+                                        <a href="{{ url('account') }}">My account</a>
+                                    </li>
+                                    <li><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <a href="{{ url('logout') }}">Logout</a>
+                                    </li>
+                                @else
+                                    <li><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                        <a href="{{ url('login') }}">Login</a>
+                                    </li>
+                                    <li><a href="{{ url('registration') }}"><i class="fa fa-registered"
+                                                aria-hidden="true"></i>
+                                            Register</a></li>
+                                @endif
                             </ul>
                         </div>
                         <!-- End Top Right -->

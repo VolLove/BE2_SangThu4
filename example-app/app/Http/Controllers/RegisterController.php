@@ -27,7 +27,6 @@ class RegisterController extends Controller
 
         $image = $request->file('avatar');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('avatars'), $imageName);
 
         $user = new User([
             'name' => $request['name'],
@@ -37,7 +36,8 @@ class RegisterController extends Controller
             'avatar' => $imageName,
         ]);
         $user->save();
+        $image->move(public_path('avatars'), $imageName);
 
-        return redirect("registration")->withSuccess('Register success. Please login!');
+        return redirect("login")->withSuccess('Register success. Please login!');
     }
 }

@@ -17,8 +17,12 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', [CustomAuthController::class, 'dashboard'])->name('dashboard');
+Route::get('{id}', function ($id) {
+    return view('FontEnd/' . $id);
+});
+
 Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
-Route::get('account', [CustomAuthController::class, 'account'])->name('account');
+Route::get('account', [CustomAuthController::class, 'account'])->middleware('auth');
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login', [LoginController::class, 'customLogin'])->name('login.custom');
