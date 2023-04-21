@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
-class CustomAuthController extends Controller
+class   CustomAuthController extends Controller
 {
 
     public function dashboard()
     {
-        return view('FontEnd.dashboard');
+        return view('BackEnd.userlist');
     }
     public function logout()
     {

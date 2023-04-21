@@ -1,5 +1,5 @@
 @extends('FontEnd.header')
-@section('title', 'Login')
+@section('title', 'Account')
 @section('containt')
     <div class="container">
         account
