@@ -18,29 +18,32 @@
                             aria-describedby="example2_info">
                             <thead>
                                 <tr>
-                                    <th>Rendering engine </th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade </th>
+                                    <th>User name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user['name'] }}</td>
+                                        <td>{{ $user['email'] }}</td>
+                                        <td>{{ $user['phone'] }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-primary btn-xs">Primary</button>
+                                            <button type="button" class="btn btn-block btn-danger btn-xs">Danger</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th rowspan="1" colspan="1">Rendering engine</th>
-                                    <th rowspan="1" colspan="1">Browser</th>
-                                    <th rowspan="1" colspan="1">Platform(s)</th>
-                                    <th rowspan="1" colspan="1">Engine version</th>
-                                    <th rowspan="1" colspan="1">CSS grade</th>
+                                    <th>User name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>

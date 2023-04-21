@@ -256,8 +256,6 @@
     <script src="{{ url('js/popper.min.js', []) }}"></script>
     <!-- Bootstrap JS -->
     <script src="{{ url('js/bootstrap.min.js', []) }}"></script>
-    <!-- Color JS -->
-    <script src="{{ url('js/colors.js', []) }}"></script>
     <!-- Slicknav JS -->
     <script src="{{ url('js/slicknav.min.js', []) }}"></script>
     <!-- Owl Carousel JS -->

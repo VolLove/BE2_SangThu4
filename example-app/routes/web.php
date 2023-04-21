@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -27,3 +28,5 @@ Route::post('login', [LoginController::class, 'customLogin'])->name('login.custo
 
 Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
 Route::post('registration', [RegisterController::class, 'customRegistration'])->name('register.custom');
+
+Route::get('userlist', [ManagerController::class, 'userlist']);

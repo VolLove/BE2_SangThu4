@@ -1,9 +1,9 @@
 @extends('FontEnd.headerPage')
 @section('title', 'Register')
-@section('containt')
+@section('content')
     <div class="container my-5">
-        <div class="mb-5">
-            <h1>Register</h1>
+        <div class="my-5">
+            <h1 class="my-5">Register</h1>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
