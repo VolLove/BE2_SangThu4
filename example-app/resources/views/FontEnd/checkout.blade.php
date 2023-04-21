@@ -1,4 +1,4 @@
-@extends('FontEnd.master')
+@extends('FontEnd.headerPage')
 @section('title', 'Check out')
 @section('content')
     <!-- Breadcrumbs -->
