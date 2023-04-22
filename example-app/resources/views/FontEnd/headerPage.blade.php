@@ -188,7 +188,7 @@
     </header>
     <!--/ End Header -->
 
-    @yield('content')
+    @yield('containt')
 
     <!-- Start Footer Area -->
     <footer class="footer">

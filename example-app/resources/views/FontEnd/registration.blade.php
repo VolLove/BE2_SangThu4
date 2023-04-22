@@ -1,6 +1,6 @@
 @extends('FontEnd.headerPage')
 @section('title', 'Register')
-@section('content')
+@section('containt')
     <div class="container my-5">
         <div class="my-5">
             <h1 class="my-5">Register</h1>

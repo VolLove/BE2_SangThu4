@@ -1,6 +1,6 @@
 @extends('FontEnd.headerPage')
 @section('title', 'Dashboard')
-@section('content')
+@section('containt')
     <!-- Slider Area -->
     <section class="hero-slider">
         <!-- Single Slider -->

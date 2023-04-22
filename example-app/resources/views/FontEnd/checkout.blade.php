@@ -1,6 +1,6 @@
 @extends('FontEnd.headerPage')
 @section('title', 'Check out')
-@section('content')
+@section('containt')
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
