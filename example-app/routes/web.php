@@ -28,5 +28,8 @@ Route::post('login_custom', [LoginController::class, 'customLogin'])->name('logi
 Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
 Route::post('registration_custom', [RegisterController::class, 'customRegistration'])->name('register.custom');
 
-Route::get('userlist', [ManagerController::class, 'userlist']);
 Route::get('account', [ManagerController::class, 'account'])->middleware('auth');
+Route::get('admin/usertable', [ManagerController::class, 'userlist']);
+Route::get('admin/dashboard', function () {
+    return view('BackEnd.index');
+});
