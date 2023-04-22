@@ -23,10 +23,10 @@ Route::get('/', [CustomAuthController::class, 'dashboard'])->name('dashboard');
 Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::post('login', [LoginController::class, 'customLogin'])->name('login.custom');
+Route::post('login_custom', [LoginController::class, 'customLogin'])->name('login.custom');
 
 Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
-Route::post('registration', [RegisterController::class, 'customRegistration'])->name('register.custom');
+Route::post('registration_custom', [RegisterController::class, 'customRegistration'])->name('register.custom');
 
 Route::get('userlist', [ManagerController::class, 'userlist']);
 Route::get('account', [ManagerController::class, 'account'])->middleware('auth');

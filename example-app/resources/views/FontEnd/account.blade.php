@@ -19,9 +19,7 @@
                     <td>{{ $user['email'] }}</td>
                     <td>{{ $user['phone'] }}</td>
                 </tr>
-
             </tbody>
         </table>
-
     </div>
 @endsection

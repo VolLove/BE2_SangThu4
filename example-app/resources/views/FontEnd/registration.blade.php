@@ -16,7 +16,7 @@
                     <div class="col-10"> <input required value="{{ old('email') }}" style="width: 400px" type="text"
                             name="email" id="email" placeholder="Email@"></div>
                     @error('email')
-                        <span>{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="row mb-3">
@@ -25,7 +25,7 @@
                             id="password">
                     </div>
                     @error('password')
-                        <span>{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="row mb-3">
@@ -33,7 +33,7 @@
                     <div class="col-10"> <input required style="width: 400px" type="password" name="password_confirmation"
                             id="password_confirmation"></div>
                     @error('password_confirmation')
-                        <span>{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="row mb-3">
@@ -46,7 +46,7 @@
                     <div class="col-10"> <input style="width: 400px" value="{{ old('phone') }}" type="text"
                             name="phone" id="phone" placeholder="Your phone"></div>
                     @error('phone')
-                        <span>{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="row mb-3">

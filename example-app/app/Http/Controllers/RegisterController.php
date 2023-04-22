@@ -35,8 +35,9 @@ class RegisterController extends Controller
             'phone' => $request['phone'],
             'avatar' => $imageName,
         ]);
-        $user->save();
-        $image->move(public_path('avatars'), $imageName);
+        if ($user->save()) {
+            $image->move(public_path('avatars'), $imageName);
+        }
 
         return redirect("login")->withSuccess('Register success. Please login!');
     }
