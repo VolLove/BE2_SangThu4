@@ -27,7 +27,11 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $user['name'] }}</td>
+                                        <td>
+                                            <img style="width: 100px" src="{{ url('avatars/' . $user->avatar, []) }}"
+                                                alt="">
+                                            {{ $user['name'] }}
+                                        </td>
                                         <td>{{ $user['email'] }}</td>
                                         <td>{{ $user['phone'] }}</td>
                                         <td>
