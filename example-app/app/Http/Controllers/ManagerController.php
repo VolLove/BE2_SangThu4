@@ -10,7 +10,7 @@ class ManagerController extends Controller
 {
     public function userlist()
     {
-        $data = User::all();
+        $data = User::paginate(2);
         return view('BackEnd.userlist', ['users' => $data]);
     }
     public function account()

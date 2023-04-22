@@ -55,22 +55,12 @@
                                         <th></th>
                                     </tr>
                                 </tfoot>
+
                             </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-7">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item">
-                                    <a href="#" class="page-link">Previous</a>
-                                </li>
-                                <li class="paginate_button page-item active">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="paginate_button page-item">
-                                    <a href="#" class="page-link">Next</a>
-                                </li>
-                            </ul>
+                            <div class="">
+                                {{ $users->links() }}
+                            </div>
+
                         </div>
                     </div>
                 </div>
