@@ -58,7 +58,7 @@
 
                             </table>
                             <div class="">
-                                {{ $users->links() }}
+                                {{ $users->links('pagination::bootstrap-5') }}
                             </div>
 
                         </div>
