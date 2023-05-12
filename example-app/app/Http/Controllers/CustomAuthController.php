@@ -18,4 +18,8 @@ class   CustomAuthController extends Controller
         Auth::logout();
         return Redirect('/');
     }
+    public function account()
+    {
+        return view('FontEnd.account', ['user' => Auth::user()]);
+    }
 }
