@@ -30,6 +30,6 @@ Route::post('registration_custom', [RegisterController::class, 'customRegistrati
 
 Route::get('account', [ManagerController::class, 'account'])->middleware('auth');
 Route::get('admin/usertable', [ManagerController::class, 'userlist']);
-Route::get('admin', function () {
+Route::get('admin/dashboard', function () {
     return view('BackEnd.index');
 });
