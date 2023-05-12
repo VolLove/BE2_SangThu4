@@ -28,8 +28,13 @@ Route::post('login_custom', [LoginController::class, 'customLogin'])->name('logi
 Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
 Route::post('registration_custom', [RegisterController::class, 'customRegistration'])->name('register.custom');
 
-Route::get('account', [ManagerController::class, 'account'])->middleware('auth');
+Route::get('account', [ManagerController::class, 'account']);
 Route::get('admin/usertable', [ManagerController::class, 'userlist']);
-Route::get('admin', function () {
-    return view('BackEnd.index');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('BackEnd.index');
+    });
+    Route::get('login', [ManagerController::class, 'userlist']);
+    Route::get('register', [ManagerController::class, 'userlist']);
 });
