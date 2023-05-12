@@ -62,7 +62,15 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
+
+
                                 @if (Auth::check())
+                                    @if (Auth::user()->is_admin)
+                                        <li> <i class="fa fa-folder" aria-hidden="true"></i>
+                                            <a href="{{ url('admin') }}">Manage Page</a>
+                                        </li>
+                                        </li>
+                                    @endif
                                     <li><i class="fa fa-user" aria-hidden="true"></i>
                                         <a href="{{ url('account') }}">My account</a>
                                     </li>

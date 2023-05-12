@@ -16,6 +16,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+
+        if (auth()->user() && auth()->user()->is_admin) { // Kiểm tra xem người dùng có thuộc nhóm admin không
+            return $next($request);
+        }
+
+        return redirect('/');
     }
 }
