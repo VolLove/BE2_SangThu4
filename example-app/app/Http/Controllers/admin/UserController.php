@@ -17,16 +17,15 @@ class UserController extends Controller
     {
 
         $query = $request->get('search');
-        $users = User::where('email', 'LIKE', "$query%")->paginate(10);
-        return view('BackEnd.user-table', compact('users'));
+        $users = User::where('email', 'LIKE', "%$query%")->paginate(10);
+        return view('BackEnd.user-table', compact('users', 'query'));
     }
     public function edit(User $user)
     {
-
         return view('BackEnd.user-edit', compact('user'));
     }
     public function detail()
     {
-        return view('BackEnd.user-detail');
+        return view('BackEnd.user-detail', compact('user'));
     }
 }

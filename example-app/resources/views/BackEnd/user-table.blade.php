@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin', []) }}">Home</a></li>
                             <li class="breadcrumb-item active">User table</li>
                         </ol>
                     </div>
@@ -26,8 +26,11 @@
                 <div class="col-md-11 ml-5">
                     <div class="form-group">
                         <div class="input-group input-group-lg">
-                            <input type="email" name="search" class="form-control form-control-lg"
-                                placeholder="Enter email" required>
+                            <input type="search" name="search" class="form-control form-control-lg"
+                                placeholder="Enter email" required value="<?php
+                                if (isset($query)) {
+                                    echo $query;
+                                } ?>">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-lg btn-default">
                                     <i class="fa fa-search"></i>
@@ -43,7 +46,10 @@
             <div class="card-header">
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <a href="{{ url('admin/user/add', []) }}">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+
+                        </a>
                     </button>
                 </div>
                 <div class="card-body p-0">
@@ -78,7 +84,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="">
+                                        <a class="btn btn-danger btn-sm" href="{{ route('user.remove', $user) }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
