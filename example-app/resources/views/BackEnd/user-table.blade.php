@@ -68,7 +68,7 @@
                                     <td>{{ $user->phone }} </td>
                                     <td>{{ $user->address }} </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('user.detail', $user) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View

@@ -45,6 +45,9 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('table', [UserController::class, 'table']);
         Route::get('search', [UserController::class, 'search'])->name('table.search');
         Route::get('{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::get('{user}/detail', [UserController::class, 'detail'])->name('user.detail');
+        Route::get('{user}/add', [UserController::class, 'add'])->name('user.add');
+        Route::get('{user}/remove', [UserController::class, 'edit'])->name('user.remove');
     });
     Route::prefix('product')->group(function () {
         Route::get('table', [ProductController::class, 'table']);

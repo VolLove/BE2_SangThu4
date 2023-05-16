@@ -20,8 +20,13 @@ class UserController extends Controller
         $users = User::where('email', 'LIKE', "$query%")->paginate(10);
         return view('BackEnd.user-table', compact('users'));
     }
-    public function edit(Request $request)
+    public function edit(User $user)
     {
-        return view('BackEnd.project-edit', compact('user'));
+
+        return view('BackEnd.user-edit', compact('user'));
+    }
+    public function detail()
+    {
+        return view('BackEnd.user-detail');
     }
 }
