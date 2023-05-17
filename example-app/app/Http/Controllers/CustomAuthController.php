@@ -10,7 +10,7 @@ class   CustomAuthController extends Controller
 
     public function dashboard()
     {
-        return view('FontEnd.dashboard');
+        return view('User.dashboard');
     }
     public function logout()
     {
@@ -20,6 +20,6 @@ class   CustomAuthController extends Controller
     }
     public function account()
     {
-        return view('FontEnd.account', ['user' => Auth::user()]);
+        return view('User.account', ['user' => Auth::user()]);
     }
 }

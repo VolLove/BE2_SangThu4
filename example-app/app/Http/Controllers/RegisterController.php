@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function registration()
     {
-        return view('FontEnd.registration');
+        return view('User.registration');
     }
 
     public function customRegistration(Request $request)

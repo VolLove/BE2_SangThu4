@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
     public function table()
     {
-        $data = Products::paginate(10);
-        return view('BackEnd.table', ['products' => $data], ['page' => "Products Table"]);
+        $page = "Product Table";
+        $products = Products::with('type', 'manufacturer')->orderBy('created_at', 'desc')->paginate(10);
+        return view('Admin.table', compact('products'), compact('page'));
     }
     public function add()
     {
-        return view('BackEnd.add', ['product' => 1]);
+        $page = "Product Add";
+        return view('Admin.add', ['product' => 1], compact('page'));
     }
 }

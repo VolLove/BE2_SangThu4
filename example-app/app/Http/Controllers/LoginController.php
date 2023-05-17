@@ -11,7 +11,7 @@ class LoginController extends Controller
 
     public function login()
     {
-        return view('FontEnd.login');
+        return view('User.login');
     }
 
     public function customLogin(Request $request)
