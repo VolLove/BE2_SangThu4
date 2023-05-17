@@ -11,21 +11,21 @@ class UserController extends Controller
     public function table()
     {
         $data = User::where('is_admin', false)->paginate(10);
-        return view('BackEnd.user-table', ['users' => $data]);
+        return view('BackEnd.table', ['users' => $data], ['page' => "User Table"]);
     }
     public function search(Request $request)
     {
 
         $query = $request->get('search');
         $users = User::where('email', 'LIKE', "%$query%")->paginate(10);
-        return view('BackEnd.user-table', compact('users', 'query'));
+        return view('BackEnd.table', compact('users', 'query'));
     }
     public function edit(User $user)
     {
-        return view('BackEnd.user-edit', compact('user'));
+        return view('BackEnd.edit', compact('user'));
     }
     public function detail()
     {
-        return view('BackEnd.user-detail', compact('user'));
+        return view('BackEnd.detail', compact('user'));
     }
 }

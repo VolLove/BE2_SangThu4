@@ -10,7 +10,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ url('plugins/fontawesome-free/css/all.min.css', []) }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css', []) }}">
     <!-- overlayScrollbars -->
@@ -48,36 +49,9 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
                     </a>
                 </li>
             </ul>
@@ -106,7 +80,8 @@
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -117,38 +92,59 @@
                                 </p>
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="{{ url('admin/product/table', []) }}" class="<?php echo Request::is('admin/product/*') ? 'active' : ''; ?> nav-link">
-                                <i class="nav-icon fa fa-table" aria-hidden="true"></i>
-                                <p>Product Table</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/manufacter/table', []) }}" class="<?php echo Request::is('admin/manufacter/*') ? 'active' : ''; ?> nav-link">
-                                <i class="nav-icon fa fa-table" aria-hidden="true"></i>
-                                <p>Manufacturer Table</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/type/table', []) }}" class="<?php echo Request::is('admin/type/*') ? 'active' : ''; ?> nav-link">
-                                <i class="nav-icon fa fa-table" aria-hidden="true"></i>
-                                <p>Type Table</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/bill/table', []) }}" class="<?php echo Request::is('admin/bill/*') ? 'active' : ''; ?> nav-link">
-                                <i class="nav-icon fa fa-table" aria-hidden="true"></i>
-                                <p>Bill Table</p>
-                            </a>
-                        </li>
-
                         <li class="nav-item ">
-                            <a href="{{ url('admin/user/table', []) }}" class="<?php echo Request::is('admin/user/*') ? 'active' : ''; ?> nav-link">
-                                <i class="nav-icon fa fa-table" aria-hidden="true"></i>
-                                <p>User Tables</p>
+                            <a href="{{ url('', []) }}" class="<?php echo Request::is('admin/user/*') ? 'active' : ''; ?> nav-link">
+                                <i class="fa-solid fa-house-laptop"></i>
+                                <p>Main page</p>
                             </a>
                         </li>
+
+
+
+
+                        <li class="nav-item <?php echo Request::is('admin/product/*') ? 'menu-open' : ''; ?> ">
+                            <a href="" class="<?php echo Request::is('admin/product/*') ? 'active' : ''; ?> nav-link">
+                                <i class="fab fa-product-hunt"></i>
+                                <p>
+                                    <p>Products</p>
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/product/*') ? 'block' : 'none'; ?>;">
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/product/table', []) }}"
+                                        class="<?php echo Request::is('admin/product/table') ? 'active' : ''; ?> nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tables</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/product/add', []) }}" class="<?php echo Request::is('admin/product/add') ? 'active' : ''; ?> nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item <?php echo Request::is('admin/user/*') ? 'menu-open' : ''; ?> ">
+                            <a href="" class="<?php echo Request::is('admin/user/*') ? 'active' : ''; ?> nav-link">
+                                <i class="fab fa-product-hunt"></i>
+                                <p>
+                                    <p>User</p>
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/user/*') ? 'block' : 'none'; ?>;">
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/user/table', []) }}" class="<?php echo Request::is('admin/user/table') ? 'active' : ''; ?> nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tables</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -203,6 +199,7 @@
     <script src="{{ url('plugins/summernote/summernote-bs4.min.js', []) }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js', []) }}"></script>
+    <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
 </body>
 
 </html>

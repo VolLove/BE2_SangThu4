@@ -45,23 +45,19 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('table', [UserController::class, 'table']);
         Route::get('search', [UserController::class, 'search'])->name('table.search');
         Route::get('{user}/edit', [UserController::class, 'edit'])->name('user.edit');
-        Route::get('{user}/detail', [UserController::class, 'detail'])->name('user.detail');
         Route::get('{user}/remove', [UserController::class, 'remove'])->name('user.remove');
     });
     Route::prefix('product')->group(function () {
         Route::get('table', [ProductController::class, 'table']);
-        Route::get('edit', [ProductController::class, 'edit']);
+        Route::get('add', [ProductController::class, 'add']);
     });
     Route::prefix('type')->group(function () {
         Route::get('table', [TypeController::class, 'table']);
-        Route::get('edit', [TypeController::class, 'edit']);
     });
     Route::prefix('manufacter')->group(function () {
         Route::get('table', [ManufacterController::class, 'table']);
-        Route::get('edit', [ManufacterController::class, 'edit']);
     });
     Route::prefix('bill')->group(function () {
         Route::get('table', [BillController::class, 'table']);
-        Route::get('edit', [BillController::class, 'edit']);
     });
 });
