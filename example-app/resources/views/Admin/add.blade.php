@@ -1,5 +1,5 @@
-@extends('BackEnd.templates')
-@section('title', 'Dashboard')
+@extends('Admin.templates')
+@section('title', $page)
 @section('containt')
     <?php
     if (isset($product)):
@@ -11,22 +11,24 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Project Add</h1>
+                        <h1>{{ $page }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Project Add</li>
+                            <li class="breadcrumb-item active">{{ $page }}</li>
                         </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
+        <?php
+        if (isset($product)):
+        ?>
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">General</h3>
@@ -68,35 +70,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Budget</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputEstimatedBudget">Estimated budget</label>
-                                <input type="number" id="inputEstimatedBudget" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputSpentBudget">Total amount spent</label>
-                                <input type="number" id="inputSpentBudget" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEstimatedDuration">Estimated project duration</label>
-                                <input type="number" id="inputEstimatedDuration" class="form-control">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -106,6 +79,7 @@
             </div>
         </section>
         <!-- /.content -->
+        <?php endif; ?>
     </div>
     <!-- /.content-wrapper -->
     <?php

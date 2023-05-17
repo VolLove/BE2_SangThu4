@@ -10,6 +10,7 @@ class Products extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'image',
         'id_type',
         'id_manu',
         'intro',
@@ -17,4 +18,13 @@ class Products extends Model
         'price'
 
     ];
+    public function type()
+    {
+        return $this->belongsTo(Types::class, 'id_type');
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturers::class, 'id_manu');
+    }
 }

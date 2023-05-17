@@ -1,4 +1,4 @@
-@extends('BackEnd.templates')
+@extends('Admin.templates')
 @section('title', 'Dashboard')
 @section('containt')
     <!-- Content Wrapper. Contains page content -->

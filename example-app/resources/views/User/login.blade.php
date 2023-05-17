@@ -1,4 +1,4 @@
-@extends('FontEnd.headerPage')
+@extends('User.headerPage')
 @section('title', 'Login')
 @section('containt')
     <div class="container my-5">

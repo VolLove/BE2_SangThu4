@@ -1,4 +1,4 @@
-@extends('FontEnd.headerPage')
+@extends('User.headerPage')
 @section('title', 'Cart')
 @section('containt')
     <!-- Breadcrumbs -->

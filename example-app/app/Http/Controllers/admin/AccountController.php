@@ -10,6 +10,6 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return view('BackEnd.index');
+        return view('Admin.index');
     }
 }
