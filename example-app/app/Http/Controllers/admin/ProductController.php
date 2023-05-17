@@ -11,6 +11,7 @@ class ProductController extends Controller
 
     public function table()
     {
+        $page = "Product Table";
         $products = Products::with('type', 'manufacturer')->orderBy('created_at', 'desc')->paginate(10);
         return view('Admin.table', compact('products'), compact('page'));
     }

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('manufacters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('image');
             $table->timestamps();
         });
