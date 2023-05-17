@@ -24,8 +24,4 @@ class UserController extends Controller
     {
         return view('BackEnd.edit', compact('user'));
     }
-    public function detail()
-    {
-        return view('BackEnd.detail', compact('user'));
-    }
 }
