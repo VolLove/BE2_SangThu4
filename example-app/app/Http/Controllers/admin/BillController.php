@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class BillController extends Controller
 {
-    //
+    public function table()
+    {
+        $page = "Table bill";
+        return view('Admin.table', compact('page'));
+    }
 }

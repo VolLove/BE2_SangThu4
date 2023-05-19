@@ -9,13 +9,12 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css', []) }}">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ url('plugins/overlayScrollbars/css/OverlayScrollbars.min.css', []) }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -72,10 +71,11 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ url('dist/img/user2-160x160.jpg', []) }}" class="img-circle " alt="User Image">
+                        <img src="{{ url('avatars/' . Auth::user()->avatar, []) }}" class="img-circle "
+                            alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ url('admin', []) }}" class="d-block">Alexander Pierce</a>
+                        <a href="{{ url('admin', []) }}" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -162,17 +162,17 @@
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/manufacter/*') ? 'block' : 'none'; ?>;">
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/manufacter*') ? 'block' : 'none'; ?>;">
                                 <li class="nav-item">
                                     <a href="{{ url('admin/manufacter/table', []) }}"
-                                        class="<?php echo Request::is('admin/manufacter/table') ? 'active' : ''; ?> nav-link">
+                                        class="<?php echo Request::is('admin/manufacter/table*') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tables</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('admin/manufacter/add', []) }}"
-                                        class="<?php echo Request::is('admin/manufacter/add') ? 'active' : ''; ?> nav-link">
+                                        class="<?php echo Request::is('admin/manufacter/add*') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add</p>
                                     </a>
@@ -180,24 +180,24 @@
                             </ul>
                         </li>
                         {{-- bill --}}
-                        <li class="nav-item <?php echo Request::is('admin/bill/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/bill/*') ? 'active' : ''; ?> nav-link">
+                        <li class="nav-item <?php echo Request::is('admin/bill/') ? 'menu-open' : ''; ?> ">
+                            <a href="" class="<?php echo Request::is('admin/bill*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                 <p>
                                     <p>Bill</p>
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/bill/*') ? 'block' : 'none'; ?>;">
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/bill*') ? 'block' : 'none'; ?>;">
                                 <li class="nav-item">
                                     <a href="{{ url('admin/bill/table', []) }}"
-                                        class="<?php echo Request::is('admin/bill/table') ? 'active' : ''; ?> nav-link">
+                                        class="<?php echo Request::is('admin/bill/table*') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tables</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/bill/add', []) }}" class="<?php echo Request::is('admin/bill/add') ? 'active' : ''; ?> nav-link">
+                                    <a href="{{ url('admin/bill/add', []) }}" class="<?php echo Request::is('admin/bill/add*') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add</p>
                                     </a>
@@ -205,18 +205,18 @@
                             </ul>
                         </li>
                         {{-- User --}}
-                        <li class="nav-item <?php echo Request::is('admin/user/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/user/*') ? 'active' : ''; ?> nav-link">
+                        <li class="nav-item <?php echo Request::is('admin/user*') ? 'menu-open' : ''; ?> ">
+                            <a href="" class="<?php echo Request::is('admin/user*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     <p>User</p>
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/user/*') ? 'block' : 'none'; ?>;">
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/user*') ? 'block' : 'none'; ?>;">
                                 <li class="nav-item">
                                     <a href="{{ url('admin/user/table', []) }}"
-                                        class="<?php echo Request::is('admin/user/table') ? 'active' : ''; ?> nav-link">
+                                        class="<?php echo Request::is('admin/user/table*') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tables</p>
                                     </a>
@@ -252,33 +252,14 @@
 
     <!-- jQuery -->
     <script src="{{ url('plugins/jquery/jquery.min.js', []) }}"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ url('plugins/jquery-ui/jquery-ui.min.js', []) }}"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js', []) }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ url('plugins/chart.js/Chart.min.js', []) }}"></script>
-    <!-- Sparkline -->
-    <script src="{{ url('plugins/sparklines/sparkline.js', []) }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ url('plugins/jqvmap/jquery.vmap.min.js', []) }}"></script>
-    <script src="{{ url('plugins/jqvmap/maps/jquery.vmap.usa.js', []) }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ url('plugins/jquery-knob/jquery.knob.min.js', []) }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ url('plugins/moment/moment.min.js', []) }}"></script>
-    <script src="{{ url('plugins/daterangepicker/daterangepicker.js', []) }}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ url('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js', []) }}"></script>
-    <!-- Summernote -->
-    <script src="{{ url('plugins/summernote/summernote-bs4.min.js', []) }}"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{ url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js', []) }}"></script>
+    <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ url('dist/js/demo.js', []) }}"></script>
+    <!-- Page specific script -->
+
 </body>
 
 </html>

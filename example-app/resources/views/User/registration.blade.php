@@ -39,12 +39,12 @@
                 <div class="row mb-3">
                     <div class="col-2"> <label>Your name</label></div>
                     <div class="col-10"> <input style="width: 400px" value="{{ old('name') }}" type="text"
-                            name="name" id="name" placeholder="Your name"></div>
+                            name="name" id="name" placeholder="Your name" required></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-2"> <label>Your phone</label></div>
                     <div class="col-10"> <input style="width: 400px" value="{{ old('phone') }}" type="text"
-                            name="phone" id="phone" placeholder="Your phone"></div>
+                            name="phone" id="phone" placeholder="Your phone" required></div>
                     @error('phone')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -52,7 +52,7 @@
                 <div class="row mb-3">
                     <div class="col-2"> <label>Avata image</label></div>
                     <div class="col-10"> <input style="width: 400px" accept="image/*" value="{{ old('image') }}"
-                            type="file" name="avatar" id="avatar"></div>
+                            type="file" name="avatar" id="avatar" required></div>
                 </div>
                 <div class="">
                     <button type="submit" class="btn btn-primary mb-3">Registration</button>
