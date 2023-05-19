@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Termwind\Components\Dd;
 
 class RegisterController extends Controller
 {
-    public function registration()
+    public function page()
     {
         return view('User.registration');
     }
@@ -37,8 +38,11 @@ class RegisterController extends Controller
         ]);
         if ($user->save()) {
             $image->move(public_path('avatars'), $imageName);
+            return redirect("login")->withSuccess('Register success. Please login!');
         }
-
-        return redirect("login")->withSuccess('Register success. Please login!');
+        if (Auth::check()) {
+            return redirect("registration");
+        }
+        return back();
     }
 }

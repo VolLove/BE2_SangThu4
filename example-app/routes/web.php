@@ -26,7 +26,7 @@ Route::get('/', [CustomAuthController::class, 'dashboard'])->name('dashboard');
 Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login_custom', [LoginController::class, 'customLogin'])->name('login.custom');
-Route::get('registration', [RegisterController::class, 'registration'])->name('registration');
+Route::get('registration', [RegisterController::class, 'page'])->name('registration');
 Route::post('registration_custom', [RegisterController::class, 'customRegistration'])->name('register.custom');
 
 
@@ -35,17 +35,19 @@ Route::prefix('account')->middleware('auth')->group(function () {
 });
 
 
-
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/', [AccountController::class, 'index']);
     Route::get('/index', [AccountController::class, 'index']);
     Route::get('login', [AccountController::class, 'login']);
     Route::get('register', [AccountController::class, 'register']);
     Route::prefix('user')->group(function () {
-        Route::get('table', [UserController::class, 'table']);
-        Route::get('search', [UserController::class, 'search'])->name('table.search');
-        Route::get('{user}/edit', [UserController::class, 'edit'])->name('user.edit');
-        Route::get('{user}/remove', [UserController::class, 'remove'])->name('user.remove');
+        Route::prefix('table')->group(function () {
+            Route::get('/', [UserController::class, 'table']);
+            Route::get('search', [UserController::class, 'search'])->name('table.search');
+            Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
+            Route::get('remove', [UserController::class, 'remove'])->name('user.remove');
+        });
     });
     Route::prefix('product')->group(function () {
         Route::get('table', [ProductController::class, 'table']);
