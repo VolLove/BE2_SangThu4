@@ -11,16 +11,16 @@ class Products extends Model
     protected $fillable = [
         'name',
         'image',
-        'id_type',
+        'id_category',
         'id_manu',
         'intro',
         'description',
         'price'
 
     ];
-    public function type()
+    public function category()
     {
-        return $this->belongsTo(Types::class, 'id_type');
+        return $this->belongsTo(Types::class, 'id_category');
     }
 
     public function manufacturer()
