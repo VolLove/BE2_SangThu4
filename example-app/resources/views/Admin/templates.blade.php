@@ -5,21 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | @yield('title')</title>
-
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css', []) }}">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
+<body class="sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -231,8 +227,33 @@
             <!-- /.sidebar -->
         </aside>
 
-        @yield('containt')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
 
+
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Success!</h5>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('errors'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                    {{ session('errors') }}
+                </div>
+            @endif
+            @if (session('warning'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i> Warning!</h5>
+                    {{ session('warning') }}
+                </div>
+            @endif
+            @yield('containt')
+        </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -242,23 +263,19 @@
             </div>
         </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
+
     <!-- jQuery -->
     <script src="{{ url('plugins/jquery/jquery.min.js', []) }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ url('plugins/jquery-ui/jquery-ui.min.js', []) }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js', []) }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ url('dist/js/demo.js', []) }}"></script>
-    <!-- Page specific script -->
 
 </body>
 
