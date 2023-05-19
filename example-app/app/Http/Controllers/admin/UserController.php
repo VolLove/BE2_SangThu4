@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -54,5 +56,30 @@ class UserController extends Controller
             return redirect('admin/user/table')->withSuccess('Thay đổi thành công');
         }
         return back()->withSuccess('Thay đổi thành công');
+    }
+    public function remove($id)
+    {
+        $user_destroy = User::find($id);
+        $page = "Confirm account deletion.";
+        return view('Admin.edit', compact('user_destroy', 'page'));
+    }
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        // Kiểm tra quyền của admin
+        if (Auth::user()->is_admin) {
+            // Xác nhận mật khẩu của admin
+            if (Hash::check(request('password'), Auth::user()->password)) {
+                // Xoá user
+                $user->delete();
+                return redirect()->route('user.table')->with('success', 'User has been deleted successfully!');
+            } else {
+                // Nếu mật khẩu không trùng khớp, trả về thông báo lỗi
+                return back()->withErrors(['password' => 'The password is incorrect!']);
+            }
+        } else {
+            // Nếu không phải admin, trả về thông báo lỗi
+            return back()->with(['warning' => 'You do not have permission to delete users!']);
+        }
     }
 }

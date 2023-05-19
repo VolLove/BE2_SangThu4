@@ -42,11 +42,12 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('register', [AccountController::class, 'register']);
     Route::prefix('user')->group(function () {
         Route::prefix('table')->group(function () {
-            Route::get('/', [UserController::class, 'table']);
+            Route::get('/', [UserController::class, 'table'])->name('user.table');
             Route::get('search', [UserController::class, 'search'])->name('table.search');
             Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
             Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
-            Route::get('remove', [UserController::class, 'remove'])->name('user.remove');
+            Route::get('{id}/remove', [UserController::class, 'remove'])->name('user.remove');
+            Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
         });
     });
     Route::prefix('product')->group(function () {
