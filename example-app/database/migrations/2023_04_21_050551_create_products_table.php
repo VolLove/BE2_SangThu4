@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image_main');
-            $table->integer('id_type');
-            $table->integer('id_manu');
+            $table->string('image');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('manufacturer_id');
+            $table->foreign('manufacturer_id')->references('id')->on('manufacters')->onDelete('cascade')->onUpdate('cascade');
             $table->text('intro');
             $table->text('description');
             $table->integer('price');

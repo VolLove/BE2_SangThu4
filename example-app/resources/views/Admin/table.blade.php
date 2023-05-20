@@ -133,30 +133,23 @@
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 10%">Name</th>
-                                <th style="width: 10%">Email</th>
-                                <th style="width: 10%">Phone</th>
-                                <th style="width: 20%">Address</th>
-                                <th style="width: 15%"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $products)
                                 <tr>
-                                    <td> <img style="width: 50px" src="{{ url('avatars/' . $products->avatar, []) }}"
+                                    <td> <img style="width: 50px" src="{{ url('images/' . $products->image, []) }}"
                                             alt="">
                                     <td>{{ $products->name }} </td>
-                                    <td>{{ $products->email }} </td>
-                                    <td>{{ $products->phone }} </td>
-                                    <td>{{ $products->address }} </td>
+                                    <td>{{ $products->category->name }} </td>
+                                    <td>{{ $products->manufacturer->image }} </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('products.edit', $products) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('product.edit', $products) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="{{ route('products.remove', $products) }}">
+                                        <a class="btn btn-danger btn-sm" href="">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
