@@ -18,7 +18,7 @@
         </div><!-- /.container-fluid -->
     </section>
 
-    {{-- user edit --}}
+    {{-- admin edit information account user --}}
     @isset($user)
         <!-- Main content -->
         <section class="content">
@@ -116,7 +116,7 @@
             </script>
         </section>
     @endisset
-
+    {{-- admin destroy account user --}}
     @isset($user_destroy)
         <section class="content">
 
@@ -173,5 +173,60 @@
             </div>
 
         </section>
+    @endisset
+    {{-- admin change password account user --}}
+    @isset($user_change_password)
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img src="{{ url('avatars/' . $user_change_password->avatar) }}"
+                        class="profile-user-img img-fluid img-circle" alt="{{ $user_change_password->name }}">
+                </div>
+
+                <h3 class="profile-username text-center">{{ $user_change_password->name }}</h3>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Name</b> <b class="float-right">{{ $user_change_password->name }}</b>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <form class="form-horizontal" action="{{ route('user.handlepassword', $user_change_password->id) }}" method="POST">
+            @csrf
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"> <label>New Password</label></label>
+                    <div class="col-10"> <input required class="form-control" type="password" name="new_password">
+                    </div>
+                    @error('new_password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"> <label>Comfirmation</label></div>
+                    <div class="col-10"> <input required class="form-control" type="password"
+                            name="new_password_confirmation" id="password_confirmation"></div>
+                    @error('password_confirmation')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"> <label>Password admin</label></label>
+                    <div class="col-10"> <input required class="form-control" type="password" name="password">
+                    </div>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Confirm" class="btn btn-success float-right">
+            </div>
+            <!-- /.card-footer -->
+        </form>
     @endisset
 @endsection
