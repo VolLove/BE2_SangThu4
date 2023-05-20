@@ -70,15 +70,18 @@
                                     <td>{{ $user->address }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('user.edit', $user->id) }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
+                                            <i class="fas fa-edit"></i>
+
                                             Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm " href="{{ route('user.remove', $user->id) }}">
-                                            <i class="fas fa-trash">
-                                            </i>
+                                            <i class="fas fa-trash"> </i>
                                             Delete
                                         </a>
+                                        <a class="btn btn-warning btn-sm"
+                                            href="{{ route('user.changepassword', $user->id) }}">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            Change password</a>
                                     </td>
                                 </tr>
                             @endforeach

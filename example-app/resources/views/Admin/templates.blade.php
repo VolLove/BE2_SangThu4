@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css', []) }}">
+    <link rel="stylesheet" href="{{ url('dist/css/style.css', []) }}">
 </head>
 
 <body class="sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -275,6 +276,7 @@
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js', []) }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
+
     <!-- AdminLTE for demo purposes -->
 
 </body>

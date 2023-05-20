@@ -13,19 +13,24 @@ class UserController extends Controller
 {
     public function table()
     {
+        //Tên của trang web
         $page = "User table";
+        //Lấy những tài khoản không phải addmin và phân trang
         $users = User::where('is_admin', false)->paginate(10);
         return view('Admin.table', compact('page', 'users'));
     }
     public function search(Request $request)
     {
+
         $page = "User table";
+        //tìm kiếm với email chính xác
         $query = $request->get('search');
         $users = User::where('email', 'LIKE', "$query")->paginate(10);
         return view('Admin.table', compact('users', 'query', 'page'));
     }
     public function edit($id)
     {
+        //lấy thông tin user và truyền vào trang
         $user = User::find($id);
         $page = "User edit";
         return view('Admin.edit', compact('user', 'page'));
@@ -33,7 +38,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $data = $request->validate([
+        $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
             'name' => 'required',
             'phone' => 'required|digits:10',
@@ -53,9 +58,10 @@ class UserController extends Controller
             $image->move(public_path('avatars'), $imageName);
         }
         if ($user->save()) {
-            return redirect('admin/user/table')->withSuccess('Thay đổi thành công');
+
+            return redirect('admin/user/table')->with('success', 'Cập nhật thành công');
         }
-        return back()->withSuccess('Thay đổi thành công');
+        return back()->withErrors('Thay đổi không công');
     }
     public function remove($id)
     {
@@ -66,20 +72,37 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        // Kiểm tra quyền của admin
-        if (Auth::user()->is_admin) {
-            // Xác nhận mật khẩu của admin
-            if (Hash::check(request('password'), Auth::user()->password)) {
-                // Xoá user
-                $user->delete();
-                return redirect()->route('user.table')->with('success', 'User has been deleted successfully!');
-            } else {
-                // Nếu mật khẩu không trùng khớp, trả về thông báo lỗi
-                return back()->withErrors(['password' => 'The password is incorrect!']);
+        // Xác nhận mật khẩu của admin
+        if (Hash::check(request('password'), Auth::user()->password)) {
+            // Xoá user
+            $user->delete();
+            return redirect()->route('user.table')->with('success', 'User has been deleted successfully!');
+        } else {
+            // Nếu mật khẩu không trùng khớp, trả về thông báo lỗi
+            return back()->withErrors(['password' => 'The password is incorrect!']);
+        }
+    }
+    public function changepassword($id)
+    {
+        $user_change_password = User::find($id);
+        $page = "Change password.";
+        return view('Admin.edit', compact('user_change_password', 'page'));
+    }
+    public function handlepassword(Request $request, $id)
+    {
+        if (Hash::check(request('password'), Auth::user()->password)) {
+            $user = User::Find($id);
+            $request->validate([
+                'new_password' => 'required|confirmed|min:8|',
+                'new_password_confirmation' => 'required|string',
+            ]);
+            $user->password = $request->input('password');
+            if ($user->save()) {
+                return redirect()->route('user.table')->with('success', 'Mật khẩu người dùng đã được đổi đã được thay đổi!');
             }
         } else {
-            // Nếu không phải admin, trả về thông báo lỗi
-            return back()->with(['warning' => 'You do not have permission to delete users!']);
+            // Nếu mật khẩu không trùng khớp, trả về thông báo lỗi
+            return back()->withErrors(['password' => 'The password admin is incorrect!']);
         }
     }
 }

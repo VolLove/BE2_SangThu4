@@ -44,10 +44,12 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::prefix('table')->group(function () {
             Route::get('/', [UserController::class, 'table'])->name('user.table');
             Route::get('search', [UserController::class, 'search'])->name('table.search');
-            Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.edit');
             Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
-            Route::get('{id}/remove', [UserController::class, 'remove'])->name('user.remove');
+            Route::get('remove/{id}', [UserController::class, 'remove'])->name('user.remove');
             Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+            Route::get('changepassword/{user}', [UserController::class, 'changepassword'])->name('user.changepassword');
+            Route::post('handlepassword/{user}', [UserController::class, 'handlepassword'])->name('user.handlepassword');
         });
     });
     Route::prefix('product')->group(function () {
