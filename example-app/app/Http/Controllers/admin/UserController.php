@@ -41,7 +41,7 @@ class UserController extends Controller
         $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
             'name' => 'required',
-            'phone' => 'required|digits:10',
+            'phone' => 'required|numeric|digits:10',
             'address' => 'nullable',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
