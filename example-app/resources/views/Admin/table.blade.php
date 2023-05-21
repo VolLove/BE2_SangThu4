@@ -427,6 +427,7 @@
                                                 <th style="width: 10%">Address</th>
                                                 <th style="width: 10%">Phone</th>
                                                 <th style="width: 10%">Total</th>
+                                                <th style="width: 10%"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -434,9 +435,22 @@
                                             @foreach ($bills as $bill)
                                                 <tr>
                                                     <td style="width: 10%">{{ $bill->user->name }} </td>
-                                                    <td style="width: 10%"># </td>
-                                                    <td style="width: 10%"># </td>
-                                                    <td style="width: 10%"># </td>
+                                                    <td style="width: 10%">{{ $bill->address }} </td>
+                                                    <td style="width: 10%">{{ $bill->phone }} </td>
+                                                    <td style="width: 10%">{{ $bill->total }} </td>
+                                                    <td class="project-actions text-right">
+                                                        <a class="btn btn-info btn-sm" href="">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>
+                                                            Edit
+                                                        </a>
+                                                        <a class="btn btn-danger btn-sm" href=""
+                                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                                            <i class="fas fa-trash">
+                                                            </i>
+                                                            Delete
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
 
