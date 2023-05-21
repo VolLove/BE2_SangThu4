@@ -58,6 +58,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('add', [ProductController::class, 'add_handler'])->name('product.addhandler');
         Route::get('destroy/{id}', [ProductController::class, 'deleteproduct'])->name('product.destroy');
         Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('edithandler/{id}', [ProductController::class, 'edit_handler'])->name('product.edithandle');
     });
     Route::prefix('type')->group(function () {
         Route::get('table', [TypeController::class, 'table']);
