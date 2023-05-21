@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('intro');
             $table->text('description');
             $table->integer('price');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

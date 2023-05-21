@@ -64,28 +64,34 @@
                             <h4>{{ $page }}</h4>
                         </div>
                         <div class="card-body">
-                            <form action="" method="get">
+                        @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <form action="" method="POST"  roles="form" enctype="multipart/form-data">
+                            @csrf
                                 <div class="form-group">
                                     <label for="name">Product Name</label>
                                     <input type="text" name="name" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputStatus">Type</label>
-                                    <select id="inputStatus" name="type" class="form-control custom-select">
+                                    <label for="inputStatus">Categories</label>
+                                    <select id="inputStatus" name="cate" class="form-control custom-select">
                                         <option selected disabled>Select one</option>
-                                        <option>On Hold</option>
-                                        <option>Canceled</option>
-                                        <option>Success</option>
+                                       @foreach($cates as $cate)
+                                       <option value="{{$cate->id}}">{{$cate->name}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Manufacter</label>
                                     <select id="inputStatus" name="manu" class="form-control custom-select">
                                         <option selected disabled>Select one</option>
-                                        <option>On Hold</option>
-                                        <option>Canceled</option>
-                                        <option>Success</option>
+                                        @foreach($manus as $manu)
+                                       <option value="{{$manu->id}}">{{$manu->name}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -106,7 +112,7 @@
                                     <input type="file" name="image" accept="image/png, image/gif, image/jpeg"
                                         class=" form-control-file">
                                 </div>
-                                <div class=""> <a href="{{ url('admin/product/table', []) }}"
+                                <div class=""> <a onclick="window.history.back()" class="btn btn-secondary"
                                         class="btn btn-secondary">Cancel</a>
                                     <input type="submit" value="Create new Project" class="btn btn-success float-right">
                                 </div>
