@@ -61,7 +61,10 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('table', [TypeController::class, 'table']);
     });
     Route::prefix('manufacter')->group(function () {
-        Route::get('table', [ManufacterController::class, 'table']);
+        Route::get('table', [ManufacterController::class, 'table'])->name('manufacter.table');
+        Route::get('add', [ManufacterController::class, 'add'])->name('manufacter.add');
+        Route::post('add', [ManufacterController::class, 'add_handel'])->name('manufacter.addhandel');
+        Route::get('destroy/{id}', [ManufacterController::class, 'deletemanu'])->name('manufacter.destroy');
     });
     Route::prefix('bill')->group(function () {
         Route::get('table', [BillController::class, 'table']);

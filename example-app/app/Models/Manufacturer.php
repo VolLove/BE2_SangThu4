@@ -12,9 +12,9 @@ class Manufacturer extends Model
         'name',
         'image'
     ];
-
+    public $timestamps = false;
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Products::class);
     }
 }
