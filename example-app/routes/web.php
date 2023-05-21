@@ -65,7 +65,8 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('categories')->group(function () {
         Route::get('table', [CategoriesController::class, 'table'])->name('categories.table');
         Route::get('add', [CategoriesController::class, 'add'])->name('categories.add');
-        Route::get('add', [CategoriesController::class, 'add_handler'])->name('categories.add');
+        Route::post('add', [CategoriesController::class, 'add_handler'])->name('categories.addhandler');
+        Route::get('remove/{id}', [CategoriesController::class, 'remove'])->name('categories.remove');
     });
     Route::prefix('manufacter')->group(function () {
         Route::get('table', [ManufacterController::class, 'table'])->name('manufacter.table');

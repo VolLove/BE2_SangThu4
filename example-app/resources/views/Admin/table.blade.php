@@ -359,8 +359,11 @@
                                                     <td class="project-actions text-right">
                                                         <a class="btn btn-info btn-sm" href="">
                                                             <i class="fas fa-edit"></i> Edit </a>
-                                                        <a class="btn btn-danger btn-sm " href="">
-                                                            <i class="fas fa-trash"> </i> Delete </a>
+                                                        <a class="btn btn-danger btn-sm "
+                                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                                            href="{{ route('categories.remove', $category->id) }}">
+                                                            <i class="fas fa-trash">
+                                                            </i> Delete </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

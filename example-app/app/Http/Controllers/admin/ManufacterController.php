@@ -55,9 +55,9 @@ class ManufacterController extends Controller
     }
     public function edit($id)
     {
-        $manu_edit = Manufacturer::find($id);
+        $Manufacturer = Manufacturer::find($id);
         $page = 'Manufacter edit';
-        return view('Admin.edit', compact('manu_edit', 'page'));
+        return view('Admin.edit', compact('Manufacturer', 'page'));
     }
     public function edit_handler($id, Request $request)
     {

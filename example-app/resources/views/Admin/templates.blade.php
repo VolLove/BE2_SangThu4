@@ -113,7 +113,7 @@
                             <a href="" class="<?php echo Request::is('admin/categories/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-th-list"></i>
                                 <p>
-                                    <p>Categories</p>
+                                    <p>categories</p>
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -126,7 +126,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/categories/add', []) }}"
+                                    <a href="{{ route('categories.add', ['id' => 1]) }}"
                                         class="<?php echo Request::is('admin/categories/add') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add</p>

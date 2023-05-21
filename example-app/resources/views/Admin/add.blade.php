@@ -38,11 +38,11 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="name">Manufacter Name</label>
+                                        <label for="name">Manufacter name</label>
                                         <input type="text" name="name" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label>Manufacter Image</label>
+                                        <label>Manufacter logo</label>
                                         <input type="file" name="image" accept="image/png, image/jpg, image/jpeg"
                                             class=" form-control-file">
                                     </div>
@@ -143,6 +143,63 @@
         </section>
         <!-- /.content -->
     @endisset
+    @isset($category)
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</small></h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="POST" action="{{ route('categories.addhandler') }}"
+                                enctype="multipart/form-data">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @csrf
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="name">Category name</label>
+                                            <input type="text" name="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Category logo</label>
+                                            <input type="file" name="image" accept="image/png, image/jpg, image/jpeg"
+                                                class=" form-control-file">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <div class="card-footer">
+                                        <a onclick="window.history.back()" class="btn btn-secondary"
+                                            class="btn btn-secondary">Cancel</a>
+                                        <input type="submit" value="Create new Project" class="btn btn-success float-right">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    @endisset
     @isset($temp)
         <section class="content">
             <div class="container-fluid">
@@ -156,7 +213,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="" action="" enctype="multipart/form-data">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}
@@ -167,6 +224,11 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
+                                    <div class="card-footer">
+                                        <a onclick="window.history.back()" class="btn btn-secondary"
+                                            class="btn btn-secondary">Cancel</a>
+                                        <input type="submit" value="Create new Project" class="btn btn-success float-right">
+                                    </div>
                                 </div>
                             </form>
                         </div>
