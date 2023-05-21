@@ -95,7 +95,7 @@
         </div>
     @endisset
     @isset($products)
-        <form action="{{ route('table.search') }}" method="GET">
+        <form action="" method="GET">
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
@@ -143,14 +143,14 @@
                         <tbody>
                             @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $products->name }} </td>
-                                    <td> <img style="width: 50px" src="{{ url('images/' . $products->image, []) }}"
+                                    <td>{{ $product->name }} </td>
+                                    <td> <img style="width: 50px" src="{{ url('images/' . $product->image, []) }}"
                                             alt="">
-                                    <td>{{ $products->category->name }} </td>
-                                    <td>{{ $products->manufacturer->name }} </td>
-                                    <td>{{ $products->intro }} </td>
-                                    <td>{{ $products->description }} </td>
-                                    <td>{{ $products->price }} </td>
+                                    <td>{{ $product->category->name }} </td>
+                                    <td>{{ $product->manufacturer->name }} </td>
+                                    <td>{{ $product->intro }} </td>
+                                    <td>{{ $product->description }} </td>
+                                    <td>{{ $product->price }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('product.edit', $product) }}">
                                             <i class="fas fa-pencil-alt">
@@ -248,7 +248,6 @@
             <!-- /.content -->
         </div>
     @endisset
-
     @isset($bills)
         <form action="" method="GET">
             @csrf
