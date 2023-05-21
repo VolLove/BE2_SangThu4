@@ -255,7 +255,7 @@
                                     <div class="">
                                         <img id="currentImage" src="{{ url('images/' . $manu_edit->image, []) }}"
                                             alt="{{ $manu_edit->image }}" style="max-width: 100px;max-height: 100px">
-                                        <input name="avatar" type="file" id="imageInput"
+                                        <input name="image" type="file" id="imageInput"
                                             accept="image/png, image/gif, image/jpeg">
                                         @error('image')
                                             <div class="invalid-feedback">{{ $message }}</div>
