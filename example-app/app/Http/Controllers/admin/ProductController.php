@@ -60,11 +60,11 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-        $product_edit = Products::find($id);
+        $product = Products::find($id);
         $manus = Manufacturer::all();
         $cates = Categories::all();
         $page = 'Product edit';
-        return view('Admin.edit', compact('product_edit', 'page', 'cates', 'manus'));
+        return view('Admin.edit', compact('product', 'page', 'cates', 'manus'));
     }
     public function edit_handler($id, Request $request)
     {

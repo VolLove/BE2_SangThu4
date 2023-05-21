@@ -14,202 +14,174 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
     @isset($manufacturer)
-        <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h4>{{ $page }}</h4>
-                        </div>
-                        <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            <form action="" method="POST" roles="form" enctype="multipart/form-data">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</small></h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="POST" action="{{ route('manufacter.addhandler') }}" enctype="multipart/form-data">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                                 @csrf
-                                <div class="form-group">
-                                    <label for="name">Manufacter Name</label>
-                                    <input type="text" name="name" class="form-control">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name">Manufacter Name</label>
+                                        <input type="text" name="name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Manufacter Image</label>
+                                        <input type="file" name="image" accept="image/png, image/jpg, image/jpeg"
+                                            class=" form-control-file">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Manufacter Image</label>
-                                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"
-                                        class=" form-control-file">
-                                </div>
-                                <div class=""> <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
                                     <input type="submit" value="Create new Manufacturer" class="btn btn-success float-right">
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!--/.col (right) -->
                 </div>
-            </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </section>
     @endisset
     @isset($product)
+
         <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h4>{{ $page }}</h4>
-                        </div>
-                        <div class="card-body">
-                        @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            <form action="" method="POST"  roles="form" enctype="multipart/form-data">
-                            @csrf
-                                <div class="form-group">
-                                    <label for="name">Product Name</label>
-                                    <input type="text" name="name" class="form-control" value="{{old('name')}}">
-                                </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</small></h3>
+                            </div>
+                            <form action="{{ route('product.addhandler') }}" method="POST" roles="form"
+                                enctype="multipart/form-data">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name">Product Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="inputStatus">Categories</label>
-                                    <select id="inputStatus" name="cate" class="form-control custom-select" >
-                                        <option selected disabled>Select one</option>
-                                       @foreach($cates as $cate)
-                                       <option value="{{$cate->id}}">{{$cate->name}}</option>
-                                       @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputStatus">Manufacter</label>
-                                    <select id="inputStatus" name="manu" class="form-control custom-select" >
-                                        <option selected disabled>Select one</option>
-                                        @foreach($manus as $manu)
-                                       <option value="{{$manu->id}}">{{$manu->name}}</option>
-                                       @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Product Intro</label>
-                                    <input type="text" name="intro" class="form-control"  value="{{old('intro')}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Product Description</label>
-                                    <textarea class="form-control" name="description" rows="4"  value="{{old('description')}}"></textarea>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="inputStatus">Categories</label>
+                                        <select id="inputStatus" name="cate" class="form-control custom-select">
+                                            <option selected disabled>Select one</option>
+                                            @foreach ($cates as $cate)
+                                                <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputStatus">Manufacter</label>
+                                        <select id="inputStatus" name="manu" class="form-control custom-select">
+                                            <option selected disabled>Select one</option>
+                                            @foreach ($manus as $manu)
+                                                <option value="{{ $manu->id }}">{{ $manu->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Intro</label>
+                                        <input type="text" name="intro" class="form-control" value="{{ old('intro') }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Description</label>
+                                        <textarea class="form-control" name="description" rows="4" value="{{ old('description') }}"></textarea>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label>Product Price</label>
-                                    <input type="text" name="price" class="form-control">
+                                    <div class="form-group">
+                                        <label>Product Price</label>
+                                        <input type="text" name="price" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Image</label>
+                                        <input type="file" name="image" accept="image/png, image/gif, image/jpeg"
+                                            class=" form-control-file">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Product Image</label>
-                                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"
-                                        class=" form-control-file">
-                                </div>
-                                <div class=""> <a onclick="window.history.back()" class="btn btn-secondary"
+                                <div class="card-footer">
+                                    <a onclick="window.history.back()" class="btn btn-secondary"
                                         class="btn btn-secondary">Cancel</a>
                                     <input type="submit" value="Create new Project" class="btn btn-success float-right">
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
         </section>
         <!-- /.content -->
     @endisset
     @isset($temp)
-        <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">General</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</small></h3>
                             </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="" action="" enctype="multipart/form-data">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @csrf
+                                <div class="card-body">
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                </div>
+                            </form>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputName">Project Name</label>
-                                <input type="text" id="inputName" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputDescription">Project Description</label>
-                                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputStatus">Status</label>
-                                <select id="inputStatus" class="form-control custom-select">
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputClientCompany">Client Company</label>
-                                <input type="text" id="inputClientCompany" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputProjectLeader">Project Leader</label>
-                                <input type="text" id="inputProjectLeader" class="form-control">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Budget</h3>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputEstimatedBudget">Estimated budget</label>
-                                <input type="number" id="inputEstimatedBudget" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputSpentBudget">Total amount spent</label>
-                                <input type="number" id="inputSpentBudget" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEstimatedDuration">Estimated project duration</label>
-                                <input type="number" id="inputEstimatedDuration" class="form-control">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
+                    <!--/.col (right) -->
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Create new Project" class="btn btn-success float-right">
-                </div>
-            </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     @endisset
 
 

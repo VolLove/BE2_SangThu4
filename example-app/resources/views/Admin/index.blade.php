@@ -44,8 +44,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53</h3>
-
+                            <h3>{{ $proCount }}</h3>
                             <p>Product</p>
                         </div>
                         <div class="icon">
@@ -60,9 +59,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{ $user }}</h3>
 
-                            <p>User Registrations</p>
+                            <p>User register</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -76,7 +75,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ $manuCount }}</h3>
 
                             <p>ManuFactures</p>
                         </div>
@@ -91,14 +90,14 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>10</h3>
+                            <h3>{{ $cateCount }}</h3>
 
-                            <p>Type</p>
+                            <p>Categories</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="{{ url('admin/type/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ url('admin/Categories/table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

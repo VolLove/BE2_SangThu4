@@ -11,7 +11,7 @@ class BillController extends Controller
     public function table()
     {
         $page = "Table bill";
-        $bills = Bills::with('category', 'manufacturer')->orderBy('status', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+        $bills = Bills::with('user', 'order')->orderBy('status', 'desc')->orderBy('created_at', 'desc')->paginate(10);
         return view('Admin.table', compact('page', 'bills'));
     }
 }
