@@ -58,4 +58,42 @@ class ProductController extends Controller
         Products::find($id)->delete();
         return redirect()->back()->with('success','Xóa sản phẩm thành công'); //Quay lại trang trước đó
     }
+    public function edit($id)
+    {
+        $product_edit = Products::find($id);
+        $manus = Manufacturer::all();
+        $cates = Categories::all();
+        $page = 'Product edit';
+        return view('Admin.edit', compact('product_edit', 'page','cates' ,'manus'));
+    }
+    public function edit_handler($id, Request $request)
+    {
+        $product = Products::find($id);
+        $request->validate([
+            'name' => 'required|string',
+            'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
+            'intro' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|min:0|not_in:0',
+        ]);
+
+        $product->name = $request->input('name');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $manu->image = $imageName;
+            $image->move(public_path('images'), $imageName);
+        }
+        
+        $product->category_id= $request->input('cate');
+        $product->manufacturer_id = $request->input('manu');
+        $product->intro = $request->input('intro');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        if ($product->save()) {
+
+            return redirect('admin/product/table')->with('success', 'Cập nhật thành công');
+        }
+        return back()->withErrors('Thay đổi không công');
+    }
 }
