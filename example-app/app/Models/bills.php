@@ -9,6 +9,7 @@ class Bills extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'address',
         'phone',
         'total',
@@ -16,7 +17,7 @@ class Bills extends Model
     ];
     public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Orders::class);
     }
     public function user()
     {
