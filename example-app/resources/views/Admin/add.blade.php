@@ -16,7 +16,45 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if (isset($product))
+    @isset($manufacturer)
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4>{{ $page }}</h4>
+                        </div>
+                        <div class="card-body">
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <form action="" method="POST" roles="form" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Manufacter Name</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Manufacter Image</label>
+                                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"
+                                        class=" form-control-file">
+                                </div>
+                                <div class=""> <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Create new Manufacturer" class="btn btn-success float-right">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </section>
+    @endisset
+    @isset($product)
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -81,7 +119,9 @@
             </div>
         </section>
         <!-- /.content -->
-    @else
+    @endisset
+
+    @isset($temp)
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -165,5 +205,7 @@
             </div>
         </section>
         <!-- /.content -->
-    @endif
+    @endisset
+
+
 @endsection

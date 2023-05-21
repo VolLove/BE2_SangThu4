@@ -17,7 +17,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if (isset($users))
+    @isset($users)
         <!-- Content Wrapper. Contains page content -->
 
 
@@ -27,8 +27,8 @@
                 <div class="col-md-11 ml-5">
                     <div class="form-group">
                         <div class="input-group input-group-lg">
-                            <input type="search" name="search" class="form-control form-control-lg"
-                                placeholder="Enter email" required value="<?php
+                            <input type="search" name="search" class="form-control form-control-lg" placeholder="Enter email"
+                                required value="<?php
                                 if (isset($query)) {
                                     echo $query;
                                 } ?>">
@@ -78,8 +78,7 @@
                                             <i class="fas fa-trash"> </i>
                                             Delete
                                         </a>
-                                        <a class="btn btn-warning btn-sm"
-                                            href="{{ route('user.changepassword', $user->id) }}">
+                                        <a class="btn btn-warning btn-sm" href="{{ route('user.changepassword', $user->id) }}">
                                             <i class="fa fa-lock" aria-hidden="true"></i>
                                             Change password</a>
                                     </td>
@@ -96,15 +95,16 @@
             <!-- /.card -->
             <!-- /.content -->
         </div>
-    @elseif (isset($products))
+    @endisset
+    @isset($products)
         <form action="{{ route('table.search') }}" method="GET">
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
                     <div class="form-group">
                         <div class="input-group input-group-lg">
-                            <input type="search" name="search" class="form-control form-control-lg"
-                                placeholder="Enter email" required value="<?php
+                            <input type="search" name="search" class="form-control form-control-lg" placeholder="Enter email"
+                                required value="<?php
                                 if (isset($query)) {
                                     echo $query;
                                 } ?>">
@@ -133,16 +133,26 @@
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
+                                <th>Tên</th>
+                                <th>Hình ảnh</th>
+                                <th>Loại</th>
+                                <th>Hãng</th>
+                                <th>Giới thiệu</th>
+                                <th>Nội dung</th>
+                                <th>Giá</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $products)
                                 <tr>
+                                    <td>{{ $products->name }} </td>
                                     <td> <img style="width: 50px" src="{{ url('images/' . $products->image, []) }}"
                                             alt="">
-                                    <td>{{ $products->name }} </td>
                                     <td>{{ $products->category->name }} </td>
-                                    <td>{{ $products->manufacturer->image }} </td>
+                                    <td>{{ $products->manufacturer->name }} </td>
+                                    <td>{{ $products->intro }} </td>
+                                    <td>{{ $products->description }} </td>
+                                    <td>{{ $products->price }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('product.edit', $products) }}">
                                             <i class="fas fa-pencil-alt">
@@ -166,7 +176,8 @@
             <!-- /.card -->
             <!-- /.content -->
         </div>
-    @else
+    @endisset
+    @isset($manufacturer)
         <form action="{{ route('table.search') }}" method="GET">
             @csrf
             <div class="row">
@@ -174,7 +185,7 @@
                     <div class="form-group">
                         <div class="input-group input-group-lg">
                             <input type="search" name="search" class="form-control form-control-lg"
-                                placeholder="Enter email" required value="<?php
+                                placeholder="Enter Manufacter" required value="<?php
                                 if (isset($query)) {
                                     echo $query;
                                 } ?>">
@@ -193,7 +204,7 @@
             <div class="card-header">
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool">
-                        <a href="{{ url('admin/product/add', []) }}">
+                        <a href="{{ route('manufacter.add') }}">
                             <i class="fa fa-plus" aria-hidden="true"></i>
 
                         </a>
@@ -203,19 +214,33 @@
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th style="width: 10%">#</th>
-                                <th style="width: 10%">#</th>
-                                <th style="width: 10%">#</th>
-                                <th style="width: 10%">#</th>
+                                <th>Tên</th>
+                                <th>Hình ảnh</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="width: 10%"># </td>
-                                <td style="width: 10%"># </td>
-                                <td style="width: 10%"># </td>
-                                <td style="width: 10%"># </td>
-                            </tr>
+                            @foreach ($manufacturer as $manufacturer)
+                                <tr>
+                                    <td>{{ $manufacturer->name }} </td>
+                                    <td> <img style="width: 50px" src="{{ url('images/' . $manufacturer->image, []) }}"
+                                            alt="">
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-info btn-sm" href="{{ route('product.edit', $manufacturer) }}">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm"
+                                            href={{ route('manufacter.destroy', $manufacturer->id) }}"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -224,5 +249,5 @@
             <!-- /.card -->
             <!-- /.content -->
         </div>
-    @endif
+    @endisset
 @endsection
