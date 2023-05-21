@@ -43,7 +43,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('user')->group(function () {
         Route::prefix('table')->group(function () {
             Route::get('/', [UserController::class, 'table'])->name('user.table');
-            Route::get('search', [UserController::class, 'search'])->name('table.search');
+            Route::get('search', [UserController::class, 'search'])->name('user.search');
             Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.edit');
             Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
             Route::get('remove/{id}', [UserController::class, 'remove'])->name('user.remove');

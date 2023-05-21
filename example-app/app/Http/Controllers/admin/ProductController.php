@@ -13,11 +13,12 @@ class ProductController extends Controller
     {
         $page = "Product Table";
         $products = Products::with('category', 'manufacturer')->orderBy('created_at', 'desc')->paginate(10);
-        return view('Admin.table', compact('products'), compact('page'));
+        return view('Admin.table', compact('products', 'page'));
     }
     public function add()
     {
         $page = "Product Add";
-        return view('Admin.add', ['product' => 1], compact('page'));
+        $product = 1;
+        return view('Admin.add', compact('page', 'product'));
     }
 }

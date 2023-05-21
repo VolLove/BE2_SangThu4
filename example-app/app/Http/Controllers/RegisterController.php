@@ -23,7 +23,7 @@ class RegisterController extends Controller
             'password' => 'required|confirmed|min:8|',
             'password_confirmation' => 'required|string',
             'phone' => 'nullable|numeric|size:10',
-            'avatar' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
+            'avatar' => 'nullable|required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         $image = $request->file('avatar');
@@ -39,9 +39,6 @@ class RegisterController extends Controller
         if ($user->save()) {
             $image->move(public_path('avatars'), $imageName);
             return redirect("login")->withSuccess('Register success. Please login!');
-        }
-        if (Auth::check()) {
-            return redirect("registration");
         }
         return back();
     }

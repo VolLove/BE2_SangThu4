@@ -19,9 +19,7 @@
     </section>
     @isset($users)
         <!-- Content Wrapper. Contains page content -->
-
-
-        <form action="{{ route('table.search') }}" method="GET">
+        <form action="{{ route('user.search') }}" method="GET">
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
@@ -97,7 +95,11 @@
         </div>
     @endisset
     @isset($products)
+<<<<<<< HEAD
         <form action="{{ route('table.search') }}" method="GET">
+=======
+        <form action="" method="GET">
+>>>>>>> bill-table
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
@@ -143,8 +145,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $products)
+                            @foreach ($products as $product)
                                 <tr>
+<<<<<<< HEAD
                                     <td>{{ $products->name }} </td>
                                     <td> <img style="width: 50px" src="{{ url('images/' . $products->image, []) }}"
                                             alt="">
@@ -153,8 +156,15 @@
                                     <td>{{ $products->intro }} </td>
                                     <td>{{ $products->description }} </td>
                                     <td>{{ $products->price }} </td>
+=======
+                                    <td> <img style="width: 50px" src="{{ url('images/' . $product->image, []) }}"
+                                            alt="">
+                                    <td>{{ $product->name }} </td>
+                                    <td>{{ $product->category->name }} </td>
+                                    <td>{{ $product->manufacturer->image }} </td>
+>>>>>>> bill-table
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('product.edit', $products) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('product.edit', $product) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -177,8 +187,77 @@
             <!-- /.content -->
         </div>
     @endisset
+<<<<<<< HEAD
     @isset($manufacturer)
         <form action="{{ route('table.search') }}" method="GET">
+=======
+    @isset($bills)
+        <form action="" method="GET">
+            @csrf
+            <div class="row">
+                <div class="col-md-11 ml-5">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <input type="search" name="search" class="form-control form-control-lg" placeholder="Enter email"
+                                required value="<?php
+                                if (isset($query)) {
+                                    echo $query;
+                                } ?>">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool">
+                        <a href="{{ url('admin/product/add', []) }}">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+
+                        </a>
+                    </button>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">Name user</th>
+                                <th style="width: 10%">Address</th>
+                                <th style="width: 10%">Phone</th>
+                                <th style="width: 10%">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($bills as $bill)
+                                <tr>
+                                    <td style="width: 10%"># </td>
+                                    <td style="width: 10%"># </td>
+                                    <td style="width: 10%"># </td>
+                                    <td style="width: 10%"># </td>
+                                </tr>
+                            @endforeach
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- /.content -->
+        </div>
+    @endisset
+    @isset($temp)
+        <form action="" method="GET">
+>>>>>>> bill-table
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
@@ -204,7 +283,11 @@
             <div class="card-header">
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool">
+<<<<<<< HEAD
                         <a href="{{ route('manufacter.add') }}">
+=======
+                        <a href="{{ url('admin/temp/add', []) }}">
+>>>>>>> bill-table
                             <i class="fa fa-plus" aria-hidden="true"></i>
 
                         </a>
