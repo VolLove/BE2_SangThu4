@@ -67,6 +67,8 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('add', [CategoriesController::class, 'add'])->name('categories.add');
         Route::post('add', [CategoriesController::class, 'add_handler'])->name('categories.addhandler');
         Route::get('remove/{id}', [CategoriesController::class, 'remove'])->name('categories.remove');
+        Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categories.edit');
+        Route::post('edit/{id}', [CategoriesController::class, 'edit_handler'])->name('categories.edithandler');
     });
     Route::prefix('manufacter')->group(function () {
         Route::get('table', [ManufacterController::class, 'table'])->name('manufacter.table');
@@ -74,7 +76,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('add', [ManufacterController::class, 'add_handler'])->name('manufacter.addhandler');
         Route::get('destroy/{id}', [ManufacterController::class, 'deletemanu'])->name('manufacter.destroy');
         Route::get('edit/{id}', [ManufacterController::class, 'edit'])->name('manufacter.edit');
-        Route::post('edithandler/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandle');
+        Route::post('edit/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandle');
     });
     Route::prefix('bill')->group(function () {
         Route::get('table', [BillController::class, 'table']);

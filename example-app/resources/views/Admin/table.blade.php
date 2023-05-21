@@ -19,7 +19,7 @@
     @if (session('warning'))
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h5><i class="icon fas fa-ban"></i> Warning!</h5>
+            <h5><i class="icon fas fa-ban"></i>Warning!</h5>
             {{ session('warning') }}
         </div>
     @endif
@@ -182,7 +182,7 @@
                                                     <td>{{ $product->name }} </td>
                                                     <td> <img style="width: 50px"
                                                             src="{{ url('images/' . $product->image, []) }}" alt="">
-                                                    <td>{{ $product->category->name }} </td>
+                                                    <td>{{ $product->categories->name }} </td>
                                                     <td>{{ $product->manufacturer->name }} </td>
                                                     <td>{{ $product->intro }} </td>
                                                     <td style=" word-break: break-all;">
@@ -357,7 +357,8 @@
                                                     <td>{{ $category->name }} </td>
                                                     <td></td>
                                                     <td class="project-actions text-right">
-                                                        <a class="btn btn-info btn-sm" href="">
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('categories.edit', ['id' => 1]) }}">
                                                             <i class="fas fa-edit"></i> Edit </a>
                                                         <a class="btn btn-danger btn-sm "
                                                             onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"

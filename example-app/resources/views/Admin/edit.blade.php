@@ -215,7 +215,7 @@
             <!-- /.card-footer -->
         </form>
     @endisset
-    @isset($manu_edit)
+    @isset($manufacturer)
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -225,13 +225,13 @@
                             <h3 class="card-title">General</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('manufacter.edithandle', $manu_edit->id) }}" id="editForm"
+                            <form action="{{ route('manufacter.edithandle', $manufacturer->id) }}" id="editForm"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label>Tên</label>
                                     <input type="text" class="form-control   @error('name') is-invalid @enderror"
-                                        name="name" value="{{ old('name', $manu_edit->name) }}">
+                                        name="name" value="{{ old('name', $manufacturer->name) }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -239,8 +239,8 @@
                                 <div class="form-group">
                                     <label>Hình ảnh</label>
                                     <div class="">
-                                        <img id="currentImage" src="{{ url('images/' . $manu_edit->image, []) }}"
-                                            alt="{{ $manu_edit->image }}" style="max-width: 100px;max-height: 100px">
+                                        <img id="currentImage" src="{{ url('images/' . $manufacturer->image, []) }}"
+                                            alt="{{ $manufacturer->image }}" style="max-width: 100px;max-height: 100px">
                                         <input name="image" type="file" id="imageInput"
                                             accept="image/png, image/gif, image/jpeg">
                                         @error('image')
@@ -251,8 +251,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
-                                        <input type="submit" value="Edit" class="btn btn-success float-right"
-                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                        <input type="submit" value="Create new Manufacturer"
+                                            class="btn btn-success float-right"
+                                            onclick="return confirm('Bạn có chắc chắn muốn lưu thay đổi không?')">
                                     </div>
                                 </div>
                             </form>
@@ -375,6 +376,77 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+            <script>
+                const currentImage = document.getElementById('currentImage');
+                const editForm = document.getElementById('editForm');
+
+                currentImage.addEventListener('click', function() {
+                    imageInput.click();
+                });
+
+                imageInput.addEventListener('change', function() {
+                    const file = this.files[0];
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        currentImage.src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(file);
+                });
+            </script>
+        </section>
+    @endisset
+    @isset($category)
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">General</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('categories.edithandler', $category->id) }}" id="editForm"
+                                method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Tên</label>
+                                    <input type="text" class="form-control   @error('name') is-invalid @enderror"
+                                        name="name" value="{{ old('name', $category->name) }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Hình ảnh</label>
+                                    <div class="">
+                                        <img id="currentImage" src="{{ url('images/' . $category->image, []) }}"
+                                            alt="{{ $category->image }}" style="max-width: 100px;max-height: 100px">
+                                        <input name="image" type="file" id="imageInput"
+                                            accept="image/png, image/gif, image/jpeg">
+                                        @error('image')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                                        <input type="submit" value="Create new Category" class="btn btn-success float-right"
+                                            onclick="return confirm('Bạn có chắc chắn muốn lưu thay đổi không?')">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+            </div>
+
             <script>
                 const currentImage = document.getElementById('currentImage');
                 const editForm = document.getElementById('editForm');

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Manufacturer;
 use App\Models\Products;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class ManufacterController extends Controller
 {
@@ -24,7 +25,7 @@ class ManufacterController extends Controller
     public function add_handler(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
         $image = $request->file('image');
@@ -46,24 +47,28 @@ class ManufacterController extends Controller
         $product = Products::where('manufacturer_id', $id)->get();
         if ($product->count() == 0) {
             $manu = Manufacturer::find($id);
+            $path = "images/" . $manu->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
             $manu->delete();
             //Quay lại trang trước đó
             return redirect()->back()->with('success', 'Xóa danh mục thành công');
         } else {
-            return redirect()->back()->with('error', 'Không thể xóa danh mục vì vẫn còn sản phẩm');
+            return redirect()->back()->with('errors', 'Không thể xóa danh mục vì vẫn còn sản phẩm');
         }
     }
     public function edit($id)
     {
-        $Manufacturer = Manufacturer::find($id);
+        $manufacturer = Manufacturer::find($id);
         $page = 'Manufacter edit';
-        return view('Admin.edit', compact('Manufacturer', 'page'));
+        return view('Admin.edit', compact('manufacturer', 'page'));
     }
     public function edit_handler($id, Request $request)
     {
         $manu = Manufacturer::find($id);
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 

@@ -7,6 +7,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CategoriesController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
     public function add_handler(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string||max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
         $image = $request->file('image');
@@ -46,11 +47,42 @@ class CategoriesController extends Controller
         $product = Products::where('categories_id', $id)->get();
         if ($product->count() == 0) {
             $cate = Categories::find($id);
+            $path = "images/" . $cate->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
             $cate->delete();
             //Quay lại trang trước đó
-            return redirect()->back()->with('success', 'Xóa danh mục thành công');
+            return redirect('admin/categories/table')->with('success', 'Xóa danh mục thành công!');
         } else {
-            return redirect()->back()->with('error', 'Không thể xóa danh mục vì vẫn còn sản phẩm');
+            return redirect()->back()->with('errors', 'Không thể xóa danh mục vì vẫn còn sản phẩm!');
         }
+    }
+    public function edit($id)
+    {
+        $category = Categories::find($id);
+        $page = 'Manufacter edit';
+        return view('Admin.edit', compact('category', 'page'));
+    }
+    public function edit_handler($id, Request $request)
+    {
+        $cate = Categories::find($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $cate->name = $request->input('name');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $cate->image = $imageName;
+            $image->move(public_path('images'), $imageName);
+        }
+        if ($cate->save()) {
+
+            return redirect('admin/categories/table')->with('success', 'Cập nhật thành công');
+        }
+        return back();
     }
 }

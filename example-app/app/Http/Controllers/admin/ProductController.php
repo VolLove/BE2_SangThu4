@@ -7,6 +7,7 @@ use App\Models\Manufacturer;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
     public function table()
     {
         $page = "Product Table";
-        $products = Products::with('category', 'manufacturer')->orderBy('created_at', 'desc')->paginate(10);
+        $products = Products::with('categories', 'manufacturer')->orderBy('created_at', 'desc')->paginate(10);
         return view('Admin.table', compact('products', 'page'));
     }
     public function add()
@@ -28,7 +29,7 @@ class ProductController extends Controller
     public function add_handler(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'intro' => 'required',
             'description' => 'required',
@@ -55,7 +56,12 @@ class ProductController extends Controller
     //xóa  sản phẩm:
     function deleteproduct($id)
     {
-        Products::find($id)->delete();
+        $product = Products::find($id);
+        $path = "images/" . $product->image;
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+        $product->delete();
         return redirect()->back()->with('success', 'Xóa sản phẩm thành công'); //Quay lại trang trước đó
     }
     public function edit($id)
@@ -70,7 +76,7 @@ class ProductController extends Controller
     {
         $product = Products::find($id);
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'intro' => 'required',
             'description' => 'required',

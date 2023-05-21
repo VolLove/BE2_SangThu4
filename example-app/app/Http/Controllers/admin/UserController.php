@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -40,9 +41,9 @@ class UserController extends Controller
         $user = User::find($id);
         $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
-            'name' => 'required',
+            'name' => 'required|max:255',
             'phone' => 'required|numeric|digits:10',
-            'address' => 'nullable',
+            'address' => 'nullable|max:255',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
