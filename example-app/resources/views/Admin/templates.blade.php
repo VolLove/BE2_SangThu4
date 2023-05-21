@@ -230,6 +230,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            <div class="container">
 
 
             @if (session('success'))
@@ -254,6 +255,8 @@
                 </div>
             @endif
             @yield('containt')
+            </div>
+
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

@@ -131,13 +131,13 @@
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th>Tên</th>
-                                <th>Hình ảnh</th>
-                                <th>Loại</th>
-                                <th>Hãng</th>
-                                <th>Giới thiệu</th>
-                                <th>Nội dung</th>
-                                <th>Giá</th>
+                                <th style = "width: 5%">Tên</th>
+                                <th style = "width: 5%">Hình ảnh</th>
+                                <th style = "width: 5%">Loại</th>
+                                <th style = "width: 5%">Hãng</th>
+                                <th style = "width: 10%">Giới thiệu</th>
+                                <th style = "width: 20%">Nội dung</th>
+                                <th style = "width: 5%">Giá</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,15 +149,17 @@
                                     <td>{{ $product->category->name }} </td>
                                     <td>{{ $product->manufacturer->name }} </td>
                                     <td>{{ $product->intro }} </td>
-                                    <td>{{ $product->description }} </td>
+                                    <td style = " word-break: break-all;">{{ Str::limit($product->description, 100) }}</td>
+
                                     <td>{{ $product->price }} </td>
+                                    
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('product.edit', $product) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="">
+                                        <a class="btn btn-danger btn-sm" href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -229,7 +231,7 @@
                                             Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm"
-                                            href={{ route('manufacter.destroy', $manufacturer->id) }}"
+                                            href="{{ route('manufacter.destroy', $manufacturer->id) }}"
                                             onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                             <i class="fas fa-trash">
                                             </i>

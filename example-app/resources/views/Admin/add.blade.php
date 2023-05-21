@@ -73,12 +73,12 @@
                             @csrf
                                 <div class="form-group">
                                     <label for="name">Product Name</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" value="{{old('name')}}">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputStatus">Categories</label>
-                                    <select id="inputStatus" name="cate" class="form-control custom-select">
+                                    <select id="inputStatus" name="cate" class="form-control custom-select" >
                                         <option selected disabled>Select one</option>
                                        @foreach($cates as $cate)
                                        <option value="{{$cate->id}}">{{$cate->name}}</option>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Manufacter</label>
-                                    <select id="inputStatus" name="manu" class="form-control custom-select">
+                                    <select id="inputStatus" name="manu" class="form-control custom-select" >
                                         <option selected disabled>Select one</option>
                                         @foreach($manus as $manu)
                                        <option value="{{$manu->id}}">{{$manu->name}}</option>
@@ -96,11 +96,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Product Intro</label>
-                                    <input type="text" name="intro" class="form-control">
+                                    <input type="text" name="intro" class="form-control"  value="{{old('intro')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Product Description</label>
-                                    <textarea class="form-control" name="description" rows="4"></textarea>
+                                    <textarea class="form-control" name="description" rows="4"  value="{{old('description')}}"></textarea>
                                 </div>
 
                                 <div class="form-group">

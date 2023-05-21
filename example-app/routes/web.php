@@ -56,6 +56,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('table', [ProductController::class, 'table'])->name('product.table');
         Route::get('add', [ProductController::class, 'add'])->name('product.add');
         Route::post('add', [ProductController::class, 'add_handler'])->name('product.addhandler');
+        Route::get('destroy/{id}', [ProductController::class, 'deleteproduct'])->name('product.destroy');
         Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     });
     Route::prefix('type')->group(function () {
