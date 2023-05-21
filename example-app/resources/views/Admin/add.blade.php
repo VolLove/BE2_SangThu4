@@ -120,7 +120,6 @@
         </section>
         <!-- /.content -->
     @endisset
-
     @isset($temp)
         <!-- Main content -->
         <section class="content">
