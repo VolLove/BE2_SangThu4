@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css', []) }}">
-    <link rel="stylesheet" href="{{ url('dist/css/style.css', []) }}">
 </head>
 
 <body class="sidebar-mini">
@@ -96,8 +95,7 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/product/*') ? 'block' : 'none'; ?>;">
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/product/table', []) }}"
-                                        class="<?php echo Request::is('admin/product/table') ? 'active' : ''; ?> nav-link">
+                                    <a href="{{ url('admin/product/table', []) }}" class="<?php echo Request::is('admin/product/table') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tables</p>
                                     </a>
@@ -241,8 +239,6 @@
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
 
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ url('dist/js/demo.js', []) }}"></script>
 </body>
 
 </html>

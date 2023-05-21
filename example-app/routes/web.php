@@ -63,12 +63,14 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('edithandler/{id}', [ProductController::class, 'edit_handler'])->name('product.edithandle');
     });
     Route::prefix('categories')->group(function () {
-        Route::get('table', [CategoriesController::class, 'table']);
+        Route::get('table', [CategoriesController::class, 'table'])->name('categories.table');
+        Route::get('add', [CategoriesController::class, 'add'])->name('categories.add');
+        Route::get('add', [CategoriesController::class, 'add_handler'])->name('categories.add');
     });
     Route::prefix('manufacter')->group(function () {
         Route::get('table', [ManufacterController::class, 'table'])->name('manufacter.table');
         Route::get('add', [ManufacterController::class, 'add'])->name('manufacter.add');
-        Route::post('add', [ManufacterController::class, 'add_handel'])->name('manufacter.addhandler');
+        Route::post('add', [ManufacterController::class, 'add_handler'])->name('manufacter.addhandler');
         Route::get('destroy/{id}', [ManufacterController::class, 'deletemanu'])->name('manufacter.destroy');
         Route::get('edit/{id}', [ManufacterController::class, 'edit'])->name('manufacter.edit');
         Route::post('edithandler/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandle');

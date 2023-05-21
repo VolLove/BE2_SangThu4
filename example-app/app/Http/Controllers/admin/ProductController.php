@@ -40,7 +40,7 @@ class ProductController extends Controller
         $product = new Products([
             'name' => $request['name'],
             'image' => $imageName,
-            'category_id' => $request['cate'],
+            'categories_id' => $request['cate'],
             'manufacturer_id' => $request['manu'],
             'intro' => $request['intro'],
             'description' => $request['description'],

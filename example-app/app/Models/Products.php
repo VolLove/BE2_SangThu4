@@ -15,12 +15,12 @@ class Products extends Model
         'description',
         'price',
         'manufacturer_id',
-        'category_id',
+        'categories_id',
 
     ];
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Categories::class, 'category_id');
+        return $this->belongsTo(Categories::class, 'categories_id');
     }
 
     public function manufacturer()

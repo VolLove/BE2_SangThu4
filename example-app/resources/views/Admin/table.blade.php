@@ -262,8 +262,8 @@
                                     <table class="table table-striped projects">
                                         <thead>
                                             <tr>
-                                                <th>Tên</th>
-                                                <th>Hình ảnh</th>
+                                                <th>Name</th>
+                                                <th>Logo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -275,7 +275,7 @@
                                                             alt="">
                                                     <td class="project-actions text-right">
                                                         <a class="btn btn-info btn-sm"
-                                                            href="{{ route('manufacter.edit', $manufacturer) }}">
+                                                            href="{{ route('manufacter.edit', $manufacturer->id) }}">
                                                             <i class="fas fa-pencil-alt">
                                                             </i>
                                                             Edit
@@ -303,6 +303,80 @@
             </div>
         </section>
 
+    @endisset
+    @isset($categories)
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <form action="" method="GET">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-11 ml-5">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-lg">
+                                                    <input type="search" name="search" class="form-control form-control-lg"
+                                                        placeholder="Enter email" required value="<?php
+                                                        if (isset($query)) {
+                                                            echo $query;
+                                                        } ?>">
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-lg btn-default">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool">
+                                        <a href="{{ url('admin/categoties/add', []) }}">
+                                            <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    </button>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10%">Logo</th>
+                                                <th style="width: 40%">Name</th>
+                                                <th style="width: 10%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($categories as $category)
+                                                <tr>
+                                                    <td> <img style="width: 50px"
+                                                            src="{{ url('images/' . $category->image, []) }}" alt="">
+                                                    </td>
+                                                    <td>{{ $category->name }} </td>
+                                                    <td></td>
+                                                    <td class="project-actions text-right">
+                                                        <a class="btn btn-info btn-sm" href="">
+                                                            <i class="fas fa-edit"></i> Edit </a>
+                                                        <a class="btn btn-danger btn-sm " href="">
+                                                            <i class="fas fa-trash"> </i> Delete </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+
+                                    </table>
+                                    {{ $categories->links('pagination::bootstrap-5') }}
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     @endisset
     @isset($bills)
         <!-- Main content -->
@@ -375,55 +449,7 @@
             </div>
         </section>
     @endisset
-    @isset($categoties)
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <form action="" method="GET">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-11 ml-5">
-                                            <div class="form-group">
-                                                <div class="input-group input-group-lg">
-                                                    <input type="search" name="search" class="form-control form-control-lg"
-                                                        placeholder="Enter email" required value="<?php
-                                                        if (isset($query)) {
-                                                            echo $query;
-                                                        } ?>">
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-lg btn-default">
-                                                            <i class="fa fa-search"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool">
-                                        <a href="{{ url('admin/product/add', []) }}">
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
 
-                                        </a>
-                                    </button>
-                                </div>
-                                <div class="card-body p-0">
-                                    {{-- table conten --}}
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endisset
     @isset($temp)
         <!-- Main content -->
         <section class="content">
@@ -455,10 +481,8 @@
                                 </form>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool">
-                                        <a href="{{ url('admin/product/add', []) }}">
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-
-                                        </a>
+                                        <a href="{{ url('admin/temp/add', []) }}">
+                                            <i class="fa fa-plus" aria-hidden="true"></i></a>
                                     </button>
                                 </div>
                                 <div class="card-body p-0">

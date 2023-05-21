@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th5 20, 2023 lúc 12:27 PM
+-- Thời gian đã tạo: Th5 21, 2023 lúc 03:45 PM
 -- Phiên bản máy phục vụ: 8.0.31
 -- Phiên bản PHP: 8.0.26
 
@@ -24,26 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `manufacters`
+-- Cấu trúc bảng cho bảng `manufacturers`
 --
 
 DROP TABLE IF EXISTS `manufacturers`;
 CREATE TABLE IF NOT EXISTS `manufacturers` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `manufacters`
+-- Đang đổ dữ liệu cho bảng `manufacturers`
 --
 
 INSERT INTO `manufacturers` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Apple', 'apple.png', NULL, NULL),
-(2, 'Huawei', 'huawei.jpg', NULL, NULL),
+(2, 'Huawei', 'huawei.png', NULL, NULL),
 (3, 'Nokia', 'nokia.png', NULL, NULL),
 (4, 'Realme', 'realme.png', NULL, NULL),
 (5, 'Samsung', 'samsung.png', NULL, NULL);

@@ -5,23 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Manufacturer;
 use App\Models\Products;
 use App\Http\Controllers\Controller;
-use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ManufacterController extends Controller
 {
     public function table()
     {
         $page = "Manufacturer Table";
-        $manufacturer = Manufacturer::with('products')->orderBy('created_at', 'desc')->paginate(10);
-        return view('Admin.table', compact('manufacturer'), compact('page'));
+        $manufacturer = DB::table('manufacturers')->orderBy('created_at', 'desc')->paginate(10);
+        return view('Admin.table', compact('manufacturer', 'page'));
     }
     public function add()
     {
         $page = "Manufacter Add";
         return view('Admin.add', ['manufacturer' => 1], compact('page'));
     }
-    public function add_handel(Request $request)
+    public function add_handler(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
@@ -46,10 +46,6 @@ class ManufacterController extends Controller
         $product = Products::where('manufacturer_id', $id)->get();
         if ($product->count() == 0) {
             $manu = Manufacturer::find($id);
-            $path = public_path("images/" . $manu->images);
-            if (file_exists($path)) {
-                @unlink($path);
-            }
             $manu->delete();
             //Quay lại trang trước đó
             return redirect()->back()->with('success', 'Xóa danh mục thành công');
