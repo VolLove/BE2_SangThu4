@@ -129,7 +129,7 @@
                             <a href="" class="<?php echo Request::is('admin/protype/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-th-list"></i>
                                 <p>
-                                    <p>Protype</p>
+                                    <p>Categories</p>
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
