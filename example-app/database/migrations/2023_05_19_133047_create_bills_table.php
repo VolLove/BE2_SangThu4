@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->string('address');
             $table->string('phone');
-            $table->string('total');
+            $table->bigInteger('total');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity');
-            $table->decimal('price', 10, 2);
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

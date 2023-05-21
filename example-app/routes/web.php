@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ManufacterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TypeController;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Categories;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,13 +62,13 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('edithandler/{id}', [ProductController::class, 'edit_handler'])->name('product.edithandle');
     });
-    Route::prefix('type')->group(function () {
-        Route::get('table', [TypeController::class, 'table']);
+    Route::prefix('categories')->group(function () {
+        Route::get('table', [CategoriesController::class, 'table']);
     });
     Route::prefix('manufacter')->group(function () {
         Route::get('table', [ManufacterController::class, 'table'])->name('manufacter.table');
         Route::get('add', [ManufacterController::class, 'add'])->name('manufacter.add');
-        Route::post('add', [ManufacterController::class, 'add_handel'])->name('manufacter.addhandel');
+        Route::post('add', [ManufacterController::class, 'add_handel'])->name('manufacter.addhandler');
         Route::get('destroy/{id}', [ManufacterController::class, 'deletemanu'])->name('manufacter.destroy');
         Route::get('edit/{id}', [ManufacterController::class, 'edit'])->name('manufacter.edit');
         Route::post('edithandler/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandle');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Manufacturer;
 use App\Models\Products;
 use App\Http\Controllers\Controller;
+use Faker\Core\File;
 use Illuminate\Http\Request;
 
 class ManufacterController extends Controller
@@ -28,13 +29,13 @@ class ManufacterController extends Controller
         ]);
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $imageName);
 
         $manu = new Manufacturer([
             'name' => $request['name'],
             'image' => $imageName,
         ]);
         if ($manu->save()) {
-            $image->move(public_path('images'), $imageName);
             return redirect()->route('manufacter.table')->with('success', 'Thêm hãng thành công');
         }
         return back();
@@ -44,7 +45,12 @@ class ManufacterController extends Controller
     {
         $product = Products::where('manufacturer_id', $id)->get();
         if ($product->count() == 0) {
-            Manufacturer::find($id)->delete();
+            $manu = Manufacturer::find($id);
+            $path = public_path("images/" . $manu->images);
+            if (file_exists($path)) {
+                @unlink($path);
+            }
+            $manu->delete();
             //Quay lại trang trước đó
             return redirect()->back()->with('success', 'Xóa danh mục thành công');
         } else {

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ url('dist/css/style.css', []) }}">
 </head>
 
-<body class="">
+<body class="sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -25,21 +25,10 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                @if (Request::is('admin') || Request::is('admin/index'))
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="{{ url('admin', []) }}" class="nav-link">Home</a>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ url('admin', []) }}" class="nav-link">Home</a>
 
-                    </li>
-                @else
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="{{ url('admin', []) }}" class="nav-link">Home</a>
-
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link"> @yield('title')</a>
-
-                    </li>
-                @endif
+                </li>
 
             </ul>
 
@@ -96,9 +85,6 @@
                                 <p>Main page</p>
                             </a>
                         </li>
-
-
-
                         {{-- Product --}}
                         <li class="nav-item <?php echo Request::is('admin/product/*') ? 'menu-open' : ''; ?> ">
                             <a href="" class="<?php echo Request::is('admin/product/*') ? 'active' : ''; ?> nav-link">
@@ -124,25 +110,26 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- Protype --}}
-                        <li class="nav-item <?php echo Request::is('admin/protype/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/protype/*') ? 'active' : ''; ?> nav-link">
+                        {{-- Categories --}}
+                        <li class="nav-item <?php echo Request::is('admin/categories/*') ? 'menu-open' : ''; ?> ">
+                            <a href="" class="<?php echo Request::is('admin/categories/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-th-list"></i>
                                 <p>
                                     <p>Categories</p>
                                     <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/protype/*') ? 'block' : 'none'; ?>;">
+                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/categories/*') ? 'block' : 'none'; ?>;">
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/protype/table', []) }}"
-                                        class="<?php echo Request::is('admin/protype/table') ? 'active' : ''; ?> nav-link">
+                                    <a href="{{ url('admin/categories/table', []) }}"
+                                        class="<?php echo Request::is('admin/categories/table') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tables</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/protype/add', []) }}" class="<?php echo Request::is('admin/protype/add') ? 'active' : ''; ?> nav-link">
+                                    <a href="{{ url('admin/categories/add', []) }}"
+                                        class="<?php echo Request::is('admin/categories/add') ? 'active' : ''; ?> nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add</p>
                                     </a>
@@ -230,33 +217,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div class="container">
-
-
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-check"></i> Success!</h5>
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('errors'))
-                    <div class="alert alert-warning alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
-                        {{ session('errors') }}
-                    </div>
-                @endif
-                @if (session('warning'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-ban"></i> Warning!</h5>
-                        {{ session('warning') }}
-                    </div>
-                @endif
-                @yield('containt')
-            </div>
-
+            @yield('containt')
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -281,7 +242,7 @@
     <script src="{{ url('dist/js/adminlte.min.js', []) }}"></script>
 
     <!-- AdminLTE for demo purposes -->
-
+    <script src="{{ url('dist/js/demo.js', []) }}"></script>
 </body>
 
 </html>
