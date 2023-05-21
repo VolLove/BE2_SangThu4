@@ -52,4 +52,10 @@ class ProductController extends Controller
         }
         return back();
     }
+    //xóa  sản phẩm:
+    function deleteproduct($id)
+    {
+        Products::find($id)->delete();
+        return redirect()->back()->with('success','Xóa sản phẩm thành công'); //Quay lại trang trước đó
+    }
 }
