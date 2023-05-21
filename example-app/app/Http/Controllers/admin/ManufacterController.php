@@ -50,5 +50,31 @@ class ManufacterController extends Controller
             return redirect()->back()->with('error','Không thể xóa danh mục vì vẫn còn sản phẩm');
         }
     }
+    public function edit($id)
+    {
+        $manu_edit = Manufacturer::find($id);
+        $page = 'Manufacter edit';
+         return view('Admin.edit', compact('manu_edit', 'page'));
+    }
+    public function edit_handler($id,Request $request)
+    {
+        $manu = Manufacturer::find($id);
+        $request->validate([
+            'name' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
+        $manu->name = $request->input('name');
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $user->avatar = $imageName;
+            $image->move(public_path('avatars'), $imageName);
+        }
+        if ($manu->save()) {
+
+            return redirect('admin/manufacter/table')->with('success', 'Cập nhật thành công');
+        }
+        return back()->withErrors('Thay đổi không công');
+    }
 }

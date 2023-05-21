@@ -189,6 +189,7 @@
     @endisset
 <<<<<<< HEAD
     @isset($manufacturer)
+<<<<<<< HEAD
         <form action="{{ route('table.search') }}" method="GET">
 =======
     @isset($bills)
@@ -258,6 +259,9 @@
     @isset($temp)
         <form action="" method="GET">
 >>>>>>> bill-table
+=======
+        <form action="" method="GET">
+>>>>>>> manu-manage
             @csrf
             <div class="row">
                 <div class="col-md-11 ml-5">
@@ -308,7 +312,8 @@
                                     <td> <img style="width: 50px" src="{{ url('images/' . $manufacturer->image, []) }}"
                                             alt="">
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('product.edit', $manufacturer) }}">
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{ route('manufacter.edit', $manufacturer->id) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
