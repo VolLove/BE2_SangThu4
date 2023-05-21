@@ -265,7 +265,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
-                                        <input type="submit" value="Edit" class="btn btn-success float-right"  onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                        <input type="submit" value="Edit" class="btn btn-success float-right"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                     </div>
                                 </div>
                             </form>
@@ -300,7 +301,7 @@
         </section>
     @endisset
     @isset($product_edit)
-    <section class="content">
+        <section class="content">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -333,20 +334,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Loại</label>
-                                    <select id="inputStatus" name="cate" class="form-control custom-select" >
-                                        <option selected disabled>{{ $product_edit->category->name }}</option>
-                                       @foreach($cates as $cate)
-                                       <option value="{{$cate->id}}">{{$cate->name}}</option>
-                                       @endforeach
+                                    <select id="inputStatus" name="cate" class="form-control custom-select">
+                                        @foreach ($cates as $cate)
+                                            @if ($cate->id = $product_edit->category_id)
+                                                <option selected value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                            @else
+                                                <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Manufacter</label>
-                                    <select id="inputStatus" name="manu" class="form-control custom-select" >
-                                        <option selected disabled>{{ $product_edit->manufacturer->name }}</option>
-                                        @foreach($manus as $manu)
-                                       <option value="{{$manu->id}}">{{$manu->name}}</option>
-                                       @endforeach
+                                    <select id="inputStatus" name="manu" class="form-control custom-select">
+                                        @foreach ($manus as $manu)
+                                            @if ($manu->id = $product_edit->manufacturer_id)
+                                                <option selected value="{{ $manu->id }}">{{ $manu->name }}</option>
+                                            @else
+                                                <option value="{{ $manu->id }}">{{ $manu->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -376,7 +383,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
-                                        <input type="submit" value="Edit" class="btn btn-success float-right"  onclick="return confirm('Bạn có chắc chắn muốn sửa không?')">
+                                        <input type="submit" value="Edit" class="btn btn-success float-right"
+                                            onclick="return confirm('Bạn có chắc chắn muốn sửa không?')">
                                     </div>
                                 </div>
                             </form>

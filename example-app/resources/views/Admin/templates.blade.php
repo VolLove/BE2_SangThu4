@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ url('dist/css/style.css', []) }}">
 </head>
 
-<body class="sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
+<body class="">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -233,28 +233,28 @@
             <div class="container">
 
 
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-check"></i> Success!</h5>
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('errors'))
-                <div class="alert alert-warning alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
-                    {{ session('errors') }}
-                </div>
-            @endif
-            @if (session('warning'))
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-ban"></i> Warning!</h5>
-                    {{ session('warning') }}
-                </div>
-            @endif
-            @yield('containt')
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i> Success!</h5>
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('errors'))
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                        {{ session('errors') }}
+                    </div>
+                @endif
+                @if (session('warning'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Warning!</h5>
+                        {{ session('warning') }}
+                    </div>
+                @endif
+                @yield('containt')
             </div>
 
         </div>
