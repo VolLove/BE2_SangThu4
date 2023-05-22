@@ -28,14 +28,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $billCount }}</h3>
 
                             <p>Orders</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ url('admin/bill/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ route('bills.table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ url('admin/product/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ route('product.table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="{{ url('admin/user/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ route('user.table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="{{ url('admin/manufacter/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ route('manufacter.table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="{{ url('admin/Categories/table', []) }}" class="small-box-footer">More info <i
+                        <a href="{{ route('categories.table', []) }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

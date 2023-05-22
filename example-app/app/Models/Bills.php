@@ -10,9 +10,9 @@ class Bills extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'user_id',
         'address',
         'phone',
-        'total',
         'status',
     ];
     public function order()

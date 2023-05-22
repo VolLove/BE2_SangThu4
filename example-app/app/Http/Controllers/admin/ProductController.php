@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Manufacturer;
 use App\Models\Categories;
+use App\Models\Orders;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -56,13 +57,18 @@ class ProductController extends Controller
     //xóa  sản phẩm:
     function deleteproduct($id)
     {
-        $product = Products::find($id);
-        $path = "images/" . $product->image;
-        if (File::exists($path)) {
-            File::delete($path);
+        $oders = Orders::where('product_id', $id)->get();
+        if ($oders->count() == 0) {
+            $product = Products::find($id);
+            $path = "images/" . $product->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $product->delete();
+            return redirect()->back()->with('success', 'Xóa sản phẩm thành công');
+        } else {
+            return redirect()->back()->with('errors', 'Không thể xóa danh mục vì vẫn còn đơn hàng');
         }
-        $product->delete();
-        return redirect()->back()->with('success', 'Xóa sản phẩm thành công'); //Quay lại trang trước đó
     }
     public function edit($id)
     {
@@ -83,7 +89,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|gt:0',
         ]);
         $product->name = $request->input('name');
-        $product->category_id = $request->input('cate');
+        $product->categories_id = $request->input('cate');
         $product->manufacturer_id = $request->input('manu');
         $product->intro = $request->input('intro');
         $product->description = $request->input('description');
@@ -91,8 +97,12 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $product->image = $imageName;
+            $path = "images/" . $product->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
             $image->move(public_path('images'), $imageName);
+            $product->image = $imageName;
         }
 
         if ($product->save()) {

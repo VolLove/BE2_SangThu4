@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bills;
 use App\Models\Categories;
 use App\Models\Manufacturer;
 use App\Models\Products;
@@ -18,6 +19,7 @@ class AccountController extends Controller
         $manuCount = Manufacturer::all()->count();
         $proCount = Products::all()->count();
         $cateCount = Categories::all()->count();
-        return view('Admin.index', compact('user', 'manuCount', 'proCount', 'cateCount'));
+        $billCount = Bills::all()->count();
+        return view('Admin.index', compact('user', 'manuCount', 'proCount', 'cateCount', 'billCount'));
     }
 }

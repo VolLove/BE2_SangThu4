@@ -14,7 +14,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->string('address');
             $table->string('phone');
-            $table->bigInteger('total');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

@@ -13,6 +13,7 @@ class Orders extends Model
         'product_id',
         'quantity',
         'price',
+        'updated_at',
     ];
     public function bills()
     {
