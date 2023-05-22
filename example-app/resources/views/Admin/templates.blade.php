@@ -87,125 +87,49 @@
                         </li>
                         {{-- Product --}}
                         <li class="nav-item <?php echo Request::is('admin/product/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/product/*') ? 'active' : ''; ?> nav-link">
+                            <a href="{{ url('admin/product/table', []) }}" class="<?php echo Request::is('admin/product/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon  fab fa-product-hunt"></i>
                                 <p>
                                     <p>Products</p>
-                                    <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/product/*') ? 'block' : 'none'; ?>;">
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/product/table', []) }}"
-                                        class="<?php echo Request::is('admin/product/table') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/product/add', []) }}" class="<?php echo Request::is('admin/product/add') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         {{-- Categories --}}
                         <li class="nav-item <?php echo Request::is('admin/categories/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/categories/*') ? 'active' : ''; ?> nav-link">
+                            <a href="{{ url('admin/categories/table', []) }}" class="<?php echo Request::is('admin/categories/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-th-list"></i>
                                 <p>
                                     <p>Categories</p>
-                                    <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/categories/*') ? 'block' : 'none'; ?>;">
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/categories/table', []) }}"
-                                        class="<?php echo Request::is('admin/categories/table') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('categories.add', ['id' => 1]) }}"
-                                        class="<?php echo Request::is('admin/categories/add') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                         {{-- manufacter --}}
                         <li class="nav-item <?php echo Request::is('admin/manufacter/*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/manufacter/*') ? 'active' : ''; ?> nav-link">
+                            <a href="{{ url('admin/manufacter/table', []) }}" class="<?php echo Request::is('admin/manufacter/*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-industry"></i>
                                 <p>
                                     <p>Manufacter</p>
-                                    <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/manufacter*') ? 'block' : 'none'; ?>;">
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/manufacter/table', []) }}"
-                                        class="<?php echo Request::is('admin/manufacter/table*') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/manufacter/add', []) }}"
-                                        class="<?php echo Request::is('admin/manufacter/add*') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         {{-- bill --}}
                         <li class="nav-item <?php echo Request::is('admin/bill/') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/bill*') ? 'active' : ''; ?> nav-link">
+                            <a href="{{ url('admin/bill/table', []) }}" class="<?php echo Request::is('admin/bill*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                 <p>
                                     <p>Bill</p>
-                                    <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/bill*') ? 'block' : 'none'; ?>;">
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/bill/table', []) }}"
-                                        class="<?php echo Request::is('admin/bill/table*') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/bill/add', []) }}" class="<?php echo Request::is('admin/bill/add*') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         {{-- User --}}
                         <li class="nav-item <?php echo Request::is('admin/user*') ? 'menu-open' : ''; ?> ">
-                            <a href="" class="<?php echo Request::is('admin/user*') ? 'active' : ''; ?> nav-link">
+                            <a href="{{ url('admin/user/table', []) }}" class="<?php echo Request::is('admin/user*') ? 'active' : ''; ?> nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     <p>User</p>
-                                    <i class="nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: <?php echo Request::is('admin/user*') ? 'block' : 'none'; ?>;">
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/user/table', []) }}"
-                                        class="<?php echo Request::is('admin/user/table*') ? 'active' : ''; ?> nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tables</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                     </ul>

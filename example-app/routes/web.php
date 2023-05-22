@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Bills;
 use App\Models\Categories;
 
 /*
@@ -76,9 +77,13 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('add', [ManufacterController::class, 'add_handler'])->name('manufacter.addhandler');
         Route::get('destroy/{id}', [ManufacterController::class, 'deletemanu'])->name('manufacter.destroy');
         Route::get('edit/{id}', [ManufacterController::class, 'edit'])->name('manufacter.edit');
-        Route::post('edit/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandle');
+        Route::post('edit/{id}', [ManufacterController::class, 'edit_handler'])->name('manufacter.edithandler');
     });
     Route::prefix('bill')->group(function () {
-        Route::get('table', [BillController::class, 'table']);
+        Route::get('table', [BillController::class, 'table'])->name('bills.table');
+        Route::get('view/{id}', [BillController::class, 'view'])->name('bills.view');
+        Route::get('pay/{id}', [BillController::class, 'pay'])->name('bills.pay');
+        Route::get('remove/{id}', [BillController::class, 'remove'])->name('bills.remove');
+        Route::post('remove/{id}', [BillController::class, 'remove_handler'])->name('bills.removehandler');
     });
 });
