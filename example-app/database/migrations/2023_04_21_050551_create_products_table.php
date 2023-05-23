@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('manufacturer_id');
             $table->foreign('manufacturer_id')->references('id')->on('manufacters')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('intro');
             $table->text('description');
             $table->bigInteger('price');
             $table->timestamps();

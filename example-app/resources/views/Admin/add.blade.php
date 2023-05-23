@@ -111,10 +111,6 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Product Intro</label>
-                                        <input type="text" name="intro" class="form-control" value="{{ old('intro') }}">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Product Description</label>
                                         <textarea class="form-control" name="description" rows="4" value="{{ old('description') }}"></textarea>
                                     </div>
@@ -156,8 +152,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{ route('categories.addhandler') }}"
-                                enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('categories.addhandler') }}" enctype="multipart/form-data">
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}

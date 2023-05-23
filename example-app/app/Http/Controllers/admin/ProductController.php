@@ -32,7 +32,6 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
-            'intro' => 'required',
             'description' => 'required',
             'price' => 'required|numeric|gt:0',
         ]);
@@ -44,7 +43,6 @@ class ProductController extends Controller
             'image' => $imageName,
             'categories_id' => $request['cate'],
             'manufacturer_id' => $request['manu'],
-            'intro' => $request['intro'],
             'description' => $request['description'],
             'price' => $request['price'],
         ]);
@@ -84,14 +82,12 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' =>  'nullable|image|mimes:png,jpg,jpeg|max:2048',
-            'intro' => 'required',
             'description' => 'required',
             'price' => 'required|numeric|gt:0',
         ]);
         $product->name = $request->input('name');
         $product->categories_id = $request->input('cate');
         $product->manufacturer_id = $request->input('manu');
-        $product->intro = $request->input('intro');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         if ($request->hasFile('image')) {

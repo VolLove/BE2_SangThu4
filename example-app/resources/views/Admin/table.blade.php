@@ -173,7 +173,6 @@
                                             <th style="width: 15%">Name</th>
                                             <th style="width: 10%">Categories</th>
                                             <th style="width: 10%">Manufacturer</th>
-                                            <th style="width: 10%">Title</th>
                                             <th style="width: 20%">Description</th>
                                             <th style="width: 10%">Price</th>
                                         </tr>
@@ -187,7 +186,6 @@
                                                 </td>
                                                 <td>{{ $product->categories->name }} </td>
                                                 <td>{{ $product->manufacturer->name }} </td>
-                                                <td>{{ $product->intro }} </td>
                                                 <td style=" word-break: break-all;">
                                                     {{ Str::limit($product->description, 100) }}</td>
 
@@ -337,7 +335,7 @@
                                 </form>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool">
-                                        <a href="{{ url('admin/categoties/add', []) }}">
+                                        <a href="{{ route('categories.add') }}">
                                             <i class="fa fa-plus" aria-hidden="true"></i></a>
                                     </button>
                                 </div>

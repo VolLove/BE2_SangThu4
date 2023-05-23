@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Schema;
+use App\Models\Categories;
+use App\Models\Manufacturer;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $categories = Categories::all();
+        $manufacturer = Manufacturer::all();
+        view()->share('ListCategories', $categories);
+        view()->share('ListManufacturer', $manufacturer);
     }
 }
