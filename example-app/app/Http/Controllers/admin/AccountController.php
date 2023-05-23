@@ -22,4 +22,16 @@ class AccountController extends Controller
         $billCount = Bills::all()->count();
         return view('Admin.index', compact('user', 'manuCount', 'proCount', 'cateCount', 'billCount'));
     }
+    public function profile()
+    {
+        return view('Admin.profile');
+    }
+    public function changepassword()
+    {
+        # code...
+    }
+    public function changepasswordhandler()
+    {
+        # code...
+    }
 }

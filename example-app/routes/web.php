@@ -50,8 +50,11 @@ Route::prefix('account')->middleware('auth')->group(function () {
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/', [AccountController::class, 'index'])->name('admin');
     Route::get('/index', [AccountController::class, 'index']);
-    Route::get('login', [AccountController::class, 'login']);
-    Route::get('register', [AccountController::class, 'register']);
+    Route::prefix('account')->group(function () {
+        Route::get('/', [AccountController::class, 'profile'])->name('profile');
+        Route::get('changepassword', [AccountController::class, 'changepassword'])->name('changepassword');
+        Route::post('changepassword', [AccountController::class, 'changepassword_handlers'])->name('changepassword.handler');
+    });
     Route::prefix('user')->group(function () {
         Route::prefix('table')->group(function () {
             Route::get('/', [UserController::class, 'table'])->name('user.table');
