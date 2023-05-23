@@ -392,6 +392,134 @@
 
         </section>
     @endisset
+    @isset($bill_remove)
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row  ">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="invoice p-3 mb-3">
+                                    <!-- title row -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4>
+                                                <i class="fas fa-globe"></i> AdminLTE, Inc.
+                                            </h4>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- info row -->
+                                    <div class="row invoice-info">
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 invoice-col">
+                                            <address>
+                                                <strong>{{ $bill_remove->user->name }}</strong><br>
+                                                Address: {{ $bill_remove->address }} <br>
+                                                Phone: {{ $bill_remove->user->phone }}<br>
+                                                Email: {{ $bill_remove->user->email }}
+                                            </address>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 invoice-col">
+                                            <b>Invoice #{{ $bill_remove->id }}</b><br>
+                                            <b>Payment Due:</b> {{ $bill_remove->updated_at }}<br>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                    <!-- Table row -->
+                                    <div class="row">
+                                        <div class="col-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">Product</th>
+                                                        <th style="width: 5%">Qty</th>
+                                                        <th style="width: 5%">Subtotal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @isset($orders)
+
+                                                        @foreach ($orders as $order)
+                                                            <tr>
+                                                                <td>{{ $order->product->name }} </td>
+                                                                <td>{{ $order->quantity }} </td>
+                                                                <td>{{ $order->price }} </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endisset
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width:50%">Subtotal:</th>
+                                                            <td>{{ number_format($orders->sum('price')) }} VND</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Tax (10%)</th>
+                                                            <td>{{ number_format($orders->sum('price') * 0.1) }} VND</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Total:</th>
+                                                            <td>{{ number_format($orders->sum('price') * 1.1) }} VND</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <!-- this row will not appear when printing -->
+                                    <div class="row no-print">
+                                        <div class="col-12">
+                                            <form class="form-horizontal"
+                                                action="{{ route('bills.removehandler', $bill_remove->id) }}" method="POST">
+                                                @csrf
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label"> <label>Authentication
+                                                                password</label></label>
+                                                        <div class="col-8"> <input required class="form-control"
+                                                                type="password" name="password">
+                                                        </div>
+                                                        @error('password')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="">
+                                                    <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                                                    <input type="submit" value="submit" class="btn btn-danger float-right">
+                                                </div>
+                                                <!-- /.card-footer -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endisset
     <script>
         const currentImage = document.getElementById('currentImage');
         const editForm = document.getElementById('editForm');

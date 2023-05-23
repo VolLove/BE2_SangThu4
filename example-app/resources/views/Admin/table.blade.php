@@ -456,7 +456,8 @@
                                                         </i>
                                                         View
                                                     </a>
-                                                    <a class="btn btn-danger btn-sm" href="">
+                                                    <a class="btn btn-danger btn-sm"
+                                                        href="{{ route('bills.remove', $bill->id) }}">
                                                         <i class="fas fa-trash">
                                                         </i>
                                                         Delete
