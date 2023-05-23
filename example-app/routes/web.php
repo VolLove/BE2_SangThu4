@@ -5,14 +5,11 @@ use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ManufacterController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Models\Bills;
-use App\Models\Categories;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,21 +22,30 @@ use App\Models\Categories;
 |
 */
 
-Route::get('/', [CustomAuthController::class, 'dashboard'])->name('dashboard');
-Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
+Route::prefix('/')->group(function () {
+    Route::get('/', [DisplayController::class, 'dashboard'])->name('dashboard');
+    Route::get('shopgrid', [DisplayController::class, 'shopgrid'])->name('shopgrid');
+    Route::get('checkout', [DisplayController::class, 'checkout'])->name('checkout');
+    Route::get('product', [DisplayController::class, 'product'])->name('product');
+    Route::get('cart', [DisplayController::class, 'cart'])->name('cart');
+});
+
+
+Route::get('logout', [DisplayController::class, 'logout'])->name('logout');
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login_custom', [LoginController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [RegisterController::class, 'page'])->name('registration');
 Route::post('registration_custom', [RegisterController::class, 'customRegistration'])->name('register.custom');
-
-
+Route::prefix('product')->group(function () {
+    Route::get('/', [DisplayController::class, 'product']);
+});
 Route::prefix('account')->middleware('auth')->group(function () {
-    Route::get('/', [CustomAuthController::class, 'account']);
+    Route::get('/', [DisplayController::class, 'account'])->name('account');
 });
 
 
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
-    Route::get('/', [AccountController::class, 'index']);
+    Route::get('/', [AccountController::class, 'index'])->name('admin');
     Route::get('/index', [AccountController::class, 'index']);
     Route::get('login', [AccountController::class, 'login']);
     Route::get('register', [AccountController::class, 'register']);

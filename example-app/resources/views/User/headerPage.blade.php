@@ -64,21 +64,21 @@
                                 @if (Auth::check())
                                     @if (Auth::user()->is_admin)
                                         <li> <i class="fa fa-folder" aria-hidden="true"></i>
-                                            <a href="{{ url('admin') }}">Manage Page</a>
+                                            <a href="{{ route('admin') }}">Manage Page</a>
                                         </li>
                                         </li>
                                     @endif
                                     <li><i class="fa fa-user" aria-hidden="true"></i>
-                                        <a href="{{ url('account') }}">My account</a>
+                                        <a href="{{ route('account') }}">My account</a>
                                     </li>
                                     <li><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                        <a href="{{ url('logout') }}">Logout</a>
+                                        <a href="{{ route('logout') }}">Logout</a>
                                     </li>
                                 @else
                                     <li><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        <a href="{{ url('login') }}">Login</a>
+                                        <a href="{{ route('login') }}">Login</a>
                                     </li>
-                                    <li><a href="{{ url('registration') }}"><i class="fa fa-registered"
+                                    <li><a href="{{ route('registration') }}"><i class="fa fa-registered"
                                                 aria-hidden="true"></i>
                                             Register</a></li>
                                 @endif
@@ -97,7 +97,7 @@
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ url('/', []) }}"><img src="images/logo.png" alt="logo"></a>
+                            <a href="{{ route('dashboard') }}"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
                         <div class="mobile-nav"></div>
@@ -173,10 +173,6 @@
                                             <ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                                 <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
-                                                <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="{{ url('man') }}">Man</a></li>
-                                                <li><a href="{{ url('women', []) }}">Woman</a></li>
-                                                <li><a href="{{ url('kids', []) }}">Kids</a></li>
                                                 </li>
                                             </ul>
                                         </div>

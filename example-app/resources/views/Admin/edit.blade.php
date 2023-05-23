@@ -303,14 +303,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Giới thiệu</label>
-                            <input type="text" class="form-control   @error('intro') is-invalid @enderror" name="intro"
-                                value="{{ old('intro', $product->intro) }}">
-                            @error('intro')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label>Nội dung</label>
                             <textarea class="form-control  @error('description') is-invalid @enderror" name="description" rows="3">{{ old('description', $product->description) }}</textarea>
                             @error('description')
