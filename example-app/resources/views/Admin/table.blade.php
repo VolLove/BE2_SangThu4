@@ -6,6 +6,7 @@
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-check"></i> Success!</h5>
+
             {{ session('success') }}
         </div>
     @endif
@@ -437,10 +438,12 @@
                                                 <td>{{ $bill->address }} </td>
                                                 <td>{{ $bill->phone }} </td>
                                                 <td>{{ $bill->total }} </td>
-                                                <td>{{ $bill->created_at }} </td>
+                                                <td>{{ date('d-m-Y', strtotime($bill->created_at)) }} </td>
                                                 <td class="project-actions text-right">
                                                     @if ($bill->status == false)
-                                                        <a class="btn btn-info btn-sm" href="#">
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('bills.pay', $bill->id) }}"
+                                                            onclick="return confirm('Pay?')">
                                                             <i class="fa-solid fa-cash-register"></i>
                                                             Payment confirmation
                                                         </a>
@@ -552,16 +555,8 @@
                                     <!-- /.row -->
 
                                     <div class="row">
-                                        <!-- accepted payments column -->
-                                        <div class="col-6">
-                                            <p class="lead">Payment Methods:</p>
-                                            <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                                            </p>
-                                        </div>
                                         <!-- /.col -->
                                         <div class="col-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
-
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
@@ -589,10 +584,19 @@
                                     <div class="row no-print">
                                         <div class="col-12">
                                             <a onclick="window.history.back()" class="btn btn-secondary">Back</a>
+                                            <a class="btn btn-danger ml-2 float-right    "
+                                                href="{{ route('bills.remove', $bill_view->id) }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
                                             @if ($bill_view->status == false)
-                                                <button type="button" class="btn btn-success float-right"><i
-                                                        class="far fa-credit-card"></i> Payment confirmation
-                                                </button>
+                                                <a class="btn btn-info float-right"
+                                                    href="{{ route('bills.pay', $bill_view->id) }}"
+                                                    onclick="return confirm('Pay?')">
+                                                    <i class="fa-solid fa-cash-register"></i>
+                                                    Payment confirmation
+                                                </a>
                                             @endif
                                         </div>
                                     </div>
