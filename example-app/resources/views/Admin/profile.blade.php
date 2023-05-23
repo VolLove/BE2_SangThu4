@@ -90,7 +90,133 @@
         </section>
         <!-- /.content -->
     @endisset
+    @isset($user)
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Profile Image -->
+                        <div class="card card-primary">
+                            <div class="card-body box-profile">
+                                <a class="btn btn-info btn-sm float-right" href="{{ route('user.edit', $user->id) }}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                        src="{{ url('avatars/' . $user->avatar) }}" alt="User profile picture">
+                                </div>
 
-    @isset($bills)
+                                <h3 class="profile-username text-center">{{ $user->name }}</h3>
+
+
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Email</b>
+                                        <p class="float-right">{{ $user->email }}</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Phone</b>
+                                        <p class="float-right">{{ $user->phone }}</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Address</b>
+                                        <p class="float-right">{{ $user->address }}</p>
+                                    </li>
+                                </ul>
+                                <a href="{{ route('user.changepassword', $user->id) }}"
+                                    class="btn btn-primary btn-block"><b>Change
+                                        password</b></a>
+
+                                <a href="{{ route('user.remove', $user->id) }}" class="btn btn-danger btn-block"><b>
+                                        Delete</b></a>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <table class="table table-striped projects">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10%">Name user</th>
+                                                    <th style="width: 10%">Address</th>
+                                                    <th style="width: 10%">Phone</th>
+                                                    <th style="width: 10%">Total</th>
+                                                    <th style="width: 10%">Date created</th>
+                                                    <th style="width: 20%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach ($user->bills as $bill)
+                                                    <tr>
+                                                        <td>{{ $bill->user->name }} </td>
+                                                        <td>{{ $bill->address }} </td>
+                                                        <td>{{ $bill->phone }} </td>
+                                                        <td>{{ $bill->total }} </td>
+                                                        <td>{{ date('d-m-Y', strtotime($bill->created_at)) }} </td>
+                                                        <td class="project-actions text-right">
+                                                            @if ($bill->status == false)
+                                                                <a class="btn btn-info btn-sm"
+                                                                    href="{{ route('bills.pay', $bill->id) }}"
+                                                                    onclick="return confirm('Pay?')">
+                                                                    <i class="fa-solid fa-cash-register"></i>
+                                                                    Payment confirmation
+                                                                </a>
+                                                            @else
+                                                                <a class="btn btn-info btn-sm disabled" href="#">
+                                                                    <i class="fa-solid fa-cash-register"></i>
+                                                                    Already paid
+                                                                </a>
+                                                            @endif
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="{{ route('bills.view', $bill->id) }}">
+                                                                <i class="fas fa-folder">
+                                                                </i>
+                                                                View
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm"
+                                                                href="{{ route('bills.remove', $bill->id) }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                                Delete
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10%">Name user</th>
+                                                    <th style="width: 10%">Address</th>
+                                                    <th style="width: 10%">Phone</th>
+                                                    <th style="width: 10%">Total</th>
+                                                    <th style="width: 10%">Date created</th>
+                                                    <th style="width: 20%"></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+        <!-- /.content -->
     @endisset
 @endsection
