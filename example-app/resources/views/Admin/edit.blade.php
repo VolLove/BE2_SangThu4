@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('admin', []) }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
                         <li class="breadcrumb-item active">{{ $page }}</li>
                     </ol>
                 </div>
@@ -97,14 +97,91 @@
 
         </section>
     @endisset
+    @isset($account)
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">General</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('account.edit.handler') }}" id="editForm" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control   @error('name') is-invalid @enderror"
+                                        name="name" value="{{ old('name', $account->name) }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control  @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email', $account->email) }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Avatar</label>
+                                    <div class="">
+                                        <img id="currentImage" src="{{ url('avatars/' . $account->avatar, []) }}"
+                                            alt="{{ $account->avatar }}" style="max-width: 50px;max-height: 50px">
+                                        <input name="avatar" type="file" id="imageInput"
+                                            accept="image/png, image/gif, image/jpeg">
+                                        @error('avatar')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" class="form-control  @error('phone') is-invalid @enderror"
+                                        name="phone" value="{{ old('phone', $account->phone) }}">
+                                    @error('phone')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control  @error('address') is-invalid @enderror"
+                                        name="address" value="{{ old('address', $account->address) }}">
+                                    @error('address')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                                        <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+            </div>
+
+
+        </section>
+    @endisset
     {{-- admin destroy account user --}}
     @isset($user_destroy)
         <section class="content lockscreen-wrapper">
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img src="{{ url('avatars/' . $user_destroy->avatar) }}" class="profile-user-img img-fluid img-circle"
-                            alt="{{ $user_destroy->name }}">
+                        <img src="{{ url('avatars/' . $user_destroy->avatar) }}"
+                            class="profile-user-img img-fluid img-circle" alt="{{ $user_destroy->name }}">
                     </div>
                     <h3 class="profile-username text-center">{{ $user_destroy->name }}</h3>
                     <ul class="list-group list-group-unbordered mb-3">
@@ -144,6 +221,7 @@
     @endisset
     {{-- admin change password account user --}}
     @isset($user_change_password)
+
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
@@ -157,45 +235,95 @@
                     <li class="list-group-item">
                         <b>Name</b> <b class="float-right">{{ $user_change_password->name }}</b>
                     </li>
+                    <li class="list-group-item">
+                        <b>Email</b> <b class="float-right">{{ $user_change_password->email }}</b>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Phone</b> <b class="float-right">{{ $user_change_password->phone }}</b>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Address</b> <b class="float-right">{{ $user_change_password->address }}</b>
+                    </li>
                 </ul>
             </div>
             <!-- /.card-body -->
         </div>
-        <form class="form-horizontal" action="{{ route('user.handlepassword', $user_change_password->id) }}" method="POST">
-            @csrf
-            <div class="card-body">
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"> <label>New Password</label></label>
-                    <div class="col-10"> <input required class="form-control" type="password" name="new_password">
+        @if (isset($admin))
+            <form class="form-horizontal" action="{{ route('changepassword.handler', $user_change_password->id) }}"
+                method="POST">
+                @csrf
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"> <label>Password</label></label>
+                        <div class="col-10"> <input required class="form-control" type="password" name="password">
+                        </div>
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    @error('new_password')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2 col-form-label"> <label>Comfirmation</label></div>
-                    <div class="col-10"> <input required class="form-control" type="password"
-                            name="new_password_confirmation" id="password_confirmation"></div>
-                    @error('password_confirmation')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"> <label>Password admin</label></label>
-                    <div class="col-10"> <input required class="form-control" type="password" name="password">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"> <label>New Password</label></label>
+                        <div class="col-10"> <input required class="form-control" type="password" name="new_password">
+                        </div>
+                        @error('new_password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    @error('password')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group row">
+                        <div class="col-sm-2 col-form-label"> <label>Comfirmation</label></div>
+                        <div class="col-10"> <input required class="form-control" type="password"
+                                name="new_password_confirmation" id="password_confirmation"></div>
+                        @error('password_confirmation')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
-                <input type="submit" value="Confirm" class="btn btn-success float-right">
-            </div>
-            <!-- /.card-footer -->
-        </form>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Change password" class="btn btn-success float-right">
+                </div>
+                <!-- /.card-footer -->
+            </form>
+        @else
+            <form class="form-horizontal" action="{{ route('user.handlepassword', $user_change_password->id) }}"
+                method="POST">
+                @csrf
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"> <label>New Password</label></label>
+                        <div class="col-10"> <input required class="form-control" type="password" name="new_password">
+                        </div>
+                        @error('new_password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2 col-form-label"> <label>Comfirmation</label></div>
+                        <div class="col-10"> <input required class="form-control" type="password"
+                                name="new_password_confirmation" id="password_confirmation"></div>
+                        @error('password_confirmation')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"> <label>Password admin</label></label>
+                        <div class="col-10"> <input required class="form-control" type="password" name="password">
+                        </div>
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a onclick="window.history.back()" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Confirm" class="btn btn-success float-right">
+                </div>
+                <!-- /.card-footer -->
+            </form>
+        @endif
+
     @endisset
     @isset($manufacturer)
         <!-- Main content -->

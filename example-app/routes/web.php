@@ -52,12 +52,15 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/index', [AccountController::class, 'index']);
     Route::prefix('account')->group(function () {
         Route::get('/', [AccountController::class, 'profile'])->name('profile');
+        Route::get('edit', [AccountController::class, 'edit'])->name('account.edit');
+        Route::PUT('edit', [AccountController::class, 'edit_handler'])->name('account.edit.handler');
         Route::get('changepassword', [AccountController::class, 'changepassword'])->name('changepassword');
         Route::post('changepassword', [AccountController::class, 'changepassword_handlers'])->name('changepassword.handler');
     });
     Route::prefix('user')->group(function () {
         Route::prefix('table')->group(function () {
             Route::get('/', [UserController::class, 'table'])->name('user.table');
+            Route::get('profile/{id}', [UserController::class, 'profile'])->name('user.profile');
             Route::get('search', [UserController::class, 'search'])->name('user.search');
             Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.edit');
             Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
