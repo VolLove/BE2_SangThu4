@@ -83,8 +83,8 @@
                                         <th style="width: 10%">Name</th>
                                         <th style="width: 10%">Email</th>
                                         <th style="width: 10%">Phone</th>
-                                        <th style="width: 20%">Address</th>
-                                        <th style="width: 15%"></th>
+                                        <th style="width: 10%">Address</th>
+                                        <th style="width: 20%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,11 +97,17 @@
                                             <td>{{ $user->phone }} </td>
                                             <td>{{ $user->address }} </td>
                                             <td class="project-actions text-right">
+                                                <a class="btn btn-primary btn-sm" href="#">
+                                                    <i class="fas fa-folder">
+                                                    </i>
+                                                    View
+                                                </a>
                                                 <a class="btn btn-info btn-sm" href="{{ route('user.edit', $user->id) }}">
                                                     <i class="fas fa-edit"></i>
 
                                                     Edit
                                                 </a>
+
                                                 <a class="btn btn-danger btn-sm " href="{{ route('user.remove', $user->id) }}">
                                                     <i class="fas fa-trash"> </i>
                                                     Delete
@@ -110,6 +116,7 @@
                                                     href="{{ route('user.changepassword', $user->id) }}">
                                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                                     Change password</a>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -425,7 +432,7 @@
                                             <th style="width: 10%">Phone</th>
                                             <th style="width: 10%">Total</th>
                                             <th style="width: 10%">Date created</th>
-                                            <th style="width: 15%"></th>
+                                            <th style="width: 20%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

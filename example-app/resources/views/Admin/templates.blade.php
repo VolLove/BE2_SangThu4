@@ -61,7 +61,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ url('admin', []) }}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="{{ route('profile') }}" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->

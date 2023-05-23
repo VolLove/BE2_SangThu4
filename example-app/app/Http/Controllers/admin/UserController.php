@@ -41,7 +41,7 @@ class UserController extends Controller
         $user = User::find($id);
         $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
-            'name' => 'required|max:255',
+            'name' => 'required|string|max:255',
             'phone' => 'required|numeric|digits:10',
             'address' => 'nullable|max:255',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
@@ -97,7 +97,7 @@ class UserController extends Controller
                 'new_password' => 'required|confirmed|min:8|',
                 'new_password_confirmation' => 'required|string',
             ]);
-            $user->password = $request->input('password');
+            $user->password = Hash::make($request->input('password'));
             if ($user->save()) {
                 return redirect()->route('user.table')->with('success', 'Mật khẩu người dùng đã được đổi đã được thay đổi!');
             }
@@ -105,5 +105,9 @@ class UserController extends Controller
             // Nếu mật khẩu không trùng khớp, trả về thông báo lỗi
             return back()->withErrors(['password' => 'The password admin is incorrect!']);
         }
+    }
+    public function profile()
+    {
+        # code...
     }
 }
