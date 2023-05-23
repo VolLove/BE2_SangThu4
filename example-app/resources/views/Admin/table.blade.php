@@ -335,7 +335,7 @@
                                 </form>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool">
-                                        <a href="{{ url('admin/categoties/add', []) }}">
+                                        <a href="{{ route('categories.add') }}">
                                             <i class="fa fa-plus" aria-hidden="true"></i></a>
                                     </button>
                                 </div>

@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bills;
-use App\Models\Categories;
-use App\Models\Manufacturer;
 use App\Models\Products;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class DisplayController extends Controller
 {
     public function dashboard()
     {
-        $products = Products::all();
-
-        return view('User.index');
+        $product = Products::take(1)->get();
+        $products = Products::with('categories', 'manufacturer')->latest()->take(3)->get();
+        return view('User.index', compact('product', 'products'));
     }
     public function shopgrid()
     {

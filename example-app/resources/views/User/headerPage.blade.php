@@ -107,9 +107,9 @@
                             <div class="search-bar">
                                 <select>
                                     <option selected="selected">All Category</option>
-                                    <option>watch</option>
-                                    <option>mobile</option>
-                                    <option>kid’s item</option>
+                                    @foreach ($ListCategories as $categorie)
+                                        <option>{{ $categorie->name }}</option>
+                                    @endforeach
                                 </select>
                                 <form>
                                     <input name="search" placeholder="Search Products Here....." type="search">
@@ -173,6 +173,9 @@
                                             <ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                                 <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
+                                                @foreach ($ListCategories as $categorie)
+                                                    <li><a href="">{{ $categorie->name }}</a></li>
+                                                @endforeach
                                                 </li>
                                             </ul>
                                         </div>

@@ -24,10 +24,13 @@ use App\Http\Controllers\RegisterController;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [DisplayController::class, 'dashboard'])->name('dashboard');
-    Route::get('shopgrid', [DisplayController::class, 'shopgrid'])->name('shopgrid');
     Route::get('checkout', [DisplayController::class, 'checkout'])->name('checkout');
     Route::get('product', [DisplayController::class, 'product'])->name('product');
     Route::get('cart', [DisplayController::class, 'cart'])->name('cart');
+    Route::prefix('shopgrid')->group(function () {
+        Route::get('/', [DisplayController::class, 'shopgrid'])->name('shopgrid');
+        Route::get('search', [DisplayController::class, 'search'])->name('shopgrid.search');
+    });
 });
 
 
