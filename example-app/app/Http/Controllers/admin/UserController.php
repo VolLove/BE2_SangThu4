@@ -106,8 +106,9 @@ class UserController extends Controller
             return back()->withErrors(['password' => 'The password admin is incorrect!']);
         }
     }
-    public function profile()
+    public function profile($id)
     {
-        # code...
+        $user = User::with('bills')->find($id);
+        return view('Admin.profile', compact('user'));
     }
 }
