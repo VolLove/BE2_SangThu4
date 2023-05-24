@@ -399,7 +399,7 @@
                             <div class="">
                                 <img id="currentImage" src="{{ url('images/' . $product->image, []) }}"
                                     alt="{{ $product->image }}" style="max-width: 100px;max-height: 100px">
-                                <input name="image" type="file" id="imageInput"
+                                <input name="image" type="file" style="width: 500px" id="imageInput"
                                     accept="image/png, image/gif, image/jpeg">
                                 @error('image')
                                     <div class="invalid-feedback">{{ $message }}</div>

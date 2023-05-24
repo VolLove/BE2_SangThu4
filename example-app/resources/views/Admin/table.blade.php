@@ -218,7 +218,7 @@
                                         @endforeach
 
                                     </tbody>
-                                </table>
+                                </table> {{ $products->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->
@@ -301,7 +301,7 @@
                                         @endforeach
 
                                     </tbody>
-                                </table>
+                                </table> {{ $manufacturer->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->
@@ -479,6 +479,7 @@
 
                                     </tbody>
                                 </table>
+                                {{ $bills->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->

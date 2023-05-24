@@ -25,8 +25,14 @@ use App\Http\Controllers\RegisterController;
 Route::prefix('/')->group(function () {
     Route::get('/', [DisplayController::class, 'dashboard'])->name('dashboard');
     Route::get('checkout', [DisplayController::class, 'checkout'])->name('checkout');
-    Route::get('product', [DisplayController::class, 'product'])->name('product');
-    Route::get('cart', [DisplayController::class, 'cart'])->name('cart');
+    Route::prefix('product')->group(function () {
+        Route::get('/{id}', [DisplayController::class, 'product'])->name('product');
+    });
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [DisplayController::class, 'cart'])->name('cart.show');
+        Route::get('add/{id}', [DisplayController::class, 'cart_add'])->name('cart.add');
+        Route::get('remove/{id}', [DisplayController::class, 'cart_add'])->name('cart.remove');
+    });
     Route::prefix('shopgrid')->group(function () {
         Route::get('/', [DisplayController::class, 'shopgrid'])->name('shopgrid');
         Route::get('search', [DisplayController::class, 'search'])->name('shopgrid.search');

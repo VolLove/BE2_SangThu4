@@ -132,15 +132,14 @@
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>2 Items</span>
-                                        <a href="{{ url('cart', []) }}">View Cart</a>
+                                        <a href="{{ route('checkout', []) }}">View Cart</a>
                                     </div>
                                     <ul class="shopping-list">
                                         <li>
                                             <a href="#" class="remove" title="Remove this item"><i
                                                     class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="{{ url('product', []) }}"><img src=""
-                                                    alt="#"></a>
-                                            <h4><a href="{{ url('product', []) }}">Woman Ring</a></h4>
+                                            <a class="cart-img" href=""><img src="" alt="#"></a>
+                                            <h4><a href="">Woman Ring</a></h4>
                                             <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                         </li>
                                     </ul>
@@ -149,7 +148,7 @@
                                             <span>Total</span>
                                             <span class="total-amount">$134.00</span>
                                         </div>
-                                        <a href="{{ url('checkout', []) }}" class="btn animate">Checkout</a>
+                                        <a href="{{ route('checkout', []) }}" class="btn animate">Checkout</a>
                                     </div>
                                 </div>
                                 <!--/ End Shopping Item -->
@@ -172,10 +171,12 @@
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                                <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
-                                                @foreach ($ListCategories as $categorie)
-                                                    <li><a href="">{{ $categorie->name }}</a></li>
-                                                @endforeach
+                                                <li><a>Shop<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown">
+                                                        <li><a href="{{ route('shopgrid', []) }}">Shop Grid</a></li>
+                                                        <li><a href="{{ route('cart.show') }}">Cart</a></li>
+                                                        <li><a href="{{ route('checkout', []) }}">Checkout</a></li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </div>
