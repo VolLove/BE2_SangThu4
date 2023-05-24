@@ -70,7 +70,7 @@
                                     @php
                                         $total += $details['price'] * $details['quantity'];
                                     @endphp
-                                    <tr class="">
+                                    <tr data-id="{{ $id }}">
                                         <td class="image" data-th="image"><img
                                                 src="{{ url('images/' . $details['image'], []) }}"
                                                 alt="{{ $details['image'] }}"></td>
@@ -82,11 +82,22 @@
                                         </td>
                                         <td data-th="Quantity">
                                             <!-- Input Order -->
-                                            <div class="input-group">
-                                                <input type="number" class="cart_update quantity "
-                                                    data-session_id="{{ $id }}" min="1"
-                                                    value="{{ $details['quantity'] }}">
-                                            </div>
+                                            <form action="{{ route('update_cart', $id) }}" method="post">
+                                                @csrf
+                                                <div
+                                                    class="row ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
+                                                    <div class="col">
+                                                        <input type="number" name="quantity" min="1"
+                                                            class="input-numberc" value="{{ $details['quantity'] }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="submit" class="btn" value="Update">
+
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
                                             <!--/ End Input Order -->
                                         </td>
                                         <td data-th="Total">
@@ -103,124 +114,34 @@
                         </tbody>
                     </table>
                     <!--/ End Shopping Summery -->
-                @section('scripts')
-                    <script type="text/javascript">
-                        $(".cart_update").change(function(e) {
-                            e.preventDefault();
 
-                            var ele = $(this);
-
-                            $.ajax({
-                                url: '{{ route('cart_update') }}',
-                                method: "patch",
-                                data: {
-                                    _token: '{{ csrf_token() }}',
-                                    id: ele.attr("session_id"),
-                                    quantity: ele.val()
-                                },
-                                success: function(response) {
-                                    window.location.reload();
-                                }
-                            });
-                        });
-                    </script>
-                @endsection
-
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12">
-                <!-- Total Amount -->
-                <div class="total-amount">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-5 col-12">
-                        </div>
-                        <div class="col-lg-4 col-md-7 col-12">
-                            <div class="right">
-                                <ul>
-                                    <li>Cart Subtotal<span>{{ number_format($total) }} VND</span></li>
-                                </ul>
-                                <div class="button5">
-                                    <a href="{{ route('checkout', []) }}" class="btn">Checkout</a>
-                                    <a href="{{ route('shopgrid', []) }}" class="btn">Continue shopping</a>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Total Amount -->
+                    <div class="total-amount">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-5 col-12">
+                            </div>
+                            <div class="col-lg-4 col-md-7 col-12">
+                                <div class="right">
+                                    <ul>
+                                        <li>Cart Subtotal<span>{{ number_format($total) }} VND</span></li>
+                                    </ul>
+                                    <div class="button5">
+                                        <a href="{{ route('checkout', []) }}" class="btn">Checkout</a>
+                                        <a href="{{ route('shopgrid', []) }}" class="btn">Continue shopping</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--/ End Total Amount -->
-            </div>
-        </div>
-    </div>
-</div>
-<!--/ End Shopping Cart -->
-
-<!-- Start Shop Services Area  -->
-<section class="shop-services section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-rocket"></i>
-                    <h4>Free shiping</h4>
-                    <p>Orders over $100</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-reload"></i>
-                    <h4>Free Return</h4>
-                    <p>Within 30 days returns</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-lock"></i>
-                    <h4>Sucure Payment</h4>
-                    <p>100% secure payment</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-tag"></i>
-                    <h4>Best Peice</h4>
-                    <p>Guaranteed price</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Shop Newsletter -->
-
-<!-- Start Shop Newsletter  -->
-<section class="shop-newsletter section">
-    <div class="container">
-        <div class="inner-top">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2 col-12">
-                    <!-- Start Newsletter Inner -->
-                    <div class="inner">
-                        <h4>Newsletter</h4>
-                        <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                            <input name="EMAIL" placeholder="Your email address" required="" type="email">
-                            <button class="btn">Subscribe</button>
-                        </form>
-                    </div>
-                    <!-- End Newsletter Inner -->
+                    <!--/ End Total Amount -->
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- End Shop Newsletter -->
+    <!--/ End Shopping Cart -->
 @endsection

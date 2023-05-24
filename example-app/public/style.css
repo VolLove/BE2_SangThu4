@@ -2526,6 +2526,15 @@ Version:1.0
     overflow: hidden;
     padding: 0px 38px;
 }
+.input-numberc {
+    border: 1px solid #eceded;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+    border-radius: 0px;
+    overflow: hidden;
+    padding: 0px 38px;
+}
 .shop.single .add-to-cart {
     display: inline-block;
 }

@@ -36,17 +36,17 @@ class CartController extends Controller
                 unset($cart[$id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('sussess', 'Đã xoá sản phẩm khỏi giỏ hàng!');
         }
         return redirect()->back()->with('success', 'Đã xoá sản phẩm khỏi giỏ hàng!');
     }
-    public function cart_update(Request $request)
+    public function update(Request $request)
     {
+        echo $request->id;
         if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]['quantity'] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('sussess', 'Cart successfully update');
         }
+        return redirect()->back();
     }
 }
