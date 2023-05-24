@@ -40,12 +40,10 @@
         </div><!-- /.container-fluid -->
     </section>
     @isset($useradmin)
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-
+                    <div class="col-md-3">
                         <!-- Profile Image -->
                         <div class="card card-primary">
                             <div class="card-body box-profile">
@@ -84,10 +82,75 @@
                         </div>
                         <!-- /.card -->
                     </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <table class="table table-striped projects">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 15%">Address</th>
+                                                    <th style="width: 15%">Phone</th>
+                                                    <th style="width: 15%">Transport Fee</th>
+                                                    <th style="width: 10%">Date created</th>
+                                                    <th style="width: 30%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach ($bills as $bill)
+                                                    <tr>
+                                                        <td>{{ $bill->address }} </td>
+                                                        <td>{{ $bill->phone }} </td>
+                                                        <td>{{ $bill->shipping }} </td>
+                                                        <td>{{ date('d-m-Y', strtotime($bill->created_at)) }} </td>
+                                                        <td class="project-actions text-right">
+                                                            @if ($bill->status == false)
+                                                                <a class="btn btn-info btn-sm"
+                                                                    href="{{ route('bills.pay', $bill->id) }}"
+                                                                    onclick="return confirm('Pay?')">
+                                                                    <i class="fa-solid fa-cash-register"></i>
+                                                                    Payment confirmation
+                                                                </a>
+                                                            @else
+                                                                <a class="btn btn-info btn-sm disabled" href="#">
+                                                                    <i class="fa-solid fa-cash-register"></i>
+                                                                    Already paid
+                                                                </a>
+                                                            @endif
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="{{ route('bills.view', $bill->id) }}">
+                                                                <i class="fas fa-folder">
+                                                                </i>
+                                                                View
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm"
+                                                                href="{{ route('bills.remove', $bill->id) }}">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                                Delete
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
+        <!-- Main content -->
         <!-- /.content -->
     @endisset
     @isset($user)

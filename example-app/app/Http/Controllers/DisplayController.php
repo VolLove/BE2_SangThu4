@@ -17,17 +17,13 @@ class DisplayController extends Controller
     }
     public function shopgrid()
     {
+        // session()->forget('cart');
+        // session()->flush();
         $products = DB::table('products')->orderBy('created_at', 'desc')->paginate(9);
         return view('User.shopgrid', compact('products'));
     }
-    public function cart()
-    {
-        return view('User.cart');
-    }
-    public function checkout()
-    {
-        return view('User.checkout');
-    }
+
+
     public function product()
     {
         return view('User.product');

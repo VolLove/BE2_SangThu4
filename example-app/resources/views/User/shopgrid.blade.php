@@ -1,6 +1,32 @@
 @extends('User.headerPage')
 @section('title', 'Cart')
 @section('containt')
+
+    <div class="container pt-1">
+        <!--/ End Header -->
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Success!</h5>
+
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('errors'))
+            <div class="alert alert-warning alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                {{ session('errors') }}
+            </div>
+        @endif
+        @if (session('warning'))
+            <div class="alert alert-danger alert-dismissible"style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i>Warning!</h5>
+                {{ session('warning') }}
+            </div>
+        @endif
+    </div>
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -8,7 +34,7 @@
                 <div class="col-12">
                     <div class="bread-inner">
                         <ul class="bread-list">
-                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                            <li><a href="{{ url('/', []) }}">Home<i class="ti-arrow-right"></i></a></li>
                             <li class="active"><a href="blog-single.html">Shop Grid</a></li>
                         </ul>
                     </div>
@@ -54,17 +80,18 @@
                                     <div class="product-img">
                                         <a href="product-details.html">
                                             <img class="default-img" src="{{ url('images/' . $product->image, []) }}"
-                                                alt="#">
+                                                alt="">
                                             <img class="hover-img" src="{{ url('images/' . $product->image, []) }}"
-                                                alt="#">
+                                                alt="">
                                         </a>
                                         <div class="button-head">
                                             <div class="product-action">
                                                 <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-                                                    href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                    href=""><i class=" ti-eye"></i><span>Quick Shop</span></a>
                                             </div>
                                             <div class="product-action-2">
-                                                <a title="Add to cart" href="#">Add to cart</a>
+                                                <a title="Add to cart" href="{{ route('cart.add', $product->id) }}">Add to
+                                                    cart</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,11 +106,8 @@
                         @endforeach
                     </div>
                     {{ $products->links('pagination::bootstrap-4') }}
-
-
                 </div>
             </div>
-
         </div>
     </section>
 

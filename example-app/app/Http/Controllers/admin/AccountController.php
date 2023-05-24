@@ -10,6 +10,7 @@ use App\Models\Products;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -28,7 +29,13 @@ class AccountController extends Controller
     public function profile()
     {
         $useradmin = Auth::user();
-        return view('Admin.profile', compact('useradmin'));
+        $user = User::find(Auth::user()->id);
+        $bills = DB::table('bills')
+            ->where('user_id', Auth::user()->id)
+            ->orderByRaw("CASE WHEN status = 'unpaid' THEN 0 ELSE 1 END")
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('Admin.profile', compact('useradmin', 'bills'));
     }
     public function changepassword()
     {

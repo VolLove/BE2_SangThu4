@@ -1,6 +1,32 @@
 @extends('User.headerPage')
 @section('title', 'Cart')
 @section('containt')
+
+    <div class="container pt-1">
+        <!--/ End Header -->
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Success!</h5>
+
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('errors'))
+            <div class="alert alert-warning alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                {{ session('errors') }}
+            </div>
+        @endif
+        @if (session('warning'))
+            <div class="alert alert-danger alert-dismissible"style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i>Warning!</h5>
+                {{ session('warning') }}
+            </div>
+        @endif
+    </div>
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -135,7 +161,8 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
