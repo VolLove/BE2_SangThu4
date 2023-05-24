@@ -38,9 +38,10 @@
                             <div class="row">
                                 <div class="col-lg-7 col-12">
                                     <div class="hero-text">
+                                        <h1></h1>
                                         <p></p>
                                         <div class="button">
-                                            <a href="{{ route('shopgrid') }}" class="btn">Shop Now!</a>
+                                            <a href="{{ route('shopgrid', []) }}" class="btn">Shop Now!</a>
                                         </div>
                                     </div>
                                 </div>
