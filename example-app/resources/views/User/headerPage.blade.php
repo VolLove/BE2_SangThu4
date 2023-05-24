@@ -9,11 +9,12 @@
     <title> Eshop - @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ url('images/favicon.png', []) }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Web Font -->
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
         rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <!-- StyleSheet -->
 
     <!-- Bootstrap -->
@@ -97,7 +98,8 @@
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ route('dashboard') }}"><img src="images/logo.png" alt="logo"></a>
+                            <a href="{{ route('dashboard') }}"><img src="{{ url('images/logo.png', []) }}"
+                                    alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
                         <div class="mobile-nav"></div>
@@ -121,35 +123,45 @@
                     <div class="col-lg-2 col-md-3 col-12">
                         <div class="right-bar">
                             <!-- Search Form -->
-                            <div class="sinlge-bar">
-                                <a href="{{ url('favourite', []) }}" class="single-icon"><i class="fa fa-heart-o"
-                                        aria-hidden="true"></i></a>
-                            </div>
                             <div class="sinlge-bar shopping">
-                                <a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
-                                        class="total-count">2</span></a>
+                                <a href="{{ route('cart.show', []) }}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count">{{ count((array) session('cart')) }}</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
-                                        <span>2 Items</span>
-                                        <a href="{{ url('cart', []) }}">View Cart</a>
+                                        <span>{{ count((array) session('cart')) }} Items</span>
+                                        <a href="{{ route('cart.show', []) }}">View Cart</a>
                                     </div>
-                                    <ul class="shopping-list">
-                                        <li>
-                                            <a href="#" class="remove" title="Remove this item"><i
-                                                    class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="{{ url('product', []) }}"><img src=""
-                                                    alt="#"></a>
-                                            <h4><a href="{{ url('product', []) }}">Woman Ring</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                        </li>
-                                    </ul>
+                                    @php
+                                        $total = 0;
+                                    @endphp
+                                    @if (session('cart'))
+                                        @foreach (session('cart') as $id => $details)
+                                            @php
+                                                $total += $details['price'] * $details['quantity'];
+                                            @endphp
+                                            <ul class="shopping-list">
+                                                <li>
+                                                    <a href="{{ route('cart.remove', $id) }}" class="remove"
+                                                        title="Remove this item"><i class="fa fa-remove"></i></a>
+                                                    <a class="cart-img" href=""><img
+                                                            src="{{ url('images/' . $details['image'], []) }}"
+                                                            alt="#"></a>
+                                                    <h4><a href="">{{ $details['product_name'] }}</a></h4>
+                                                    <p class="quantity">{{ $details['quantity'] }}x - <span
+                                                            class="amount">{{ $details['price'] }}</span></p>
+                                                </li>
+                                            </ul>
+                                        @endforeach
+                                    @endif
                                     <div class="bottom">
                                         <div class="total">
                                             <span>Total</span>
-                                            <span class="total-amount">$134.00</span>
+                                            <span class="total-amount">
+                                                {{ number_format($total) }} VND
+                                            </span>
                                         </div>
-                                        <a href="{{ url('checkout', []) }}" class="btn animate">Checkout</a>
+                                        <a href="{{ route('checkout', []) }}" class="btn animate">Checkout</a>
                                     </div>
                                 </div>
                                 <!--/ End Shopping Item -->
@@ -171,11 +183,14 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                                <li><a href="{{ url('shopgrid') }}">Shop Grid</a></li>
-                                                @foreach ($ListCategories as $categorie)
-                                                    <li><a href="">{{ $categorie->name }}</a></li>
-                                                @endforeach
+                                                <li class="<?php echo Request::is('/') || Request::is('index') ? 'active' : ''; ?>"><a
+                                                        href="{{ url('/') }}">Home</a></li>
+                                                <li><a>Shop<i class="ti-angle-down <?php Request::is('shop/*') ? 'active' : ''; ?>"></i></a>
+                                                    <ul class="dropdown">
+                                                        <li><a href="{{ route('shopgrid', []) }}">Shop Grid</a></li>
+                                                        <li><a href="{{ route('cart.show') }}">Cart</a></li>
+                                                        <li><a href="{{ route('checkout', []) }}">Checkout</a></li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </div>
@@ -190,8 +205,6 @@
         </div>
         <!--/ End Header Inner -->
     </header>
-    <!--/ End Header -->
-
     @yield('containt')
 
     <!-- Start Footer Area -->
@@ -240,7 +253,7 @@
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="right">
-                                <img src="images/payments.png" alt="#">
+                                <img src="{{ url('images/payments.png', []) }}" alt="#">
                             </div>
                         </div>
                     </div>

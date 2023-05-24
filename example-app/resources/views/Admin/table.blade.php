@@ -218,7 +218,7 @@
                                         @endforeach
 
                                     </tbody>
-                                </table>
+                                </table> {{ $products->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->
@@ -277,20 +277,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($manufacturer as $manufacturer)
+                                        @foreach ($manufacturer as $manufactur)
                                             <tr>
-                                                <td>{{ $manufacturer->name }} </td>
+                                                <td>{{ $manufactur->name }} </td>
                                                 <td> <img style="width: 50px"
-                                                        src="{{ url('images/' . $manufacturer->image, []) }}" alt="">
+                                                        src="{{ url('images/' . $manufactur->image, []) }}" alt="">
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-info btn-sm"
-                                                        href="{{ route('manufacter.edit', $manufacturer->id) }}">
+                                                        href="{{ route('manufacter.edit', $manufactur->id) }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
                                                         Edit
                                                     </a>
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="{{ route('manufacter.destroy', $manufacturer->id) }}"
+                                                        href="{{ route('manufacter.destroy', $manufactur->id) }}"
                                                         onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                                         <i class="fas fa-trash">
                                                         </i>
@@ -301,7 +301,7 @@
                                         @endforeach
 
                                     </tbody>
-                                </table>
+                                </table> {{ $manufacturer->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->
@@ -479,6 +479,7 @@
 
                                     </tbody>
                                 </table>
+                                {{ $bills->links('pagination::bootstrap-5') }}
                             </div>
                             <!-- /.card-body -->
                             <!-- /.card -->
@@ -571,12 +572,8 @@
                                                             <td>{{ number_format($orders->sum('price')) }} VND</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Tax (10%)</th>
-                                                            <td>{{ number_format($orders->sum('price') * 0.1) }} VND</td>
-                                                        </tr>
-                                                        <tr>
                                                             <th>Total:</th>
-                                                            <td>{{ number_format($orders->sum('price') * 1.1) }} VND</td>
+                                                            <td>{{ number_format($orders->sum('price')) }} VND</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

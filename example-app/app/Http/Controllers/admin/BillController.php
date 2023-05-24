@@ -52,7 +52,7 @@ class BillController extends Controller
         if ($bill->status == false) {
             $bill->status = true;
             if ($bill->save()) {
-                return redirect()->route('bills.table')->with('success', 'Payment confirmed!');
+                return back()->with('success', 'Payment confirmed!');
             }
         } else {
             return back()->withErrors(['errors' => "Can't pay! Bill has been paid"]);

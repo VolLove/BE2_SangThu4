@@ -11,22 +11,19 @@ class DisplayController extends Controller
 {
     public function dashboard()
     {
-        $product = Products::take(1)->get();
-        $products = Products::with('categories', 'manufacturer')->latest()->take(3)->get();
+        $product = Products::first();
+        $products = Products::with('categories')->latest()->take(3)->get();
         return view('User.index', compact('product', 'products'));
     }
     public function shopgrid()
     {
-        return view('User.shopgrid');
+        // session()->forget('cart');
+        // session()->flush();
+        $products = DB::table('products')->orderBy('created_at', 'desc')->paginate(9);
+        return view('User.shopgrid', compact('products'));
     }
-    public function cart()
-    {
-        return view('User.cart');
-    }
-    public function checkout()
-    {
-        return view('User.checkout');
-    }
+
+
     public function product()
     {
         return view('User.product');

@@ -76,6 +76,10 @@ class UserController extends Controller
         // Xác nhận mật khẩu của admin
         if (Hash::check(request('password'), Auth::user()->password)) {
             // Xoá user
+            $path = "avatars/" . $user->avatar;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
             $user->delete();
             return redirect()->route('user.table')->with('success', 'User has been deleted successfully!');
         } else {

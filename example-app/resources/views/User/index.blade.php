@@ -1,6 +1,32 @@
 @extends('User.headerPage')
 @section('title', 'Dashboard')
 @section('containt')
+
+    <div class="container pt-1">
+        <!--/ End Header -->
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Success!</h5>
+
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('errors'))
+            <div class="alert alert-warning alert-dismissible" style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                {{ session('errors') }}
+            </div>
+        @endif
+        @if (session('warning'))
+            <div class="alert alert-danger alert-dismissible"style="height: 100px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i>Warning!</h5>
+                {{ session('warning') }}
+            </div>
+        @endif
+    </div>
     <!-- Slider Area -->
     <section class="hero-slider">
         <!-- Single Slider -->
@@ -12,7 +38,7 @@
                             <div class="row">
                                 <div class="col-lg-7 col-12">
                                     <div class="hero-text">
-                                        <p>{{ $product }}</p>
+                                        <p></p>
                                         <div class="button">
                                             <a href="{{ route('shopgrid') }}" class="btn">Shop Now!</a>
                                         </div>
@@ -27,27 +53,4 @@
         <!--/ End Single Slider -->
     </section>
     <!--/ End Slider Area -->
-
-    <!-- Start Small Banner  -->
-    <section class="small-banner section" style="padding: 100px 0">
-        <div class="container-fluid">
-            <div class="row">
-                @foreach ($products as $product)
-                    <!-- Single Banner  -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-banner">
-                            <img src="https://via.placeholder.com/600x370" alt="#">
-                            <div class="content">
-                                <p>Man's Collectons</p>
-                                <h3>Summer travel <br> collection</h3>
-                                <a href="#">Discover Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /End Single Banner  -->
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!-- End Small Banner -->
 @endsection

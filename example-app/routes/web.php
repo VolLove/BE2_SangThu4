@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ManufacterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\LoginController;
@@ -24,12 +26,25 @@ use App\Http\Controllers\RegisterController;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [DisplayController::class, 'dashboard'])->name('dashboard');
-    Route::get('checkout', [DisplayController::class, 'checkout'])->name('checkout');
-    Route::get('product', [DisplayController::class, 'product'])->name('product');
-    Route::get('cart', [DisplayController::class, 'cart'])->name('cart');
-    Route::prefix('shopgrid')->group(function () {
-        Route::get('/', [DisplayController::class, 'shopgrid'])->name('shopgrid');
-        Route::get('search', [DisplayController::class, 'search'])->name('shopgrid.search');
+    Route::prefix('shop')->group(function () {
+        Route::prefix('product')->group(function () {
+            Route::get('/{id}', [DisplayController::class, 'product'])->name('product');
+        });
+        Route::prefix('cart')->group(function () {
+            Route::get('/', [CartController::class, 'cart'])->name('cart.show');
+            Route::get('add/{id}', [CartController::class, 'cart_add'])->name('cart.add');
+            Route::get('remove/{id}', [CartController::class, 'cart_remove'])->name('cart.remove');
+            Route::post('update/{id}', [CartController::class, 'update'])->name('update_cart');
+        });
+        Route::prefix('checkout')->middleware('auth')->group(function () {
+            Route::get('/', [CheckoutController::class, 'checkout'])->name('checkout');
+            Route::post('pay', [CheckoutController::class, 'pay'])->name('pay');
+        });
+
+        Route::prefix('shopgrid')->group(function () {
+            Route::get('/', [DisplayController::class, 'shopgrid'])->name('shopgrid');
+            Route::get('search', [DisplayController::class, 'search'])->name('shopgrid.search');
+        });
     });
 });
 

@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Termwind\Components\Dd;
 
 class RegisterController extends Controller
 {
@@ -22,7 +20,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|confirmed|min:8|',
             'password_confirmation' => 'required|string',
-            'phone' => 'nullable|numeric|size:10',
+            'phone' => 'nullable|numeric|min:10',
             'avatar' => 'nullable|required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
