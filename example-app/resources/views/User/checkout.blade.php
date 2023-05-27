@@ -34,12 +34,18 @@
                     <div class="col-lg-8 col-12">
                         <div class="checkout-form">
                             <h2>Make Your Checkout Here</h2>
-                            <p>Please register in order to checkout more quickly</p>
                             @if (session('errors'))
                                 <div class="alert alert-warning alert-dismissible" style="height: 100px;">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+                                    <h5><i class="fas fa-exclamation-triangle"></i> Error!</h5>
                                     {{ session('errors') }}
+                                </div>
+                            @endif
+                            @if (session('warning'))
+                                <div class="alert alert-danger alert-dismissible"style="height: 100px;">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h5><i class="fas fa-ban"></i>Warning!</h5>
+                                    {{ session('warning') }}
                                 </div>
                             @endif
                             <!-- Form -->
@@ -91,6 +97,7 @@
                                         <li>Sub Total<span>{{ number_format($total) }} VND</span></li>
                                         <li>(+) Shipping<span>{{ number_format(20000) }} VND</span></li>
                                         <input type="hidden" name="shipping" value="20000">
+                                        <input type="hidden" name="total" value="{{ $total }}">
                                         <li class="last">Total<span>{{ number_format($total + 20000) }} VND</span></li>
                                     </ul>
                                 </div>

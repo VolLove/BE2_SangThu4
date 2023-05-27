@@ -16,7 +16,7 @@ class CheckoutController extends Controller
     public function pay(Request $request)
     {
         if (!session('cart')) {
-            return back()->withErrors('The operation could not be performed.');
+            return back()->with('warning', "Don't have product in cart!");
         }
         $bill = null;
         if ($request->has('defaultInfo')) {
@@ -24,7 +24,8 @@ class CheckoutController extends Controller
                 'user_id' => Auth::user()->id,
                 'address' => Auth::user()->address,
                 'phone' => Auth::user()->phone,
-                'shipping' => $request['shipping']
+                'shipping' => $request['shipping'],
+                'total' => $request['total'],
             ]);
         } else {
             echo $request['phone'];
@@ -36,7 +37,8 @@ class CheckoutController extends Controller
                 'user_id' => Auth::user()->id,
                 'address' =>  $request['address'],
                 'phone' =>  $request['phone'],
-                'shipping' => $request['shipping']
+                'shipping' => $request['shipping'],
+                'total' => $request['total'],
             ]);
         }
         if ($bill->save()) {
@@ -52,6 +54,6 @@ class CheckoutController extends Controller
             $request->session()->forget('cart');
             return redirect()->route('dashboard')->withSuccess('Order Fulfillment Successful!');
         } else
-            return back()->with('cantsave', 'The operation could not be performed.');
+            return back()->with('warning', 'The operation could not be performed.');
     }
 }

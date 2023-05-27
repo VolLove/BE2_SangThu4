@@ -113,6 +113,7 @@ class UserController extends Controller
     public function profile($id)
     {
         $user = User::with('bills')->find($id);
+
         return view('Admin.profile', compact('user'));
     }
 }

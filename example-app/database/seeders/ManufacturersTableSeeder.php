@@ -68,24 +68,28 @@ class ManufacturersTableSeeder extends Seeder
             'image' => 'logo-dell-149x40.png',
         ]);
         DB::table('manufacturers')->insert([
-            'name' => 'HP',
-            'image' => 'logo-hp-149x40-1.png',
+            'name' => 'Fenda',
+            'image' => 'logo-Fenda.jpg',
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'Huawei',
             'image' => 'logo-huawei.png',
         ]);
         DB::table('manufacturers')->insert([
-            'name' => 'iphone',
-            'image' => 'logo-iphone-220x48.png',
+            'name' => 'Mozard',
+            'image' => 'logo-mozard.jpg',
         ]);
         DB::table('manufacturers')->insert([
-            'name' => 'itel',
-            'image' => 'logo-itel-149x40.png',
+            'name' => 'REZO',
+            'image' => 'LOGO-REZO.png',
         ]);
         DB::table('manufacturers')->insert([
-            'name' => 'Jabra',
-            'image' => 'logo-jabra.jpg',
+            'name' => 'Xmobile',
+            'image' => 'logo-Xmobile.jpg',
+        ]);
+        DB::table('manufacturers')->insert([
+            'name' => 'JBL',
+            'image' => 'logo-JBL.jpg',
         ]);
     }
 }

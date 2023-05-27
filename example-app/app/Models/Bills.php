@@ -12,6 +12,7 @@ class Bills extends Model
         'id',
         'user_id',
         'shipping',
+        'total',
         'address',
         'phone',
         'status',

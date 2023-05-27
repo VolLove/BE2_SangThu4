@@ -104,7 +104,6 @@
                                                     <tr>
                                                         <td>{{ $bill->address }} </td>
                                                         <td>{{ $bill->phone }} </td>
-                                                        <td>{{ $bill->shipping }} </td>
                                                         <td>{{ date('d-m-Y', strtotime($bill->created_at)) }} </td>
                                                         <td class="project-actions text-right">
                                                             @if ($bill->status == false)

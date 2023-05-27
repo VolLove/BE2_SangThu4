@@ -549,7 +549,7 @@
                                                                         alt="">
                                                                     <span class="ml-3"> {{ $order->product->name }} </span>
                                                                 </td>
-                                                                <td>{{ $order->product->intro }} </td>
+                                                                <td>{{ Str::limit($order->product->description, 100) }} </td>
                                                                 <td>{{ $order->price }} </td>
                                                             </tr>
                                                         @endforeach
