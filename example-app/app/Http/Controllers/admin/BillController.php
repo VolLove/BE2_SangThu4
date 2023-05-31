@@ -22,6 +22,9 @@ class BillController extends Controller
     public function view($id)
     {
         $page = "Table view";
+        if (!$bill = Bills::with('user')->find($id)) {
+            return redirect()->route('bills.table')->with('errors', 'Danh mục không tồn tại');
+        }
         $bill_view = Bills::with('user')->find($id);
         $orders = Orders::with('product')->where('bills_id', $id)->get();
         return view('Admin.table', compact('page', 'bill_view', 'orders'));
@@ -29,15 +32,20 @@ class BillController extends Controller
     public function remove($id)
     {
         $page = "Table view";
+        if (!$bill_remove = Bills::with('user')->find($id)) {
+            return redirect()->route('bills.table')->with('errors', 'Danh mục không tồn tại');
+        }
         $bill_remove = Bills::with('user')->find($id);
         $orders = Orders::with('product')->where('bills_id', $id)->get();
         return view('Admin.edit', compact('page', 'bill_remove', 'orders'));
     }
     public function remove_handler($id)
     {
+       
         // Xác nhận mật khẩu của admin
         if (Hash::check(request('password'), Auth::user()->password)) {
             $bill = Bills::find($id);
+          
             $bill->order()->delete();
             $bill->delete();
             return redirect()->route('bills.table')->with('success', 'Order has been deleted!');

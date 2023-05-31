@@ -84,7 +84,7 @@
                                         <th style="width: 10%">Email</th>
                                         <th style="width: 10%">Phone</th>
                                         <th style="width: 10%">Address</th>
-                                        <th style="width: 20%"></th>
+                                        <th style="width: 30%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -280,7 +280,7 @@
                                         @foreach ($manufacturer as $manufactur)
                                             <tr>
                                                 <td>{{ $manufactur->name }} </td>
-                                                <td> <img style="width: 50px"
+                                                <td> <img style="width: 200px"
                                                         src="{{ url('images/' . $manufactur->image, []) }}" alt="">
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-info btn-sm"
@@ -353,15 +353,15 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width: 10%">Logo</th>
-                                            <th style="width: 40%">Name</th>
+                                            <th style="width: 20%">Logo</th>
+                                            <th style="width: 20%">Name</th>
                                             <th style="width: 10%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($categories as $category)
                                             <tr>
-                                                <td> <img style="width: 50px"
+                                                <td> <img style="width: 100px"
                                                         src="{{ url('images/' . $category->image, []) }}" alt="">
                                                 </td>
                                                 <td>{{ $category->name }} </td>
@@ -433,7 +433,7 @@
                                             <th style="width: 10%">Phone</th>
                                             <th style="width: 10%">Total</th>
                                             <th style="width: 10%">Date created</th>
-                                            <th style="width: 20%"></th>
+                                            <th style="width: 30%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

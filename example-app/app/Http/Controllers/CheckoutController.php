@@ -30,8 +30,8 @@ class CheckoutController extends Controller
         } else {
             echo $request['phone'];
             $request->validate([
-                'phone' => 'required|numeric|min:10',
-                'address' => 'required|string',
+                'phone' => 'required|numeric|min:10|max:255',
+                'address' => 'required|string|max:255',
             ]);
             $bill = new Bills([
                 'user_id' => Auth::user()->id,
@@ -40,6 +40,12 @@ class CheckoutController extends Controller
                 'shipping' => $request['shipping'],
                 'total' => $request['total'],
             ]);
+        }
+        foreach (session('cart') as $key => $value) {
+            if (!$product = Products::find($key)) {
+                $request->session()->forget('cart');
+                return back()->with('warning', "Lỗi giỏ hàng!");
+            }
         }
         if ($bill->save()) {
             foreach (session('cart') as $key => $value) {

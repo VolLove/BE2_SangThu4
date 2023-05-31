@@ -13,6 +13,9 @@ class CartController extends Controller
     }
     public function cart_add($id)
     {
+        if(!$product = Products::find($id)){
+            return redirect()->back()->with('warning', 'Lỗi sản phẩm!');
+        }
         $product = Products::findOrFail($id);
         $cart  = session()->get('cart', []);
         if (isset($cart[$id])) {

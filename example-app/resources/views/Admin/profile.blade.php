@@ -93,8 +93,7 @@
                                                 <tr>
                                                     <th style="width: 15%">Address</th>
                                                     <th style="width: 15%">Phone</th>
-                                                    <th style="width: 15%">Transport Fee</th>
-                                                    <th style="width: 10%">Date created</th>
+                                                    <th style="width: 20%">Date created</th>
                                                     <th style="width: 30%"></th>
                                                 </tr>
                                             </thead>

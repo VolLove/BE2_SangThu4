@@ -32,12 +32,18 @@ class UserController extends Controller
     public function edit($id)
     {
         //lấy thông tin user và truyền vào trang
+        if(!$user = User::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $user = User::find($id);
         $page = "User edit";
         return view('Admin.edit', compact('user', 'page'));
     }
     public function update(Request $request, $id)
     {
+        if(!$user = User::find($id)){
+            return redirect('admin/user/table')->with('errors', 'Danh mục không tồn tại');
+        }
         $user = User::find($id);
         $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
@@ -66,12 +72,18 @@ class UserController extends Controller
     }
     public function remove($id)
     {
+        if(!$user = User::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $user_destroy = User::find($id);
         $page = "Confirm account deletion.";
         return view('Admin.edit', compact('user_destroy', 'page'));
     }
     public function destroy($id)
     {
+        if(!$user = User::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $user = User::find($id);
         // Xác nhận mật khẩu của admin
         if (Hash::check(request('password'), Auth::user()->password)) {
@@ -89,6 +101,9 @@ class UserController extends Controller
     }
     public function changepassword($id)
     {
+        if(!$user = User::find($id)){
+            return redirect('admin/user/table')->with('errors', 'Danh mục không tồn tại');
+        }
         $user_change_password = User::find($id);
         $page = "Change password.";
         return view('Admin.edit', compact('user_change_password', 'page'));
@@ -112,6 +127,9 @@ class UserController extends Controller
     }
     public function profile($id)
     {
+        if(!$user = User::find($id)){
+            return redirect()->back()->with('errors', 'Tài khoản không tồn t');
+        }
         $user = User::with('bills')->find($id);
 
         return view('Admin.profile', compact('user'));

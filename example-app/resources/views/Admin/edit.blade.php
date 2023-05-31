@@ -588,12 +588,12 @@
                                                             <td>{{ number_format($orders->sum('price')) }} VND</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Tax (10%)</th>
-                                                            <td>{{ number_format($orders->sum('price') * 0.1) }} VND</td>
+                                                            <th>Shipping </th>
+                                                            <td>{{ number_format($bill_remove->shipping) }} VND</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Total:</th>
-                                                            <td>{{ number_format($orders->sum('price') * 1.1) }} VND</td>
+                                                            <td>{{ number_format($bill_remove->total +$bill_remove->shipping ) }} VND</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

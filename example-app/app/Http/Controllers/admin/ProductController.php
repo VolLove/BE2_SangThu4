@@ -55,6 +55,9 @@ class ProductController extends Controller
     //xóa  sản phẩm:
     function deleteproduct($id)
     {
+        if(!$product = Products::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $oders = Orders::where('product_id', $id)->get();
         if ($oders->count() == 0) {
             $product = Products::find($id);
@@ -70,6 +73,9 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
+        if(!$product = Products::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $product = Products::find($id);
         $manus = Manufacturer::all();
         $cates = Categories::all();
@@ -78,6 +84,9 @@ class ProductController extends Controller
     }
     public function edit_handler($id, Request $request)
     {
+        if(!$product = Products::find($id)){
+            return redirect('admin/product/table')->with('errors', 'Danh mục không tồn tại');
+        }
         $product = Products::find($id);
         $request->validate([
             'name' => 'required|string|max:255',

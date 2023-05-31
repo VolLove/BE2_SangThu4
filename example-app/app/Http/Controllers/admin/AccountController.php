@@ -47,7 +47,7 @@ class AccountController extends Controller
     public function changepassword_handlers(Request $request)
     {
         $request->validate([
-            'new_password' => 'required|confirmed|min:8|',
+            'new_password' => 'required|confirmed|min:8|max:250',
             'new_password_confirmation' => 'required|string',
         ]);
         if (Hash::check(request('password'), Auth::user()->password)) {
@@ -72,7 +72,7 @@ class AccountController extends Controller
         $request->validate([
             'email' => ['required', Rule::unique('users')->ignore($user)],
             'name' => 'required|string|max:255',
-            'phone' => 'required|numeric|digits:10',
+            'phone' => 'required|numeric|digits:10|max:255',
             'address' => 'nullable|string|max:255',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);

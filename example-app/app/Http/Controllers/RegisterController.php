@@ -16,9 +16,9 @@ class RegisterController extends Controller
     public function customRegistration(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|confirmed|min:8|',
+            'password' => 'required|string|confirmed|min:8',
             'password_confirmation' => 'required|string',
             'phone' => 'nullable|numeric|min:10',
             'avatar' => 'nullable|required|image|mimes:png,jpg,jpeg|max:2048',

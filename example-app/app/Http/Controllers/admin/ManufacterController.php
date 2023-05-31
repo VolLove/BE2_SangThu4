@@ -44,6 +44,9 @@ class ManufacterController extends Controller
     //xóa loại sản phẩm:
     function deletemanu($id)
     {
+        if(!$manufacturer = Manufacturer::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $product = Products::where('manufacturer_id', $id)->get();
         if ($product->count() == 0) {
             $manu = Manufacturer::find($id);
@@ -60,12 +63,19 @@ class ManufacterController extends Controller
     }
     public function edit($id)
     {
+        if(!$manufacturer = Manufacturer::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $manufacturer = Manufacturer::find($id);
+
         $page = 'Manufacter edit';
         return view('Admin.edit', compact('manufacturer', 'page'));
     }
     public function edit_handler($id, Request $request)
     {
+        if(!$manufacturer = Manufacturer::find($id)){
+            return redirect('admin/manufacter/table')->with('errors', 'Danh mục không tồn tại');
+        }
         $manu = Manufacturer::find($id);
         $request->validate([
             'name' => 'required|string|max:255',

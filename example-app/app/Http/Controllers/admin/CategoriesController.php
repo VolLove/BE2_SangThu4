@@ -44,8 +44,12 @@ class CategoriesController extends Controller
     }
     public function remove($id)
     {
+        if(!$cate = Categories::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $product = Products::where('categories_id', $id)->get();
         if ($product->count() == 0) {
+            
             $cate = Categories::find($id);
             $path = "images/" . $cate->image;
             if (File::exists($path)) {
@@ -60,12 +64,18 @@ class CategoriesController extends Controller
     }
     public function edit($id)
     {
+        if(!$cate = Categories::find($id)){
+            return redirect()->back()->with('errors', 'Danh mục không tồn tại');
+        }
         $category = Categories::find($id);
         $page = 'Manufacter edit';
         return view('Admin.edit', compact('category', 'page'));
     }
     public function edit_handler($id, Request $request)
     {
+        if(!$cate = Categories::find($id)){
+            return redirect('admin/categories/table')->with('errors', 'Danh mục không tồn tại');
+        }
         $cate = Categories::find($id);
         $request->validate([
             'name' => 'required|string|max:255',
